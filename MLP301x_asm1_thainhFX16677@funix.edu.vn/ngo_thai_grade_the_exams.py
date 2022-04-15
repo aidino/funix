@@ -1,11 +1,11 @@
 def is_file_name_with_txt_extension(file_name):
-    """ Check if file name has .txt extension
+    """ Kiểm tra xem tên file có đuôi .txt không
     
     Args:
-        file_name (str): file name to check
+        file_name (str): tên file
         
     Returns:
-        bool: True if file name has .txt extension, False otherwise
+        bool: Return True nếu hàm có đuôi .txt, False nếu không
     """
 
     if file_name.endswith('.txt'):
@@ -15,13 +15,13 @@ def is_file_name_with_txt_extension(file_name):
 
 
 def add_txt_extension(file_name):
-    """ Add .txt extension to file name if it does not have .txt extension
+    """ Thêm đuôi .txt vào tên file nếu chưa có, giữ nguyên nếu đã có đuôi .txt
 
     Args:
-        file_name (str): file name
+        file_name (str): tên file
 
     Returns:
-        str: file name with .txt extension
+        str: Tên file đã có đuôi .txt
     """
 
     if is_file_name_with_txt_extension(file_name):
@@ -31,13 +31,13 @@ def add_txt_extension(file_name):
 
 
 def open_file(file_name):
-    """ Open file with file name
+    """ Mở file và đọc dữ liệu
 
     Args:
-        file_name (str): file name
+        file_name (str): tên file
 
     Returns:
-        file: opened file
+        file: file đã mở
     """
 
     file_name = add_txt_extension(file_name)
@@ -51,13 +51,13 @@ def open_file(file_name):
 
 
 def is_digit(string):
-    """ Check if string is digit
+    """ Kiểm tra string truyền vào có phải là số không
     
     Args:
-        string (str): string to check
+        string (str): string cần kiểm tra
         
     Returns:
-        bool: True if string is digit, False otherwise
+        bool: Trả lại True nếu string là số, False nếu không
     """
     try:
         int(string)
@@ -67,13 +67,13 @@ def is_digit(string):
 
 
 def is_line_valid(line):
-    """ Check if line is valid
+    """ Kiểm tra xem dòng có hợp lệ không
 
     Args:
-        line (str): line to check
+        line (str): nội dung dòng cần kiểm tra
 
     Returns:
-        bool: True if line is valid, False otherwise
+        bool: True nếu dòng hợp lệ, False nếu không
     """
     data = line.split(',')
     if len(data) != 26:
@@ -89,14 +89,14 @@ def is_line_valid(line):
 
 
 def grade_the_exams(student_info):
-    """ Grade the exams of student
+    """ Tính điểm của mỗi sinh viên có thông tin hợp lệ
 
     Args:
-        student_info (str): list of student info
+        student_info (str): Thông tin của mỗi sinh viên có câu trả lời hợp lệ
 
     Returns:
-        str: student id
-        int: point of student
+        str: Mã số sinh viên
+        int: Điểm của sinh viên
     """
 
     correct_answer_key = "B,A,D,D,C,B,D,A,C,C,D,B,A,B,A,C,B,D,A,C,A,A,B,D,D"
@@ -115,14 +115,14 @@ def grade_the_exams(student_info):
 
 
 def get_min_max(list_point):
-    """ Get min and max point from list of points
+    """ Xác định điểm cao nhất và thấp nhất trong list
 
     Args:
-        list_point (list): list of points
+        list_point (list): Danh sách điểm số
 
     Returns:
-        int: min point
-        int: max point
+        int: Điểm thấp nhất
+        int: Điểm cao nhất
     """
     min_point = min(list_point)
     max_point = max(list_point)
@@ -130,26 +130,26 @@ def get_min_max(list_point):
 
 
 def get_average(list_point):
-    """ Get average point from list of points
+    """ Xác định trung bình của list điểm
 
     Args:
-        list_point (list): list of points
+        list_point (list): Danh sách điểm số
 
     Returns:
-        float: average point
+        float: Điểm trung bình
     """
     sum_point = sum(list_point)
     return round(sum_point / len(list_point), 2)
 
 
 def get_median(list_point):
-    """ Get median point from list of points
+    """ Xác định điểm trung vị của list điểm
 
     Args:
-        list_point (list): list of points
+        list_point (list): danh sách các điểm
 
     Returns:
-        float: median point
+        float: Điểm trung vị
     """
     list_point.sort()
     if len(list_point) % 2 == 0:
@@ -160,11 +160,11 @@ def get_median(list_point):
 
 
 def print_student_point_to_file(student_point, file_name):
-    """ Print dict point to file
+    """ In ra điểm của mỗi sinh viên vào file
 
     Args:
-        student_point (dict): dict of points
-        file_name (str): file name
+        student_point (dict): Danh sách các sinh viên và điểm tương ứng
+        file_name (str): Tên file để in ra
     """
     file = open(file_name, 'w')
     for key, value in student_point.items():
