@@ -1,7 +1,7 @@
 ## Table of Contents
 
 - Python
-  - [Python basics](#python-basic.html)
+  - [Python basics](python-basic.html)
   - Numpy
   - Numpy với Đại số tuyến tính
   - Pandas
