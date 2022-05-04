@@ -14,10 +14,10 @@ permalink: /
     - [Matplotlib](contents/matplotlib.html)
     - [Đại số tuyến tính với Numpy](contents/daisotuyentinh_numpy.html)
 - Labs
-    - Lab 1
-    - Lab 2
-    - Lab 3
-    - Lab 4
+    - Lab 1: Jupyter Notebook
+    - [Lab 2: Python cơ bản](contents/lab2.html)
+    - [Lab 3: OOP với Python](contents/lab3.html)
+    - [Lab 4: Khởi tạo API cơ bản](contents/lab4.html)
     - Lab 5
     - Lab 6
     - Lab 7
