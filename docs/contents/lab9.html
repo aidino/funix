@@ -13104,44 +13104,76 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lab9---Binomial-Distribution-I">Lab9 - Binomial Distribution I<a class="anchor-link" href="#Lab9---Binomial-Distribution-I">&#182;</a></h1>
+<h1 id="Lab-9:-X&#225;c-su&#7845;t-c&#417;-b&#7843;n">Lab 9: X&#225;c su&#7845;t c&#417; b&#7843;n<a class="anchor-link" href="#Lab-9:-X&#225;c-su&#7845;t-c&#417;-b&#7843;n">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Task">Task<a class="anchor-link" href="#Task">&#182;</a></h2><p>The ratio of boys to girls for babies born in Russia is 1.09:1. 
-If there is 1 child born per birth, 
-what proportion of Russian families with exactly 6 children will have at least 3 boys?</p>
+<h2 id="Binomial-Distribution-I">Binomial Distribution I<a class="anchor-link" href="#Binomial-Distribution-I">&#182;</a></h2><ul>
+<li>Thực hiện $n$ phép thử độc lập</li>
+<li>Mỗi lần thử có 2 khả năng <em>Thành công</em> với xác suất $p$, <em>Thất bại</em> với xác suất $1-p$</li>
+</ul>
+$$
+\begin{equation}
+    f(k;p) =
+    \left\{
+        \begin{array}{cc}
+                p &amp; \mathrm{if\ } k=1 \\
+                1-p &amp; \mathrm{if\ } k=0 \\
+        \end{array} 
+    \right.
+\end{equation}
+$$<p><br></p>
+$$
+P(X=k) = \binom{n}{k}p^k(1-p)^{n-k}
+$$<p>($X$: Số lần thành công)</p>
+<p>$\mu = n*p$</p>
+<p>$\sigma^2 = n*p*(1-p)$</p>
+<p>$\binom{n}{k} = \frac{n!}{k!(n-k)!}$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Task-1"><strong>Task 1</strong><a class="anchor-link" href="#Task-1">&#182;</a></h3><p>The ratio of boys to girls for babies born in Russia is <code>1.09:1</code>. If there is <code>1</code> child born per birth, what proportion of Russian families with exactly <code>6</code> children will have at least <code>3</code> boys?</p>
+<p>Write a program to compute the answer using the above parameters. Then print your result, rounded to a scale of 3 decimal places (i.e., 1.234 format).</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">boyP</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">1.09</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">boyP</span> <span class="o">=</span> <span class="mf">1.09</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">1.09</span><span class="p">)</span>
 <span class="n">girlP</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">boyP</span>
 
 <span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">result</span> <span class="o">*=</span> <span class="n">i</span>
-    <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span><span class="o">*</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">combination</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">r</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">r</span><span class="p">))</span>
 
+
+<span class="k">def</span> <span class="nf">bernoulli</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    x: Số lần thành công</span>
+<span class="sd">    n: Tổng số lần thử</span>
+<span class="sd">    p: xác suất thành công</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">combination</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="o">**</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+
 <span class="n">totalProb</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">numBoy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="n">numGirl</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">-</span> <span class="n">numBoy</span>
-    <span class="n">prob</span> <span class="o">=</span> <span class="n">combination</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="n">numBoy</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">boyP</span><span class="o">**</span><span class="n">numBoy</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">girlP</span><span class="o">**</span><span class="n">numGirl</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;boys: </span><span class="si">{}</span><span class="s1">, girls: </span><span class="si">{}</span><span class="s1">, prob: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numBoy</span><span class="p">,</span> <span class="n">numGirl</span><span class="p">,</span> <span class="n">prob</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">numBoy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="n">bernoulli</span><span class="p">(</span><span class="n">numBoy</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">boyP</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;boys: </span><span class="si">{}</span><span class="s1">, girls: </span><span class="si">{}</span><span class="s1">, prob: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numBoy</span><span class="p">,</span> <span class="mi">6</span> <span class="o">-</span> <span class="n">numBoy</span><span class="p">,</span> <span class="n">prob</span><span class="p">))</span>
     <span class="n">totalProb</span> <span class="o">+=</span> <span class="n">prob</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nb">round</span><span class="p">(</span><span class="n">totalProb</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">totalProb</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13158,12 +13190,310 @@ what proportion of Russian families with exactly 6 children will have at least 3
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>boys: 0, girls: 6, prob: 0.020122469184072553
-boys: 1, girls: 5, prob: 0.11076588541691317
-boys: 2, girls: 4, prob: 0.25405019591035133
-0.615
+<pre>boys: 3, girls: 3, prob: 0.3107647656395735
+boys: 4, girls: 2, prob: 0.25405019591035144
+boys: 5, girls: 1, prob: 0.11076588541691323
+boys: 6, girls: 0, prob: 0.020122469184072577
+Result:  0.696
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Task-2"><strong>Task 2</strong><a class="anchor-link" href="#Task-2">&#182;</a></h3><p>A blindfolded marksman finds that on the average he hits the target 4 times out of 5. If he fires 4 shots,<br> what is the probability of</p>
+<p>(a) more than 2 hits?</p>
+<p>(b) at least 3 misses?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">successProb</span> <span class="o">=</span> <span class="mi">4</span><span class="o">/</span><span class="mi">5</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># (a) more than 2 hits?</span>
+<span class="n">totalProA</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">totalProA</span> <span class="o">+=</span> <span class="n">bernoulli</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">successProb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(a) more than 2 hits: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">totalProA</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># (b) at least 3 misses?</span>
+<span class="n">totalProB</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">totalProB</span> <span class="o">+=</span> <span class="n">bernoulli</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">successProb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(b) at least 3 misses: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">totalProB</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(a) more than 2 hits:  0.819
+(b) at least 3 misses:  0.027
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Normal-Distribution-I">Normal Distribution I<a class="anchor-link" href="#Normal-Distribution-I">&#182;</a></h2><p>$X$ is normally distributed with mean $\mu$ and standard deviation $\sigma$:
+$$X \sim \mathcal{N}(\mu,\,\sigma^{2})$$</p>
+<p><strong>PDF:</strong></p>
+$${\displaystyle f(x)={\frac {1}{\sigma {\sqrt {2\pi }}}}e^{-{\frac {1}{2}}\left({\frac {x-\mu }{\sigma }}\right)^{2}}}$$<p><br>
+<br></p>
+$$E(X) = \mu $$<p><br>
+<br></p>
+$$\sigma^{2} = Var(X) = E((X - \mu)^{2}) = \sum (x_{i} - \mu)^{2} * P_{i}(x_{i})$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Task-1"><strong>Task 1</strong><a class="anchor-link" href="#Task-1">&#182;</a></h3><p>In a certain plant, the time taken to assemble a car is a random variable, $X$ , having a normal distribution with a mean of $20$ hours and a standard deviation of $2$ hours. What is the probability that a car can be assembled at this plant in:</p>
+<p>Less than $19.5$ hours?<br>
+Between $20$ and $22$ hours?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Dựa vào công thức tính hàm phân phối tích luỹ: <a href="https://www.hackerrank.com/challenges/s10-normal-distribution-1/tutorial">Hacker Rank</a></p>
+<p>Viết hàm tính $erf$ and $\phi$:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">def</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    f: function</span>
+<span class="sd">    b: end</span>
+<span class="sd">    n: number of points</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">):</span><span class="n">step</span><span class="o">=-</span><span class="n">step</span>
+    <span class="n">n</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="n">sq</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">sq</span><span class="o">+=</span><span class="n">step</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">a</span><span class="o">+=</span><span class="n">step</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sq</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">erf</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    b: end</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span> <span class="o">*</span> <span class="n">integrate</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">b</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    b: end</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">std</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="p">))</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="mf">20.0</span>
+<span class="n">std</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Less than $19.5$ hours: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span><span class="p">(</span><span class="mf">19.5</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Between $20$ and $22$ hours: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Less than $19.5$ hours:  0.402
+Between $20$ and $22$ hours:  0.341
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Task-2"><strong>Task 2</strong><a class="anchor-link" href="#Task-2">&#182;</a></h3><p>$X$ is a normally distributed variable with a mean of $\mu = 30$ and a standard deviation of $\sigma = 4$ . Find:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$P(X&lt;40)$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">std</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.994</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$P(X&gt;21)$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.988</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$P(30&lt;X&lt;35)$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">round</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.394</pre>
+</div>
+
 </div>
 
 </div>
