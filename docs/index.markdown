@@ -3,16 +3,17 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-title: Home
+title: Contents
 permalink: /
 ---
 
-- [Python](#)
-    - [Basic](contents/python-basic.html){:target="_blank"}
+- [Lẩu Thập Cẩm](#)
+    - [Python Basic](contents/python-basic.html){:target="_blank"}
     - [Numpy](contents/numpy.html){:target="_blank"}
     - [Pandas](contents/pandas.html){:target="_blank"}
     - [Matplotlib](contents/matplotlib.html){:target="_blank"}
     - [Đại số tuyến tính với Numpy](contents/daisotuyentinh_numpy.html){:target="_blank"}
+    - [Natural language processing | Basic](contents/nlp-basic/nlp-basic.html){:target="_blank"}
 - [Labs](#)
     - [Lab 1: Jupyter Notebook](#)
     - [Lab 2: Python cơ bản](contents/lab2.html){:target="_blank"}
