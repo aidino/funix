@@ -1,6 +1,6 @@
 ## Machine Learning - Funix
 
-- [x] Language: markdown, python
+- [x] Languages: Jupyter Notebook, Python
 - [x] Documentation: https://ngohongthai.github.io/funix/
 
 ## Convert Python notebook to HTML (with table of content)
