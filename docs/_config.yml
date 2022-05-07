@@ -36,7 +36,6 @@ plugins:
 
 header_pages:
   - about.markdown
-  - index.markdown
 #
 exclude:
    - Gemfile
