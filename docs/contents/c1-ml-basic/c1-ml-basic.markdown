@@ -40,3 +40,5 @@ permalink: /contents/c1-ml-basic/
 - [Assignments](#)
     - [Assignment 1](assignment-1/assignment-1.html){:target="_blank"}
     - [Assignment 2](assignment-2/assignment-2.html){:target="_blank"}
+
+- [Summary](c1-ontapcuoimon.html){:target="_blank"}
