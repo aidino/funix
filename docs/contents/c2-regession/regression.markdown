@@ -9,6 +9,6 @@ permalink: /contents/c2-regression/
 
 - [Labs](#)
   - [Lab1 - Khớp mô hình tuyến tính trong dữ liệu giá nhà](#)
-    - [Theory](lab1-theory.markdown)
+    - [Theory](lab1-theory.html)
     - [Practice](#)
 - [Assignments](#)
