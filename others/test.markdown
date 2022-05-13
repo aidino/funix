@@ -1,0 +1,1 @@
+![](SimpleLinReg_1.gif)
