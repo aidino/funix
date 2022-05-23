@@ -12,3 +12,6 @@ permalink: /contents/c2-regression/
     - [Theory](lab-1-theory.html){:target="_blank"}
     - [Practice](lab-1.html){:target="_blank"}
 - [Assignments](#)
+- [Others](#)
+    - [Utils](utils-doc.html){:target="_blank"}
+    - [Subgradient Descent](Subgradient-Descent.html){:target="_blank"}
