@@ -1,7 +1,12 @@
-## Machine Learning - Funix
+# Machine Learning - Funix
 
 - [x] Languages: Jupyter Notebook, Python
 - [x] Doccuments page: https://ngohongthai.github.io/funix/
+
+## Choosing the right estimator scikit-learn
+![scikit learn](sklearn_map.png)
+
+
 
 ## Convert Python notebook to HTML (with table of content)
 
