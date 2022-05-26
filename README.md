@@ -6,7 +6,7 @@
 ## Choosing the right estimator scikit-learn
 ![scikit learn](sklearn_map.png)
 
-
+🔥 [Documentation](https://scikit-learn.org/stable/)
 
 ## Convert Python notebook to HTML (with table of content)
 
