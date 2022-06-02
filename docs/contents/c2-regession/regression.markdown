@@ -7,8 +7,8 @@ title: Machine Learning - Regression
 permalink: /contents/c2-regression/
 ---
 
-- [Labs](#)
-  - [Lab1 - Khớp mô hình tuyến tính trong dữ liệu giá nhà](#)
+- **Labs**
+  - Lab1 - Khớp mô hình tuyến tính trong dữ liệu giá nhà
     - [Theory](lab-1-theory.html){:target="_blank"}
     - [Practice](lab-1.html){:target="_blank"}
   - [Lab2 - Khám phá các mô hình hồi quy đa biến để dự đoán giá nhà](lab-2.html){:target="_blank"}
@@ -19,6 +19,8 @@ permalink: /contents/c2-regression/
     - [Support Vector Regression](lab-6-1-svr.html){:target="_blank"}
     - [Decision Trees](lab-6-2-decision-tree.html){:target="_blank"}
     - [Random Forest](lab-6-3-random-forest.html){:target="_blank"}
+  
+  <br>
   
   **Phần 3: Trích xuất đặc trưng**
   - Lab 7: Làm quen với xử lý đặc trưng
@@ -38,10 +40,36 @@ permalink: /contents/c2-regression/
     - [Lab 8.9: Gán theo KNN](lab-8-9-gan-theo-knn.html){:target="_blank"}
     - [Lab 8.10: Gán theo MICE](lab-8-10-MICE.html){:target="_blank"}
 
-- [Exercise](#)
+<br>
+
+- **Exercises**
   - [Exercise 1 - Triển khai gradient descent cho hồi quy đa biến](exercise-1.html){:target="_blank"}
   - [Exercise 2 - Triển khai hồi quy Ridge qua gradient descent](exercise-2.html){:target="_blank"}
-- [Assignments](#)
-- [Others](#)
+  - [Exercise 3: Triển khai LASSO sử dụng coordinate descent](exercise-3.html){:target="_blank"}
+  - Exercise 4: Gán dữ liệu bị khuyết với scikit-learn và feature-engine
+    - *scikit-learn*
+      - [04.1 Mean Median Imputation Sklearn](exercise-4-feature-engineering/scikit-learn/04.1Mean-Median-Imputation-Sklearn.html){:target="_blank"}
+      - [04.2 Arbitrary Value Imputation Sklearn](exercise-4-feature-engineering/scikit-learn/04.2Arbitrary-Value-Imputation-Sklearn.html){:target="_blank"}
+      - [04.3 Frequent Category Imputation Sklearn](exercise-4-feature-engineering/scikit-learn/04.3Frequent-Category-Imputation-Sklearn.html){:target="_blank"}
+      - [04.4 Missing Category Imputation Sklearn](exercise-4-feature-engineering/scikit-learn/04.4Missing-Category-Imputation-Sklearn.html){:target="_blank"}
+      - [04.5 MissingIndicator Sklearn](exercise-4-feature-engineering/scikit-learn/04.5MissingIndicator-Sklearn.html){:target="_blank"}
+      - [04.6 Automatic Imputation Method Detection Sklearn](exercise-4-feature-engineering/scikit-learn/04.6Automatic-Imputation-Method-Detection-Sklearn.html){:target="_blank"}
+    - *feature-engine*
+      - [04.7 Mean Median Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/.04.7Mean-Median-Imputation-Feature-Enginehtml){:target="_blank"}
+      - [04.8 Arbitrary Value Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.8Arbitrary-Value-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.9 End Tail Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.9End-Tail-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.10 Frequent Category Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.10Frequent-Category-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.11 Missing Category Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.11Missing-Category-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.12 Random Sample Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.12Random-Sample-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.13 Missing Indicator Feature Engine](exercise-4-feature-engineering/scikit-learn/04.13Missing-Indicator-Feature-Engine.html){:target="_blank"}
+
+<br>
+
+- **Assignments**
+  - [Assignment 1: Dự đoán số lượng bình luận trên Facebook](asm1.html){:target="_blank"}
+
+<br>
+
+- **Others**
     - [Utils](utils-doc.html){:target="_blank"}
     - [Subgradient Descent](Subgradient-Descent.html){:target="_blank"}
