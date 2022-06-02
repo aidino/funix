@@ -29,7 +29,7 @@ permalink: /contents/c2-regression/
     - [Lab 7.3: Linear Model Assumptions](lab-7-3-linear-model-assumptions.html){:target="_blank"}
     - [Lab 7.4: Outliers](lab-7-4-outliers.html){:target="_blank"}
   - Lab 8: Gán dữ liệu bị khuyết với Pandas
-    - [Lab 8.1: Phân tích trường hợp toàn vẹn (CCA)](lab-8-1-Phân_tích_trường_hợp_toàn_vẹn_(CCA).html){:target="_blank"}
+    - [Lab 8.1: Phân tích trường hợp toàn vẹn (CCA)](lab-8-1-Phân_tích_trường_hợp_toàn_vẹn_CCA.html){:target="_blank"}
     - [Lab 8.2: Gán giá trị trung bình/trung vị](lab-8-2-gan-gia-tri-trung-binh-trung-vi.html){:target="_blank"}
     - [Lab 8.3: Gán giá trị bất kỳ](lab-8-3-gan-gia-tri-bat-ki.html){:target="_blank"}
     - [Lab 8.4: Gán giá trị ở cuối phân phối](lab-8-4-gan-gia-tri-o-cuoi-phan-phoi.html){:target="_blank"}
