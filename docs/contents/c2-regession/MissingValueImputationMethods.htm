@@ -1,0 +1,723 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link rel=File-List href="MissingValueImputationMethods.fld/filelist.xml">
+<style id="MissingValueImputationMethods_8200_Styles">
+<!--table
+	{mso-displayed-decimal-separator:"\,";
+	mso-displayed-thousand-separator:"\.";}
+@page
+	{mso-footer-data:"&C&\0022Helvetica Neue\,Regular\0022&12&K000000&P";
+	margin:.75in .5in .75in .5in;
+	mso-header-margin:.28in;
+	mso-footer-margin:.28in;
+	mso-page-orientation:landscape;}
+.font0
+	{color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font5
+	{color:#333333;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font6
+	{color:#BA2121;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font7
+	{color:#666666;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font8
+	{color:green;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font9
+	{color:#AA22FF;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font10
+	{color:blue;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font11
+	{color:#408080;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font12
+	{color:black;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+tr
+	{mso-height-source:auto;}
+col
+	{mso-width-source:auto;}
+br
+	{mso-data-placement:same-cell;}
+.style0
+	{text-align:general;
+	vertical-align:top;
+	white-space:normal;
+	mso-rotate:0;
+	color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-style-name:Normal;
+	mso-style-id:0;}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:top;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:normal;
+	mso-rotate:0;}
+.xl65
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #FEFFFE;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #C8C8C8;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl66
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #FEFFFE;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #FEFFFE;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl67
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #FEFFFE;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl68
+	{mso-style-parent:style0;
+	font-family:"Helvetica Neue Medium";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #89847F;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl69
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;}
+.xl70
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl71
+	{mso-style-parent:style0;
+	color:#333333;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl72
+	{mso-style-parent:style0;
+	font-family:"Helvetica Neue Medium";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #89847F;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl73
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl74
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl75
+	{mso-style-parent:style0;
+	color:#333333;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl76
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;}
+.xl77
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;}
+.xl78
+	{mso-style-parent:style0;
+	border:.5pt solid #C8C8C8;}
+.xl79
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	text-align:center;
+	vertical-align:middle;
+	white-space:nowrap;}
+.xl80
+	{mso-style-parent:style0;
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+-->
+</style>
+</head>
+
+<body link=blue vlink=fuchsia>
+<!--[if !excel]>&nbsp;&nbsp;<![endif]-->
+<!--The following information was generated by Microsoft Excel's Publish as Web
+Page wizard.-->
+<!--If the same item is republished from Excel, all information between the DIV
+tags will be replaced.-->
+<!----------------------------->
+<!--START OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD -->
+<!----------------------------->
+
+<div id="MissingValueImputationMethods_8200" align=center
+x:publishsource="Excel">
+
+<table border=0 cellpadding=0 cellspacing=0 width=1947 style='border-collapse:
+ collapse;table-layout:fixed;width:1460pt'>
+ <col width=235 style='mso-width-source:userset;mso-width-alt:7509;width:176pt'>
+ <col width=256 style='mso-width-source:userset;mso-width-alt:8192;width:192pt'>
+ <col width=309 style='mso-width-source:userset;mso-width-alt:9898;width:232pt'>
+ <col width=331 style='mso-width-source:userset;mso-width-alt:10581;width:248pt'>
+ <col width=328 style='mso-width-source:userset;mso-width-alt:10496;width:246pt'>
+ <col width=488 style='mso-width-source:userset;mso-width-alt:15616;width:366pt'>
+ <col width=131 style='mso-width-source:userset;mso-width-alt:4181;width:98pt'>
+ <tr height=36 style='mso-height-source:userset;height:27.75pt'>
+  <td colspan=6 height=36 class=xl79 width=1947 style='height:27.75pt;
+  width:1460pt'>Missing Value Imputation Method</td>
+ </tr>
+ <tr height=43 style='mso-height-source:userset;height:32.5pt'>
+  <td height=43 class=xl65 width=235 style='height:32.5pt;width:176pt'><a
+  name="RANGE!A2">Missing Value <br>
+    Imputation Method</a></td>
+  <td class=xl66 width=256 style='border-left:none;width:192pt'>Các giả
+  định/Khái niệm</td>
+  <td class=xl66 width=309 style='border-left:none;width:232pt'>Ưu điểm</td>
+  <td class=xl66 width=331 style='border-left:none;width:248pt'>Nhược điểm</td>
+  <td class=xl66 width=328 style='border-left:none;width:246pt'>Khi nào sử dụng</td>
+  <td class=xl67 width=488 style='border-left:none;width:366pt'>code</td>
+ </tr>
+ <tr height=107 style='mso-height-source:userset;height:80.5pt'>
+  <td height=107 class=xl68 width=235 style='height:80.5pt;border-top:none;
+  width:176pt'>Complete case analysis - CCA<br>
+    (Xoá dữ liệu bị thiếu)</td>
+  <td class=xl69 width=256 style='border-top:none;border-left:none;width:192pt'>-
+  Hoạt động tốt khi dữ liệu bị thiếu hoàn toàn ngẫu nhiên (MCAR)</td>
+  <td class=xl70 width=309 style='border-top:none;border-left:none;width:232pt'>-
+  Dễ thực hiện - Không cần thao tác dữ liệu - Duy trì phân phối biến</td>
+  <td class=xl70 width=331 style='border-top:none;border-left:none;width:248pt'>-
+  Có thể loại trừ phần lớn tập dữ liệu ban đầu - Các quan sát bị loại trừ có
+  thể cung cấp thông tin phân tích - CCA sẽ làm tập dữ liệu bị chệch - Khi đưa
+  vào sản xuất, mô hình này sẽ không biết xử lý dữ liệu bị khuyết</td>
+  <td class=xl70 width=328 style='border-top:none;border-left:none;width:246pt'>-
+  Dữ liệu bị khuyết hoàn toàn ngẫu nhiên - Không quá 5% tổng số tập dữ liệu
+  chứa dữ liệu bị khuyết</td>
+  <td class=xl71 dir=LTR width=488 style='border-top:none;border-left:none;
+  width:366pt'><font class="font5">- data.isnull().mean() - data[</font><font
+  class="font6">'variable'</font><font class="font5">].dropna() -
+  data.dropna(subset=vars)</font></td>
+ </tr>
+ <tr height=139 style='mso-height-source:userset;height:104.25pt'>
+  <td height=139 class=xl72 width=235 style='height:104.25pt;border-top:none;
+  width:176pt'>Gán giá trị trung binh/trung vị</td>
+  <td class=xl73 width=256 style='border-top:none;border-left:none;width:192pt'>-
+  Dữ liệu bị khuyết hoàn toàn ngẫu nhiên (MCAR).<br>
+    - Các quan sát bị khuyết rất có thể trông giống như phần lớn các quan sát
+  trong biến (chẳng hạn mean/median). - Nếu phân phối chuẩn thì dùng mean - Nếu
+  phân phối lệch thì dùng median<br>
+    </td>
+  <td class=xl74 width=309 style='border-top:none;border-left:none;width:232pt'>-
+  Dễ thực hiện.<br>
+    - Cách nhanh chóng để có được tập dữ liệu hoàn chỉnh.<br>
+    - Có thể tích hợp trong sản xuất (trong quá trình triển khai mô
+  hình).<br>
+    </td>
+  <td class=xl74 width=331 style='border-top:none;border-left:none;width:248pt'>-
+  Làm biến dạng phân phối biến ban đầu.<br>
+    - Làm biến dạng phương sai ban đầu.<br>
+    - Làm biến dạng hiệp phương sai với các biến còn lại của tập dữ liệu.<br>
+    </td>
+  <td class=xl74 width=328 style='border-top:none;border-left:none;width:246pt'><font
+  class="font0">- Dữ liệu bị khuyết hoàn toàn ngẫu nhiên.</font><font
+  class="font0"><br>
+    </font><font class="font0">- </font><font class="font0">Không quá 5% biến
+  chứa dữ liệu bị khuyết.</font><font class="font0"><br>
+    </font></td>
+  <td class=xl75 dir=LTR width=488 style='border-top:none;border-left:none;
+  width:366pt'><font class="font5">data[</font><font class="font6">'variable'</font><font
+  class="font5">].fillna(value)</font></td>
+ </tr>
+ <tr height=171 style='mso-height-source:userset;height:128.25pt'>
+  <td height=171 class=xl72 width=235 style='height:128.25pt;border-top:none;
+  width:176pt'>Gán giá trị bất kỳ</td>
+  <td class=xl76 width=256 style='border-top:none;border-left:none;width:192pt'>-
+  Dữ liệu không bị khuyết ngẫu nhiên - Các giá trị bất kỳ thường được sử dụng
+  là 0, 999, -999 (hoặc các tổ hợp khác của 9s) hoặc -1 (nếu phân phối dương).</td>
+  <td class=xl77 width=309 style='border-top:none;border-left:none;width:232pt'>-
+  Dễ thực hiện.<br>
+    - Cách nhanh chóng để có được tập dữ liệu hoàn chỉnh.<br>
+    - Có thể tích hợp trong sản xuất (trong quá trình triển khai mô
+  hình).<br>
+    - Nắm bắt được tầm quan trọng của &quot;khuyết&quot; nếu có.<br>
+    </td>
+  <td class=xl77 width=331 style='border-top:none;border-left:none;width:248pt'>-
+  Làm biến dạng phân phối biến ban đầu.<br>
+    - Làm biến dạng phương sai ban đầu.<br>
+    - Làm biến dạng hiệp phương sai với các biến còn lại của tập dữ liệu.<br>
+    - Nếu giá trị bất kỳ ở cuối phân phối, nó có thể che dấu hoặc tạo ra các
+  outlier.<br>
+    - Cần cẩn thận để không chọn phải một giá trị bất kỳ quá giống với mean
+  hoặc median (hoặc bất kỳ giá trị phổ biến nào khác của phân phối biến).<br>
+    </td>
+  <td class=xl77 width=328 style='border-top:none;border-left:none;width:246pt'>-
+  Khi có lý do N/A không bị khuyết ngẫu nhiên - Nó gồm việc thay thế NA bằng
+  một giá trị bất kỳ, có thể sáng tạo nhưng phải khác với median/mean/mode và
+  không nằm trong các giá trị thường của biến.</td>
+  <td class=xl78 width=488 style='border-top:none;border-left:none;width:366pt'>&nbsp;</td>
+ </tr>
+ <tr height=139 style='mso-height-source:userset;height:104.25pt'>
+  <td height=139 class=xl72 width=235 style='height:104.25pt;border-top:none;
+  width:176pt'>Gán giá trị ở cuối phân phối</td>
+  <td class=xl73 width=256 style='border-top:none;border-left:none;width:192pt'>-
+  MNAR - các giá trị không khuyết ngẫu nhiên.</td>
+  <td class=xl74 width=309 style='border-top:none;border-left:none;width:232pt'>-
+  Dễ thực hiện.<br>
+    - Cách nhanh chóng để có được tập dữ liệu hoàn chỉnh.<br>
+    - Có thể tích hợp trong sản xuất (trong quá trình triển khai mô
+  hình).<br>
+    - Nắm bắt được tầm quan trọng của &quot;khuyết&quot; nếu có.<br>
+    </td>
+  <td class=xl74 width=331 style='border-top:none;border-left:none;width:248pt'>-
+  Làm biến dạng phân phối biến ban đầu.<br>
+    - Làm biến dạng phương sai ban đầu.<br>
+    - Làm biến dạng hiệp phương sai với các biến còn lại của tập dữ liệu.<br>
+    - Kỹ thuật này có thể che giấu các outlier thực trong phân phối.<br>
+    </td>
+  <td class=xl74 width=328 style='border-top:none;border-left:none;width:246pt'>-
+  Nếu biến được phân phối chuẩn, chúng ta có thể sử dụng mean +/- 3*std.<br>
+    - Nếu biến bị lệch, chúng ta có thể sử dụng quy tắc tiệm cận IQR (1.5 *
+  IQR)<br>
+    </td>
+  <td class=xl74 width=488 style='border-top:none;border-left:none;width:366pt'><font
+  class="font5">- imputed_value </font><font class="font7">=</font><font
+  class="font5"> data[</font><font class="font6">'variable'</font><font
+  class="font5">]</font><font class="font7">.</font><font class="font5">mean() </font><font
+  class="font7">+</font><font class="font5"> </font><font class="font7">3</font><font
+  class="font5"> </font><font class="font7">*</font><font class="font5"> data[</font><font
+  class="font6">'variable'</font><font class="font5">]</font><font class="font7">.</font><font
+  class="font5">std()<br>
+    </font><font class="font5">- [var </font><font class="font8">for</font><font
+  class="font5"> var </font><font class="font9">in</font><font class="font5">
+  data</font><font class="font7">.</font><font class="font5">columns </font><font
+  class="font8">if</font><font class="font5"> data[var]</font><font
+  class="font7">.</font><font class="font5">isnull()</font><font class="font7">.</font><font
+  class="font5">sum()</font><font class="font7">&gt;0</font><font class="font5">]<br>
+    </font></td>
+ </tr>
+ <tr height=107 style='mso-height-source:userset;height:80.25pt'>
+  <td height=107 class=xl72 width=235 style='height:80.25pt;border-top:none;
+  width:176pt'>Gán hạng mục thường xuất hiện (mode)</td>
+  <td class=xl76 width=256 style='border-top:none;border-left:none;width:192pt'>-
+  Dữ liệu khuyết hoàn toàn ngẫu nhiên (MCAR).<br>
+    - Các quan sát bị khuyết hầu hết trông giống với đa số các quan sát trong
+  biến (mode).<br>
+    </td>
+  <td class=xl77 width=309 style='border-top:none;border-left:none;width:232pt'>-
+  Dễ thực hiện.<br>
+    - Cách nhanh chóng để có được tập dữ liệu hoàn chỉnh.<br>
+    - Có thể tích hợp trong sản xuất (trong quá trình triển khai mô
+  hình).<br>
+    </td>
+  <td class=xl77 width=331 style='border-top:none;border-left:none;width:248pt'>-
+  Làm biến dạng quan hệ của nhãn thường xuất hiện nhất với các biến khác.<br>
+    - Có thể dẫn tới biểu diễn quá mức của nhãn thường xuất hiện nhất nếu có
+  nhiều NA.<br>
+    </td>
+  <td class=xl77 width=328 style='border-top:none;border-left:none;width:246pt'>-
+  Dữ liệu bị khuyết hoàn toàn ngẫu nhiên.<br>
+    - Không nhiều hơn 5% biến chứa dữ liệu bị khuyết.<br>
+    </td>
+  <td class=xl77 width=488 style='border-top:none;border-left:none;width:366pt'><font
+  class="font5">- data[</font><font class="font6">'variable'</font><font
+  class="font5">]</font><font class="font7">.</font><font class="font5">value_counts()</font><font
+  class="font7">.</font><font class="font5">idxmax()<br>
+    </font></td>
+ </tr>
+ <tr height=155 style='mso-height-source:userset;height:116.25pt'>
+  <td height=155 class=xl72 width=235 style='height:116.25pt;border-top:none;
+  width:176pt'>Gán giá trị bị thiếu là một biến hạng mục mới</td>
+  <td class=xl73 width=256 style='border-top:none;border-left:none;width:192pt'>-
+  Đây là phương pháp dùng cho các biến category được sử dụng rộng rãi nhất -
+  thay thế các nhãn bị thiếu bằng 1 category mới (ví dụ: missing)</td>
+  <td class=xl74 width=309 style='border-top:none;border-left:none;width:232pt'>-
+  Dễ thực hiện.<br>
+    - Cách nhanh chóng để có được tập dữ liệu hoàn chỉnh.<br>
+    - Có thể tích hợp trong sản xuất (trong quá trình triển khai mô
+  hình).<br>
+    - Nắm bắt được tầm quan trọng của &quot;khuyết&quot; nếu có.<br>
+    - Không có giả định về dữ liệu.<br>
+    </td>
+  <td class=xl74 width=331 style='border-top:none;border-left:none;width:248pt'>-
+  Nếu số lượng NA nhỏ thì việc tạo hạng mục bổ sung có thể khiến cây bị
+  overfitting.<br>
+    </td>
+  <td class=xl74 width=328 style='border-top:none;border-left:none;width:246pt'>-
+  Phù hợp khi có nhiều dữ liệu bị khuyết.</td>
+  <td class=xl75 dir=LTR width=488 style='border-top:none;border-left:none;
+  width:366pt'><font class="font5">data</font><font class="font5">[</font><font
+  class="font5">'</font><font class="font6">variable</font><font class="font5">'</font><font
+  class="font5">]</font><font class="font7">.</font><font class="font5">fillna(</font><font
+  class="font5">'Missing'</font><font class="font5">, inplace</font><font
+  class="font7">=</font><font class="font8">True</font><font class="font5">)<br>
+    </font></td>
+ </tr>
+ <tr height=267 style='mso-height-source:userset;height:200.5pt'>
+  <td height=267 class=xl72 width=235 style='height:200.5pt;border-top:none;
+  width:176pt'>Gán mẫu ngẫu nhiên</td>
+  <td class=xl76 width=256 style='border-top:none;border-left:none;width:192pt'>-
+  Gán mẫu ngẫu nhiên gồm việc lấy một quan sát ngẫu nhiên từ vùng các quan sát
+  có sẵn của biến và sử dụng giá trị được trích xuất ngẫu nhiên đó để điền NA -
+  Giả định rằng dữ liệu bị khuyết hoàn toàn ngẫu nhiên (MCAR)</td>
+  <td class=xl77 width=309 style='border-top:none;border-left:none;width:232pt'>-
+  Dễ thực hiện.<br>
+    - Cách nhanh chóng để có được tập dữ liệu hoàn chỉnh.<br>
+    - Bảo toàn phương sai của biến.<br>
+    </td>
+  <td class=xl77 width=331 style='border-top:none;border-left:none;width:248pt'>-
+  Tính ngẫu nhiên.<br>
+    - Mối quan hệ của các biến đã gán với các biến khác có thể bị ảnh hưởng nếu
+  có nhiều NA.<br>
+    - Cần nhiều bộ nhớ để triển khai, vì chúng ta cần lưu trữ tập huấn luyện
+  ban đầu để trích xuất các giá trị và thay thế NA trong các quan sát sắp
+  tới.<br>
+    </td>
+  <td class=xl77 width=328 style='border-top:none;border-left:none;width:246pt'>-
+  Dữ liệu bị khuyết hoàn toàn ngẫu nhiên.<br>
+    - Không nhiều hơn 5% biến chứa dữ liệu bị khuyết.<br>
+    - Rất thích hợp cho các mô hình tuyến tính vì nó không làm sai lệch phân
+  phối, bất kể % NA là bao nhiêu.<br>
+    </td>
+  <td class=xl77 width=488 style='border-top:none;border-left:none;width:366pt'><font
+  class="font5">random_sample </font><font class="font7">=</font><font
+  class="font5"> data_train[</font><font class="font6">‘age'</font><font
+  class="font5">]</font><font class="font7">.</font><font class="font5">dropna()</font><font
+  class="font7">.</font><font class="font5">sample(<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>   
+  </span>data_test[</font><font class="font6">‘age'</font><font class="font5">]</font><font
+  class="font7">.</font><font class="font5">isnull()</font><font class="font7">.</font><font
+  class="font5">sum(), random_state</font><font class="font7">=0</font><font
+  class="font5">) # Note: luôn lấy data trong tệp data train, số lượng thì tuỳ
+  thuộc vào số lượng N/A trong tập tương ứng<br>
+    </font><font class="font5"> random_sample</font><font class="font7">.</font><font
+  class="font5">index </font><font class="font7">=</font><font class="font5">
+  data_test[data_test[</font><font class="font6">'age'</font><font class="font5">]</font><font
+  class="font7">.</font><font class="font5">isnull()]</font><font class="font7">.</font><font
+  class="font5">index # pandas cần có cùng chỉ số để hợp nhất tập dữ
+  liệu  data_test</font><font class="font7">.</font><font class="font5">loc[data_test[</font><font
+  class="font6">'age'</font><font class="font5">]</font><font class="font7">.</font><font
+  class="font5">isnull(), </font><font class="font6">'Age_imputed'</font><font
+  class="font5">] </font><font class="font7">=</font><font class="font5">
+  random_sample # thay thế NA trong biến mới tạo<br>
+    </font><font class="font5"><br>
+    </font><font class="font5"><br>
+    </font><font class="font5"><br>
+    </font></td>
+ </tr>
+ <tr height=107 style='mso-height-source:userset;height:80.5pt'>
+  <td height=107 class=xl72 width=235 style='height:80.5pt;border-top:none;
+  width:176pt'>Chỉ số khuyết dữ liệu</td>
+  <td class=xl73 width=256 style='border-top:none;border-left:none;width:192pt'>Dữ
+  liệu bị khuyết có tính dự đoán.<br>
+    </td>
+  <td class=xl74 width=309 style='border-top:none;border-left:none;width:232pt'>-
+  Dễ thực hiện.<br>
+    - Nắm bắt được tầm quan trọng của &quot;khuyết&quot; nếu có.<br>
+    </td>
+  <td class=xl74 width=331 style='border-top:none;border-left:none;width:248pt'>-
+  Mở rộng không gian đặc trưng.<br>
+    - Biến ban đầu vẫn cần được gán để loại bỏ NaN.<br>
+    - Ngoài ra, dữ liệu có xu hướng bị khuyết trong cùng một quan sát trên
+  nhiều biến, điều này thường dẫn đến nhiều biến chỉ số khuyết dữ liệu thực sự
+  tương tự hoặc giống hệt nhau.</td>
+  <td class=xl74 width=328 style='border-top:none;border-left:none;width:246pt'>Gán
+  mean/median/mode thường được thực hiện cùng với việc thêm một biến để nắm bắt
+  các quan sát có dữ liệu bị khuyết, dưới 2 góc độ: nếu dữ liệu bị khuyết hoàn
+  toàn ngẫu nhiên, điều này sẽ được dự tính bởi gán mean/median/mode, còn nếu
+  không, nó sẽ được ghi lại bởi chỉ số khuyết dữ liệu.</td>
+  <td class=xl74 width=488 style='border-top:none;border-left:none;width:366pt'><font
+  class="font8">def</font><font class="font5"> </font><font class="font10">missing_indicator</font><font
+  class="font5">(df, variable):</font><font class="font10"><span
+  style='mso-spacerun:yes'>  </span></font><font class="font5"><br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font8">return</font><font class="font5"> np</font><font class="font7">.</font><font
+  class="font5">where(df[variable]</font><font class="font7">.</font><font
+  class="font5">isnull(), </font><font class="font7">1</font><font class="font5">,
+  </font><font class="font7">0</font><font class="font5">)<br>
+    </font><font class="font5"> X_train[variable</font><font class="font7">+</font><font
+  class="font6">'_NA'</font><font class="font5">] </font><font class="font7">=</font><font
+  class="font5"> missing_indicator(X_train, variable)<br>
+    </font></td>
+ </tr>
+ <tr height=299 style='mso-height-source:userset;height:224.5pt'>
+  <td height=299 class=xl72 width=235 style='height:224.5pt;border-top:none;
+  width:176pt'>Gán KNN</td>
+  <td class=xl76 width=256 style='border-top:none;border-left:none;width:192pt'>Các
+  giá trị bị khuyết được ước tính như giá trị trung bình từ K neighbour (lân
+  cận) gần nhất.</td>
+  <td colspan=4 class=xl77 width=1456 style='border-left:none;width:1092pt'><font
+  class="font5">pipe </font><font class="font7">=</font><font class="font5">
+  Pipeline(steps</font><font class="font7">=</font><font class="font5">[<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font6">'imputer'</font><font class="font5">, KNNImputer(<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>       
+  </span>n_neighbors</font><font class="font7">=5</font><font class="font5">,<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>       
+  </span>weights</font><font class="font7">=</font><font class="font6">'distance'</font><font
+  class="font5">,<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>       
+  </span>add_indicator</font><font class="font7">=</font><font class="font8">False</font><font
+  class="font5">)),<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span><br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font6">'scaler'</font><font class="font5">, StandardScaler()),<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font6">'regressor'</font><font class="font5">, Lasso(max_iter</font><font
+  class="font7">=2000</font><font class="font5">)),<br>
+    </font><font class="font5">]) param_grid </font><font class="font7">=</font><font
+  class="font5"> {<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font6">'imputer__n_neighbors'</font><font class="font5">: [</font><font
+  class="font7">3</font><font class="font5">,</font><font class="font7">5</font><font
+  class="font5">,</font><font class="font7">10</font><font class="font5">],<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font6">'imputer__weights'</font><font class="font5">: [</font><font
+  class="font6">'uniform'</font><font class="font5">, </font><font class="font6">'distance'</font><font
+  class="font5">],<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font6">'imputer__add_indicator'</font><font class="font5">: [</font><font
+  class="font8">True</font><font class="font5">, </font><font class="font8">False</font><font
+  class="font5">],<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font6">'regressor__alpha'</font><font class="font5">: [</font><font
+  class="font7">10</font><font class="font5">, </font><font class="font7">100</font><font
+  class="font5">, </font><font class="font7">200</font><font class="font5">],<br>
+    </font><font class="font5">} grid_search </font><font class="font7">=</font><font
+  class="font5"> GridSearchCV(pipe, param_grid, cv</font><font class="font7">=5</font><font
+  class="font5">, scoring</font><font class="font7">=</font><font class="font6">'r2'</font><font
+  class="font5">, n_jobs</font><font class="font7">=-1</font><font class="font5">) grid_search</font><font
+  class="font7">.</font><font class="font5">fit(X_train, y_train)<br>
+    </font><font class="font5">grid_search</font><font class="font7">.</font><font
+  class="font5">best_params_</font></td>
+ </tr>
+ <tr height=203 style='mso-height-source:userset;height:152.5pt'>
+  <td height=203 class=xl72 width=235 style='height:152.5pt;border-top:none;
+  width:176pt'>MICE</td>
+  <td class=xl73 width=256 style='border-top:none;border-left:none;width:192pt'>-
+  Mô hình tương tự được dùng để dự đoán NA trong tất cả các biến.<br>
+    - MICE sử dụng nhiều mô hình học máy khác nhau để ước tính các giá trị bị
+  khuyết.</td>
+  <td colspan=4 class=xl74 width=1456 style='border-left:none;width:1092pt'><font
+  class="font5">imputer </font><font class="font7">=</font><font class="font5">
+  IterativeImputer(<br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>   
+  </span>estimator</font><font class="font7">=</font><font class="font5">BayesianRidge(),
+  </font><font class="font11"># bộ ước tính dự đoán NA </font><font
+  class="font5"><br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>   
+  </span>initial_strategy</font><font class="font7">=</font><font class="font6">'mean'</font><font
+  class="font5">, </font><font class="font11"># cách NA được gán trong bước 1</font><font
+  class="font5"><br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>   
+  </span>max_iter</font><font class="font7">=10</font><font class="font5">, </font><font
+  class="font11"># số chu kỳ</font><font class="font5"><br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>   
+  </span>imputation_order</font><font class="font7">=</font><font class="font6">'ascending'</font><font
+  class="font5">, </font><font class="font11"># để gán các biến</font><font
+  class="font5"><br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>   
+  </span>n_nearest_features</font><font class="font7">=</font><font
+  class="font8">None</font><font class="font5">, </font><font class="font11">#
+  liệu có giới hạn số yếu tố dự báo</font><font class="font5"><br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>   
+  </span>skip_complete</font><font class="font7">=</font><font class="font8">True</font><font
+  class="font5">, </font><font class="font11"># liệu có bỏ qua các biến không
+  có NA</font><font class="font5"><br>
+    </font><font class="font5"><span style='mso-spacerun:yes'>   
+  </span>random_state</font><font class="font7">=0</font><font class="font5">,<br>
+    </font><font class="font5">) imputer</font><font class="font7">.</font><font
+  class="font5">fit(X_train)<br>
+    </font><font class="font5">train_t </font><font class="font7">=</font><font
+  class="font5"> imputer</font><font class="font7">.</font><font class="font5">transform(X_train)<br>
+    </font><font class="font5">test_t </font><font class="font7">=</font><font
+  class="font5"> imputer</font><font class="font7">.</font><font class="font5">transform(X_test)</font></td>
+ </tr>
+ <tr height=235 style='mso-height-source:userset;height:176.5pt'>
+  <td height=235 class=xl72 width=235 style='height:176.5pt;border-top:none;
+  width:176pt'>Note</td>
+  <td colspan=5 class=xl76 width=1712 style='border-left:none;width:1284pt'><font
+  class="font0">- Các phương pháp </font><font class="font12">mean/median/ gán
+  mẫu ngẫu nhiên </font><font class="font0">giả định dữ liệu bị </font><font
+  class="font12">khuyết hoàn toàn ngẫu nhiên (MCAR)  </font><font class="font0">-
+  Các phương pháp </font><font class="font12">gán giá trị bất kỳ/ gán giá trị ở
+  cuối phân phối </font><font class="font0">giả định dữ liệu </font><font
+  class="font12">khuyết không ngẫu nhiên   </font><font class="font0">Tuy
+  nhiên, các kỹ thuật gán này ảnh hưởng đáng kể đến phân phối của biến, do đó
+  không phù hợp với các </font><font class="font12">mô hình tuyến tính</font><font
+  class="font0"> Vậy… có thể làm gì nếu dữ liệu </font><font class="font12">khuyết
+  không ngẫu nhiên </font><font class="font0">mà cần sử dụng </font><font
+  class="font12">mô hình tuyến tính?  - </font><font class="font0">Với dữ liệu
+  không bị khuyết ngẫu nhiên, chúng ta có thể thay quan sát bị thiếu bằng </font><font
+  class="font12">mean/median/mode</font><font class="font0"> VÀ </font><font
+  class="font12">gắn cờ</font><font class="font0"> các quan sát bị khuyết đó
+  với một </font><font class="font12">chỉ số khuyết dữ liệu </font><font
+  class="font0">Chỉ số khuyết dữ liệu là một biến nhị phân bổ xung, cho biết dữ
+  liệu bị khuyết cho một quan sát (1) hay không (0)  Cặp kết hợp sử dụng:<br>
+    </font><font class="font0">Gán </font><font class="font12">mean/median</font><font
+  class="font0"> + chỉ số khuyết dữ liệu (biến dạng số)<br>
+    </font><font class="font0">Gán hạng mục thường xuất hiện + chỉ số khuyết dữ
+  liệu (biến hạng mục)<br>
+    </font><font class="font0">Gán mẫu ngẫu nhiên + chỉ số khuyết dữ liệu (biến
+  hạng mục và biến dạng số)<br>
+    </font></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=235 style='width:176pt'></td>
+  <td width=256 style='width:192pt'></td>
+  <td width=309 style='width:232pt'></td>
+  <td width=331 style='width:248pt'></td>
+  <td width=328 style='width:246pt'></td>
+  <td width=488 style='width:366pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</div>
+
+
+<!----------------------------->
+<!--END OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD-->
+<!----------------------------->
+</body>
+
+</html>
