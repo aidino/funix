@@ -1,342 +1,1279 @@
-<html xmlns:v="urn:schemas-microsoft-com:vml"
-xmlns:o="urn:schemas-microsoft-com:office:office"
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
-<meta name="Excel Workbook Frameset">
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta name=ProgId content=Excel.Sheet>
 <meta name=Generator content="Microsoft Excel 15">
 <link rel=File-List href="MissingValueImputationMethods-2.fld/filelist.xml">
-<![if !supportTabStrip]>
-<link id="shLink" href="MissingValueImputationMethods-2.fld/sheet001.htm">
-<link id="shLink" href="MissingValueImputationMethods-2.fld/sheet002.htm">
-<link id="shLink" href="MissingValueImputationMethods-2.fld/sheet003.htm">
-
-<link id="shLink">
-
-<script language="JavaScript">
-<!--
- var g_iIEVer=0;
- 
- var c_lTabs=3;
-
- var c_rgszSh=new Array(c_lTabs);
- c_rgszSh[0] = "Export Summary";
- c_rgszSh[1] = "Imputation-method - Missing Val";
- c_rgszSh[2] = "imputation-method-code - Imputa";
-
-
- var c_rgszClr=new Array(8);
- c_rgszClr[0]="window";
- c_rgszClr[1]="buttonface";
- c_rgszClr[2]="windowframe";
- c_rgszClr[3]="windowtext";
- c_rgszClr[4]="threedlightshadow";
- c_rgszClr[5]="threedhighlight";
- c_rgszClr[6]="threeddarkshadow";
- c_rgszClr[7]="threedshadow";
-
- var g_iShCur;
- var g_rglTabX=new Array(c_lTabs);
-
-function fnBuildFrameset()
-{
- var szHTML="<frameset rows=\"*,18\" border=0 width=0 frameborder=no framespacing=0>"+
-  "<frame src=\""+document.all.item("shLink")[2].href+"\" name=\"frSheet\" noresize>"+
-  "<frameset cols=\"54,*\" border=0 width=0 frameborder=no framespacing=0>"+
-  "<frame src=\"\" name=\"frScroll\" marginwidth=0 marginheight=0 scrolling=no>"+
-  "<frame src=\"\" name=\"frTabs\" marginwidth=0 marginheight=0 scrolling=no>"+
-  "</frameset></frameset><plaintext>";
-
-document.open("text/html","replace");
-document.write(szHTML);
-document.close();
-
- fnBuildTabStrip();
-}
-
-function fnBuildTabStrip()
-{
- var szHTML=
-  "<html><head><style>.clScroll {font:8pt Courier New;color:"+c_rgszClr[2]+";cursor:default;line-height:10pt;}"+
-  ".clScroll2 {font:10pt Arial;color:"+c_rgszClr[2]+";cursor:default;line-height:11pt;}</style></head>"+
-  "<body onclick=\"event.returnValue=false;\" ondragstart=\"event.returnValue=false;\" onselectstart=\"event.returnValue=false;\" bgcolor="+c_rgszClr[4]+" topmargin=0 leftmargin=0><table cellpadding=0 cellspacing=0 width=100%>"+
-  "<tr><td colspan=6 height=1 bgcolor="+c_rgszClr[2]+"></td></tr>"+
-  "<tr><td style=\"font:1pt\">&nbsp;<td>"+
-  "<td valign=top id=tdScroll class=\"clScroll\" onclick=\"parent.fnFastScrollTabs(0);\" onmouseover=\"parent.fnMouseOverScroll(0);\" onmouseout=\"parent.fnMouseOutScroll(0);\"><a>&#171;</a></td>"+
-  "<td valign=top id=tdScroll class=\"clScroll2\" onclick=\"parent.fnScrollTabs(0);\" ondblclick=\"parent.fnScrollTabs(0);\" onmouseover=\"parent.fnMouseOverScroll(1);\" onmouseout=\"parent.fnMouseOutScroll(1);\"><a>&lt</a></td>"+
-  "<td valign=top id=tdScroll class=\"clScroll2\" onclick=\"parent.fnScrollTabs(1);\" ondblclick=\"parent.fnScrollTabs(1);\" onmouseover=\"parent.fnMouseOverScroll(2);\" onmouseout=\"parent.fnMouseOutScroll(2);\"><a>&gt</a></td>"+
-  "<td valign=top id=tdScroll class=\"clScroll\" onclick=\"parent.fnFastScrollTabs(1);\" onmouseover=\"parent.fnMouseOverScroll(3);\" onmouseout=\"parent.fnMouseOutScroll(3);\"><a>&#187;</a></td>"+
-  "<td style=\"font:1pt\">&nbsp;<td></tr></table></body></html>";
-
-frames['frScroll'].document.open("text/html","replace");
-frames['frScroll'].document.write(szHTML);
-frames['frScroll'].document.close();
-
- szHTML =
-  "<html><head>"+
-  "<style>A:link,A:visited,A:active {text-decoration:none;"+"color:"+c_rgszClr[3]+";}"+
-  ".clTab {cursor:hand;background:"+c_rgszClr[1]+";font:8pt Arial;padding-left:3px;padding-right:3px;text-align:center;}"+
-  ".clBorder {background:"+c_rgszClr[2]+";font:1pt;}"+
-  "</style></head><body onload=\"parent.fnInit();\" onselectstart=\"event.returnValue=false;\" ondragstart=\"event.returnValue=false;\" bgcolor="+c_rgszClr[4]+
-  " topmargin=0 leftmargin=0><table id=tbTabs cellpadding=0 cellspacing=0>";
-
- var iCellCount=(c_lTabs+1)*2;
-
- var i;
- for (i=0;i<iCellCount;i+=2)
-  szHTML+="<col width=1><col>";
-
- var iRow;
- for (iRow=0;iRow<6;iRow++) {
-
-  szHTML+="<tr>";
-
-  if (iRow==5)
-   szHTML+="<td colspan="+iCellCount+"></td>";
-  else {
-   if (iRow==0) {
-    for(i=0;i<iCellCount;i++)
-     szHTML+="<td height=1 class=\"clBorder\"></td>";
-   } else if (iRow==1) {
-    for(i=0;i<c_lTabs;i++) {
-     szHTML+="<td height=1 nowrap class=\"clBorder\">&nbsp;</td>";
-     szHTML+=
-      "<td id=tdTab height=1 nowrap class=\"clTab\" onmouseover=\"parent.fnMouseOverTab("+i+");\" onmouseout=\"parent.fnMouseOutTab("+i+");\">"+
-      "<a href=\""+document.all.item("shLink")[i].href+"\" target=\"frSheet\" id=aTab>&nbsp;"+c_rgszSh[i]+"&nbsp;</a></td>";
-    }
-    szHTML+="<td id=tdTab height=1 nowrap class=\"clBorder\"><a id=aTab>&nbsp;</a></td><td width=100%></td>";
-   } else if (iRow==2) {
-    for (i=0;i<c_lTabs;i++)
-     szHTML+="<td height=1></td><td height=1 class=\"clBorder\"></td>";
-    szHTML+="<td height=1></td><td height=1></td>";
-   } else if (iRow==3) {
-    for (i=0;i<iCellCount;i++)
-     szHTML+="<td height=1></td>";
-   } else if (iRow==4) {
-    for (i=0;i<c_lTabs;i++)
-     szHTML+="<td height=1 width=1></td><td height=1></td>";
-    szHTML+="<td height=1 width=1></td><td></td>";
-   }
-  }
-  szHTML+="</tr>";
- }
-
- szHTML+="</table></body></html>";
-
-frames['frTabs'].document.open("text/html","replace");
-frames['frTabs'].document.charset=document.charset;
-frames['frTabs'].document. write(szHTML);
-frames['frTabs'].document.close();
-
-}
-
-function fnInit()
-{
- if (parent.window.g_iIEVer>=4) {
-  if (document.readyState=="complete"
-   && frames['frTabs'].document.readyState=="complete")
-    {
-     g_rglTabX[0]=0;
-     var i;
-     for (i=1;i<=c_lTabs;i++)
-      with (frames['frTabs'].document.all.tbTabs.rows[1].cells[fnTabToCol(i-1)])
-       g_rglTabX[i]=offsetLeft+offsetWidth-6;
-    }
-    else
-     window.setTimeout("fnInit()",150);
-   }
-}
-
-function fnGetIEVer()
-{
- var stzAgent=navigator.userAgent;
- var iVer=parseInt(navigator.appVersion);
- if (stzAgent.indexOf("MSIE")!=-1 && iVer<4)
-  g_iIEVer=3;
- else if (stzAgent.indexOf("MSIE 4")!=-1)
-  g_iIEVer=4;
- else
-  g_iIEVer=5;
-}
-
-function fnTabToCol(iTab)
-{
- return 2*iTab+1;
-}
-
-function fnNextTab(fDir)
-{
- var iNextTab=-1;
- var i;
-
- with (frames['frTabs'].document.body) {
-  if (fDir==0) {
-   if (scrollLeft>0) {
-    for (i=0;i<c_lTabs&&g_rglTabX[i]<scrollLeft;i++);
-    if (i<c_lTabs)
-     iNextTab=i-1;
-   }
-  } else {
-   if (g_rglTabX[c_lTabs]+6>offsetWidth+scrollLeft) {
-    for (i=0;i<c_lTabs&&g_rglTabX[i]<=scrollLeft;i++);
-    if (i<c_lTabs)
-     iNextTab=i;
-   }
-  }
- }
- return iNextTab;
-}
-
-function fnScrollTabs(fDir)
-{
- var iNextTab=fnNextTab(fDir);
-
- if (iNextTab>=0) {
-  frames['frTabs'].scroll(g_rglTabX[iNextTab],0);
-  return true;
- } else
-  return false;
-}
-
-function fnFastScrollTabs(fDir)
-{
- if (c_lTabs>16)
-  frames['frTabs'].scroll(g_rglTabX[fDir?c_lTabs-1:0],0);
- else
-  if (fnScrollTabs(fDir)>0) window.setTimeout("fnFastScrollTabs("+fDir+");",5);
-}
-
-function fnSetTabProps(iTab,fActive)
-{
- var iCol=fnTabToCol(iTab);
- var i;
-
- if (iTab>=0) {
-  with (frames['frTabs'].document.all) {
-   with (tbTabs) {
-    for (i=0;i<=4;i++) {
-     with (rows[i]) {
-      if (i==0)
-       cells[iCol].style.background=c_rgszClr[fActive?0:2];
-      else if (i>0 && i<4) {
-       if (fActive) {
-        cells[iCol-1].style.background=c_rgszClr[2];
-        cells[iCol].style.background=c_rgszClr[0];
-        cells[iCol+1].style.background=c_rgszClr[2];
-       } else {
-        if (i==1) {
-         cells[iCol-1].style.background=c_rgszClr[2];
-         cells[iCol].style.background=c_rgszClr[1];
-         cells[iCol+1].style.background=c_rgszClr[2];
-        } else {
-         cells[iCol-1].style.background=c_rgszClr[4];
-         cells[iCol].style.background=c_rgszClr[(i==2)?2:4];
-         cells[iCol+1].style.background=c_rgszClr[4];
-        }
-       }
-      } else
-       cells[iCol].style.background=c_rgszClr[fActive?2:4];
-     }
-    }
-   }
-   with (aTab[iTab].style) {
-    cursor=(fActive?"default":"hand");
-    color=c_rgszClr[3];
-   }
-  }
- }
-}
-
-function fnMouseOverScroll(iCtl)
-{
- frames['frScroll'].document.all.tdScroll[iCtl].style.color=c_rgszClr[5];
-}
-
-function fnMouseOutScroll(iCtl)
-{
- frames['frScroll'].document.all.tdScroll[iCtl].style.color=c_rgszClr[2];
-}
-
-function fnMouseOverTab(iTab)
-{
- if (iTab!=g_iShCur) {
-  var iCol=fnTabToCol(iTab);
-  with (frames['frTabs'].document.all) {
-   tdTab[iTab].style.background=c_rgszClr[5];
-  }
- }
-}
-
-function fnMouseOutTab(iTab)
-{
- if (iTab>=0) {
-  var elFrom=frames['frTabs'].event.srcElement;
-  var elTo=frames['frTabs'].event.toElement;
-
-  if ((!elTo) ||
-   (elFrom.tagName==elTo.tagName) ||
-   (elTo.tagName=="A" && elTo.parentElement!=elFrom) ||
-   (elFrom.tagName=="A" && elFrom.parentElement!=elTo)) {
-
-   if (iTab!=g_iShCur) {
-    with (frames['frTabs'].document.all) {
-     tdTab[iTab].style.background=c_rgszClr[1];
-    }
-   }
-  }
- }
-}
-
-function fnSetActiveSheet(iSh)
-{
- if (iSh!=g_iShCur) {
-  fnSetTabProps(g_iShCur,false);
-  fnSetTabProps(iSh,true);
-  g_iShCur=iSh;
- }
-}
- fnGetIEVer();
- fnBuildFrameset();
-//-->
-</script>
-<![endif]><!--[if gte mso 9]><xml>
- <x:ExcelWorkbook>
-  <x:ExcelWorksheets>
-   <x:ExcelWorksheet>
-    <x:Name>Export Summary</x:Name>
-    <x:WorksheetSource HRef="MissingValueImputationMethods-2.fld/sheet001.htm"/>
-   </x:ExcelWorksheet>
-   <x:ExcelWorksheet>
-    <x:Name>Imputation-method - Missing Val</x:Name>
-    <x:WorksheetSource HRef="MissingValueImputationMethods-2.fld/sheet002.htm"/>
-   </x:ExcelWorksheet>
-   <x:ExcelWorksheet>
-    <x:Name>imputation-method-code - Imputa</x:Name>
-    <x:WorksheetSource HRef="MissingValueImputationMethods-2.fld/sheet003.htm"/>
-   </x:ExcelWorksheet>
-  </x:ExcelWorksheets>
-  <x:Stylesheet HRef="MissingValueImputationMethods-2.fld/stylesheet.css"/>
-  <x:WindowHeight>19400</x:WindowHeight>
-  <x:WindowWidth>32767</x:WindowWidth>
-  <x:WindowTopX>32767</x:WindowTopX>
-  <x:WindowTopY>500</x:WindowTopY>
-  <x:ActiveSheet>2</x:ActiveSheet>
-  <x:ProtectStructure>False</x:ProtectStructure>
-  <x:ProtectWindows>False</x:ProtectWindows>
- </x:ExcelWorkbook>
-</xml><![endif]-->
+<style id="MissingValueImputationMethods-2_17681_Styles">
+<!--table
+	{mso-displayed-decimal-separator:"\,";
+	mso-displayed-thousand-separator:"\.";}
+@page
+	{mso-footer-data:"&C&\0022Helvetica Neue\,Regular\0022&12&K000000&P";
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.25in;
+	mso-footer-margin:.25in;
+	mso-page-orientation:landscape;}
+.font5
+	{color:#FEFFFE;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;}
+.font6
+	{color:#333333;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font7
+	{color:#BA2121;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font8
+	{color:#666666;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font9
+	{color:green;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font10
+	{color:#AA22FF;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font11
+	{color:blue;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font12
+	{color:#408080;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font13
+	{color:blue;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font14
+	{color:#666666;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font15
+	{color:#BA2121;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font16
+	{color:#006B65;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font17
+	{color:#006B65;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font18
+	{color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;}
+.font19
+	{color:#666666;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;}
+.font20
+	{color:#333333;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;}
+.font21
+	{color:#333333;
+	font-size:14.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font22
+	{color:green;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font23
+	{color:#BB6688;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier, serif;
+	mso-font-charset:0;}
+.font24
+	{color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;}
+tr
+	{mso-height-source:auto;}
+col
+	{mso-width-source:auto;}
+br
+	{mso-data-placement:same-cell;}
+.style0
+	{text-align:general;
+	vertical-align:top;
+	white-space:normal;
+	mso-rotate:0;
+	color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-style-name:Normal;
+	mso-style-id:0;}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:top;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:normal;
+	mso-rotate:0;}
+.xl65
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #FEFFFE;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #C8C8C8;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl66
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #FEFFFE;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #FEFFFE;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl67
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #FEFFFE;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl68
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;}
+.xl69
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl70
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl71
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;}
+.xl72
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;}
+.xl73
+	{mso-style-parent:style0;
+	border:.5pt solid #C8C8C8;}
+.xl74
+	{mso-style-parent:style0;
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl75
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:left;
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl76
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl77
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl78
+	{mso-style-parent:style0;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl79
+	{mso-style-parent:style0;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;}
+.xl80
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;}
+.xl81
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:left;
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl82
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl83
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;}
+.xl84
+	{mso-style-parent:style0;
+	border-top:.5pt solid #C8C8C8;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl85
+	{mso-style-parent:style0;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl86
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	font-family:"Helvetica Neue", sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	vertical-align:middle;
+	white-space:nowrap;}
+.xl87
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:left;
+	border-top:.5pt solid #C8C8C8;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl88
+	{mso-style-parent:style0;
+	font-family:Courier, serif;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:left;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl89
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:.5pt solid #C8C8C8;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl90
+	{mso-style-parent:style0;
+	text-align:center;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl91
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	font-family:"Helvetica Neue Medium";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #89847F;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl92
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	font-family:"Helvetica Neue Medium";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #C8C8C8;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;}
+.xl93
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	font-family:"Helvetica Neue Medium";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;}
+.xl94
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	font-family:"Helvetica Neue Medium";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #89847F;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl95
+	{mso-style-parent:style0;
+	text-align:center;
+	vertical-align:middle;}
+-->
+</style>
 </head>
 
-<frameset rows="*,39" border=0 width=0 frameborder=no framespacing=0>
- <frame src="MissingValueImputationMethods-2.fld/sheet003.htm" name="frSheet">
- <frame src="MissingValueImputationMethods-2.fld/tabstrip.htm" name="frTabs" marginwidth=0 marginheight=0>
- <noframes>
-  <body>
-   <p>This page uses frames, but your browser doesn't support them.</p>
-  </body>
- </noframes>
-</frameset>
+<body link=blue vlink=fuchsia>
+<!--[if !excel]>&nbsp;&nbsp;<![endif]-->
+<!--The following information was generated by Microsoft Excel's Publish as Web
+Page wizard.-->
+<!--If the same item is republished from Excel, all information between the DIV
+tags will be replaced.-->
+<!----------------------------->
+<!--START OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD -->
+<!----------------------------->
+
+<div id="MissingValueImputationMethods-2_17681" align=center
+x:publishsource="Excel">
+
+<table border=0 cellpadding=0 cellspacing=0 width=2092 style='border-collapse:
+ collapse;table-layout:fixed;width:1569pt'>
+ <col class=xl95 width=168 style='mso-width-source:userset;mso-width-alt:5376;
+ width:126pt'>
+ <col width=457 style='mso-width-source:userset;mso-width-alt:14634;width:343pt'>
+ <col width=564 style='mso-width-source:userset;mso-width-alt:18048;width:423pt'>
+ <col width=612 style='mso-width-source:userset;mso-width-alt:19584;width:459pt'>
+ <col width=291 style='mso-width-source:userset;mso-width-alt:9301;width:218pt'>
+ <col width=131 style='mso-width-source:userset;mso-width-alt:4181;width:98pt'>
+ <tr height=36 style='mso-height-source:userset;height:27.75pt'>
+  <td colspan=5 height=36 class=xl86 width=2092 style='height:27.75pt;
+  width:1569pt'>Missing Value Imputation Methods - Implementation</td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.5pt'>
+  <td height=27 class=xl65 width=168 style='height:20.5pt;width:126pt'><a
+  name="RANGE!A2">Methods</a></td>
+  <td class=xl66 width=457 style='border-left:none;width:343pt'>Pandas/Numpy</td>
+  <td class=xl66 width=564 style='border-left:none;width:423pt'>scikit-learn</td>
+  <td class=xl66 width=612 style='border-left:none;width:459pt'><font
+  class="font5">feature</font><font class="font5">-engine</font></td>
+  <td class=xl67 width=291 style='border-left:none;width:218pt'>Note</td>
+ </tr>
+ <tr height=547 style='height:409.6pt'>
+  <td height=547 class=xl94 width=168 style='height:409.6pt;border-top:none;
+  width:126pt'>Median/Mean imputation</td>
+  <td class=xl68 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font6">data[</font><font class="font7">'variable'</font><font
+  class="font6">].fillna(value)</font></td>
+  <td class=xl75 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font9">from</font><font class="font6"> </font><font class="font13">sklearn.impute</font><font
+  class="font6"> </font><font class="font9">import</font><font class="font6">
+  SimpleImputer<br>
+    </font><font class="font9">from</font><font class="font6"> </font><font
+  class="font13">sklearn.compose</font><font class="font6"> </font><font
+  class="font9">import</font><font class="font6"> ColumnTransformer<br>
+    </font><font class="font9">from</font><font class="font6"> </font><font
+  class="font13">sklearn.pipeline</font><font class="font6"> </font><font
+  class="font9">import</font><font class="font6"> Pipeline<br>
+    <br>
+    </font><font class="font13">imputer </font><font class="font14">=</font><font
+  class="font13"> SimpleImputer(strategy</font><font class="font14">=</font><font
+  class="font15">'median'</font><font class="font13">)<br>
+    </font><font class="font6">imputer</font><font class="font8">.</font><font
+  class="font6">fit(X_train[cols])<br>
+    <br>
+    <br>
+    X_train </font><font class="font8">=</font><font class="font6"> imputer</font><font
+  class="font8">.</font><font class="font6">transform(X_train)<br>
+    X_test </font><font class="font8">=</font><font class="font6"> imputer</font><font
+  class="font8">.</font><font class="font6">transform(X_test)<br>
+    pd</font><font class="font8">.</font><font class="font6">DataFrame(X_train,
+  columns</font><font class="font8">=</font><font class="font6">cols)<br>
+    <br>
+    <br>
+    =================<br>
+    <br>
+    <br>
+    numeric_features_mean </font><font class="font8">=</font><font class="font6">
+  [</font><font class="font7">'LotFrontage'</font><font class="font6">]<br>
+    numeric_features_median </font><font class="font8">=</font><font
+  class="font6"> [</font><font class="font7">'MasVnrArea'</font><font
+  class="font6">, </font><font class="font7">'GarageYrBlt'</font><font
+  class="font6">]<br>
+    preprocessor </font><font class="font8">=</font><font class="font6">
+  ColumnTransformer(transformers</font><font class="font8">=</font><font
+  class="font6">[<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'mean_imputer'</font><font
+  class="font6">, SimpleImputer(strategy</font><font class="font8">=</font><font
+  class="font7">'mean'</font><font class="font6">),
+  numeric_features_mean),<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'median_imputer'</font><font
+  class="font6">, SimpleImputer(strategy</font><font class="font8">=</font><font
+  class="font7">'median'</font><font class="font6">),
+  numeric_features_median)<br>
+    ], remainder</font><font class="font8">=</font><font class="font7">'passthrough'</font><font
+  class="font6">)<br>
+    <br>
+    <br>
+    preprocessor</font><font class="font8">.</font><font class="font6">fit(X_train)<br>
+    X_train </font><font class="font8">=</font><font class="font6">
+  preprocessor</font><font class="font8">.</font><font class="font6">transform(X_train)<br>
+    X_test </font><font class="font8">=</font><font class="font6"> preprocessor</font><font
+  class="font8">.</font><font class="font6">transform(X_test)<br>
+    <br>
+    <br>
+    </font><font class="font16"># 'passthrough', [0, 1, 2, 3, 4, 5]</font><font
+  class="font6"><br>
+    remainder_cols </font><font class="font8">=</font><font class="font6">
+  [cols_to_use[c] </font><font class="font9">for</font><font class="font6"> c </font><font
+  class="font10">in</font><font class="font6"> [</font><font class="font8">0</font><font
+  class="font6">, </font><font class="font8">1</font><font class="font6">, </font><font
+  class="font8">2</font><font class="font6">, </font><font class="font8">3</font><font
+  class="font6">, </font><font class="font8">4</font><font class="font6">, </font><font
+  class="font8">5</font><font class="font6">]]<br>
+    pd</font><font class="font8">.</font><font class="font6">DataFrame(X_train,<br>
+    <span style='mso-spacerun:yes'>      </span>columns = numeric_features_mean</font><font
+  class="font8">+</font><font class="font6">numeric_features_median</font><font
+  class="font8">+</font><font class="font6">remainder_cols)</font><font
+  class="font8">.</font><font class="font6">head()<br>
+    <br>
+    </font></td>
+  <td class=xl77 width=612 style='border-top:none;border-left:none;width:459pt'><font
+  class="font9">from</font><font class="font6"> </font><font class="font13">feature_engine.imputation</font><font
+  class="font6"> </font><font class="font9">import</font><font class="font6">
+  MeanMedianImputer<br>
+    <br>
+    <br>
+    </font><font class="font16"># &nbsp;</font><font class="font17">Feature</font><font
+  class="font16">-Engine captures the numerical variables automatically</font><font
+  class="font6"><br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  MeanMedianImputer(imputation_method</font><font class="font8">=</font><font
+  class="font7">'median'</font><font class="font6">)<br>
+    imputer</font><font class="font8">.</font><font class="font6">fit(X_train)<br>
+    <br>
+    <br>
+    </font><font class="font16"># </font><font class="font17">feature</font><font
+  class="font16">-engine returns a dataframe</font><font class="font6"><br>
+    tmp </font><font class="font8">=</font><font class="font6"> imputer</font><font
+  class="font8">.</font><font class="font6">transform(X_train)<br>
+    tmp</font><font class="font8">.</font><font class="font6">head()<br>
+    <br>
+    <br>
+    </font><font class="font16"># </font><font class="font17">Feature</font><font
+  class="font16">-Engine allows you to&nbsp;</font><font class="font17">specify</font><font
+  class="font16">&nbsp;variable groups easily</font><font class="font6"><br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  MeanMedianImputer(imputation_method</font><font class="font8">=</font><font
+  class="font7">'mean'</font><font class="font6">,<br>
+    <span style='mso-spacerun:yes'>                            </span>variables</font><font
+  class="font8">=</font><font class="font6">[</font><font class="font7">'LotFrontage'</font><font
+  class="font6">, </font><font class="font7">'MasVnrArea'</font><font
+  class="font6">])<br>
+    imputer</font><font class="font8">.</font><font class="font6">fit(X_train)<br>
+    </font></td>
+  <td class=xl78 width=291 style='border-top:none;border-left:none;width:218pt'><font
+  class="font18">- scikit-learn </font><font class="font24">return numpy array,
+  do đó phải có bước </font><font class="font18">pd</font><font class="font19">.</font><font
+  class="font18">DataFrame</font><font class="font24">(</font><font
+  class="font18">X_train, columns</font><font class="font19">=</font><font
+  class="font18">cols</font><font class="font24">)</font><font class="font18"> </font><font
+  class="font24">để đưa kết quả về lại dataframe<br>
+    <br>
+    <br>
+    - </font><font class="font18">ColumnTransformer </font><font class="font24">trong
+  </font><font class="font18">scikit-learn </font><font class="font24">có thuộc
+  tính<span style='mso-spacerun:yes'>  </span></font><font class="font20">remainder</font><font
+  class="font19">=</font><font class="font18">‘passthrough' </font><font
+  class="font24">là để giữ lại tất cả các cột mà không xử lý input dữ liệu N/A.</font></td>
+ </tr>
+ <tr height=216 style='mso-height-source:userset;height:162.5pt'>
+  <td height=216 class=xl91 width=168 style='height:162.5pt;border-top:none;
+  width:126pt'>Gán giá trị ngẫu nhiên</td>
+  <td class=xl69 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font6">data[</font><font class="font7">'variable'</font><font
+  class="font6">].fillna(value)</font></td>
+  <td class=xl76 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font6">…<br>
+    <br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  SimpleImputer(strategy</font><font class="font8">=</font><font class="font7">'constant'</font><font
+  class="font6">, fill_value </font><font class="font8">=</font><font
+  class="font6"> </font><font class="font8">999</font><font class="font6">)<br>
+    <br>
+    …</font></td>
+  <td class=xl76 width=612 style='border-top:none;border-left:none;width:459pt'><font
+  class="font16"># Feature-Engine captures the numerical variables
+  automatically<br>
+    </font><font class="font6">imputer </font><font class="font8">=</font><font
+  class="font6"> ArbitraryNumberImputer(arbitrary_number </font><font
+  class="font8">=</font><font class="font6"> </font><font class="font8">-999</font><font
+  class="font6">)<br>
+    </font><font class="font16"><br>
+    <br>
+    # Feature-engine allows you to specify variable groups easily</font><font
+  class="font6"><br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  ArbitraryNumberImputer(arbitrary_number</font><font class="font8">=-999</font><font
+  class="font6">,<br>
+    <span style='mso-spacerun:yes'>                                
+  </span>variables</font><font class="font8">=</font><font class="font6">[</font><font
+  class="font7">'LotFrontage'</font><font class="font6">, </font><font
+  class="font7">'MasVnrArea'</font><font class="font6">])<br>
+    <br>
+    <br>
+    </font><font class="font16"># We can impute different variables with
+  different numbers<br>
+    </font><font class="font6">imputer </font><font class="font8">=</font><font
+  class="font6"> ArbitraryNumberImputer( imputer_dict</font><font class="font8">=<br>
+    <span style='mso-spacerun:yes'>               </span></font><font
+  class="font6">{</font><font class="font7">‘LotFrontage’</font><font
+  class="font6">: </font><font class="font8">-999</font><font class="font6">,</font><font
+  class="font7">'MasVnrArea'</font><font class="font6">: </font><font
+  class="font8">-999</font><font class="font6">,</font><font class="font7">'GarageYrBlt'</font><font
+  class="font6">: </font><font class="font8">-1</font><font class="font6">})<br>
+    </font><font class="font21"><br>
+    </font></td>
+  <td class=xl74 width=291 style='border-top:none;border-left:none;width:218pt'>&nbsp;</td>
+ </tr>
+ <tr height=299 style='mso-height-source:userset;height:224.5pt'>
+  <td height=299 class=xl91 width=168 style='height:224.5pt;border-top:none;
+  width:126pt'>Gán giá trị cuối phân phối</td>
+  <td class=xl79 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font6">- imputed_value </font><font class="font8">=</font><font
+  class="font6"> data[</font><font class="font7">'variable'</font><font
+  class="font6">]</font><font class="font8">.</font><font class="font6">mean(</font><font
+  class="font24">)</font><font class="font6"> </font><font class="font8">+</font><font
+  class="font6"> </font><font class="font8">3</font><font class="font6"> </font><font
+  class="font8">*</font><font class="font6"> data[</font><font class="font7">'variable'</font><font
+  class="font6">]</font><font class="font8">.</font><font class="font6">std(</font><font
+  class="font24">)</font><font class="font6"><br>
+    - [var </font><font class="font9">for</font><font class="font6"> var </font><font
+  class="font10">in</font><font class="font6"> data</font><font class="font8">.</font><font
+  class="font6">columns </font><font class="font9">if</font><font class="font6">
+  data[var]</font><font class="font8">.</font><font class="font6">isnull(</font><font
+  class="font24">)</font><font class="font8">.</font><font class="font6">sum(</font><font
+  class="font24">)</font><font class="font8">&gt;0</font><font class="font6">]<br>
+    </font></td>
+  <td class=xl72 width=564 style='border-top:none;border-left:none;width:423pt'>N/A</td>
+  <td colspan=2 class=xl80 width=903 style='border-left:none;width:677pt'><font
+  class="font16"># Feature-Engine captures the numerical variables
+  automatically<br>
+    </font><font class="font6">imputer </font><font class="font8">=</font><font
+  class="font6"> EndTailImputer(imputation_method</font><font class="font8">=</font><font
+  class="font7">'gaussian'</font><font class="font6">, tail</font><font
+  class="font8">=</font><font class="font7">'right'</font><font class="font6">)<br>
+    <br>
+    <br>
+    </font><font class="font16"># Feature-engine allows you to specify variable
+  groups easily</font><font class="font6"><br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  EndTailImputer(imputation_method</font><font class="font8">=</font><font
+  class="font7">'iqr'</font><font class="font6">, tail</font><font class="font8">=</font><font
+  class="font7">'left'</font><font class="font6">,<br>
+    <span style='mso-spacerun:yes'>                         </span>variables</font><font
+  class="font8">=</font><font class="font6">[</font><font class="font7">'LotFrontage'</font><font
+  class="font6">, </font><font class="font7">'MasVnrArea'</font><font
+  class="font6">])<br>
+    <br>
+    <br>
+    </font><font class="font16">#&nbsp;Feature-engine can be used with the
+  Scikit-learn pipeline</font><font class="font6"><br>
+    pipe </font><font class="font8">=</font><font class="font6">
+  Pipeline([<br>
+    (</font><font class="font7">‘imputer_skewed'</font><font class="font6">,EndTailImputer(imputation_method</font><font
+  class="font8">=</font><font class="font7">'iqr'</font><font class="font6">,tail</font><font
+  class="font8">=</font><font class="font7">'right'</font><font class="font6">,variables</font><font
+  class="font8">=</font><font class="font6">[</font><font class="font7">'GarageYrBlt'</font><font
+  class="font6">,</font><font class="font7">'MasVnrArea'</font><font
+  class="font6">])),<br>
+    (</font><font class="font7">'imputer_gaussian'</font><font class="font6">,EndTailImputer(imputation_method</font><font
+  class="font8">=</font><font class="font7">'gaussian'</font><font class="font6">,tail</font><font
+  class="font8">=</font><font class="font7">'right'</font><font class="font6">,variables</font><font
+  class="font8">=</font><font class="font6">[</font><font class="font7">'LotFrontage'</font><font
+  class="font6">])),<br>
+    ])<br>
+    pipe</font><font class="font8">.</font><font class="font6">fit(X_train)<br>
+    tmp </font><font class="font8">=</font><font class="font6"> pipe</font><font
+  class="font8">.</font><font class="font6">transform(X_train)<br>
+    <br>
+    </font></td>
+ </tr>
+ <tr height=187 style='height:140.0pt'>
+  <td height=187 class=xl91 width=168 style='height:140.0pt;border-top:none;
+  width:126pt'>Gán hạng mục thường xuất hiện</td>
+  <td class=xl69 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font6">data[</font><font class="font7">'variable'</font><font
+  class="font6">]</font><font class="font8">.</font><font class="font6">value_counts()</font><font
+  class="font8">.</font><font class="font6">idxmax()<br>
+    </font></td>
+  <td class=xl81 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font6">…<br>
+    <br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  SimpleImputer(strategy</font><font class="font8">=</font><font class="font7">'most_frequent'</font><font
+  class="font6">)<br>
+    <br>
+    …<br>
+    <br>
+    preprocessor </font><font class="font8">=</font><font class="font6">
+  ColumnTransformer(transformers</font><font class="font8">=</font><font
+  class="font6">[<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'numeric_imputer'</font><font
+  class="font6">, SimpleImputer(strategy</font><font class="font8">=</font><font
+  class="font7">'mean'</font><font class="font6">), features_numeric),<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'categoric_imputer'</font><font
+  class="font6">, SimpleImputer(strategy</font><font class="font8">=</font><font
+  class="font7">'most_frequent'</font><font class="font6">),
+  features_categoric)<br>
+    ])<br>
+    <br>
+    …</font></td>
+  <td class=xl76 width=612 style='border-top:none;border-left:none;width:459pt'><font
+  class="font16"># Feature-Engine captures the numerical variables
+  automatically<br>
+    </font><font class="font6">imputer </font><font class="font8">=</font><font
+  class="font6"> CategoricalImputer(imputation_method</font><font class="font8">=</font><font
+  class="font7">'frequent'</font><font class="font6">)<br>
+    <br>
+    <br>
+    </font><font class="font16"># Feature-engine allows you to specify variable
+  groups easily</font><font class="font6"><br>
+    imputer </font><font class="font8">=</font><font class="font6">CategoricalImputer(<br>
+    <span style='mso-spacerun:yes'>    </span>imputation_method</font><font
+  class="font8">=</font><font class="font7">'frequent'</font><font class="font6">,
+  variables</font><font class="font8">=</font><font class="font6">[</font><font
+  class="font7">'BsmtQual'</font><font class="font6">])<br>
+    </font></td>
+  <td class=xl74 width=291 style='border-top:none;border-left:none;width:218pt'>&nbsp;</td>
+ </tr>
+ <tr height=235 style='mso-height-source:userset;height:176.5pt'>
+  <td height=235 class=xl91 width=168 style='height:176.5pt;border-top:none;
+  width:126pt'>Gán giá trị bị thiếu là một biến hạng mục mới</td>
+  <td class=xl71 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font6">data</font><font class="font6">[</font><font class="font6">'</font><font
+  class="font7">variable</font><font class="font6">'</font><font class="font6">]</font><font
+  class="font8">.</font><font class="font6">fillna(</font><font class="font6">'Missing'</font><font
+  class="font6">, inplace</font><font class="font8">=</font><font class="font9">True</font><font
+  class="font6">)<br>
+    </font></td>
+  <td class=xl80 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font6">…<br>
+    <br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  SimpleImputer(strategy</font><font class="font8">=</font><font class="font7">'constant'</font><font
+  class="font6">, <br>
+    <span style='mso-spacerun:yes'>                       </span>fill_value </font><font
+  class="font8">=</font><font class="font6"> </font><font class="font7">'Missing'</font><font
+  class="font6">)<br>
+    …<br>
+    <br>
+    preprocessor </font><font class="font8">=</font><font class="font6">
+  ColumnTransformer(transformers</font><font class="font8">=</font><font
+  class="font6">[<br>
+    (</font><font class="font7">'imputer_numeric'</font><font class="font6">,
+  SimpleImputer(strategy</font><font class="font8">=</font><font class="font7">‘mean'</font><font
+  class="font6">),features_numeric),<br>
+    (</font><font class="font7">'imputer_categoric'</font><font class="font6">,SimpleImputer(strategy</font><font
+  class="font8">=</font><font class="font7">'constant'</font><font class="font6">,<br>
+    fill_value</font><font class="font8">=</font><font class="font7">'Missing'</font><font
+  class="font6">),<span style='mso-spacerun:yes'> 
+  </span>features_categoric)])<br>
+    <br>
+    …</font></td>
+  <td colspan=2 class=xl80 width=903 style='border-left:none;width:677pt'><font
+  class="font16"># Feature-Engine captures the numerical variables
+  automatically<br>
+    </font><font class="font6">imputer </font><font class="font8">=</font><font
+  class="font6"> CategoricalImputer()<br>
+    <br>
+    <br>
+    </font><font class="font16"># Feature-engine allows you to specify variable
+  groups easily</font><font class="font6"><br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  CategoricalImputer(variables</font><font class="font8">=</font><font
+  class="font6">[</font><font class="font7">'BsmtQual'</font><font class="font6">])<br>
+    <br>
+    </font><font class="font16"><br>
+    #&nbsp;Feature-engine can be used with the Scikit-learn pipeline<br>
+    </font><font class="font6">pipe </font><font class="font8">=</font><font
+  class="font6"> Pipeline([<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'imputer_mode'</font><font
+  class="font6">, CategoricalImputer(imputation_method</font><font class="font8">=</font><font
+  class="font7">'frequent'</font><font class="font6">, variables</font><font
+  class="font8">=</font><font class="font6">[</font><font class="font7">'BsmtQual'</font><font
+  class="font6">])),<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'imputer_missing'</font><font
+  class="font6">, CategoricalImputer(variables</font><font class="font8">=</font><font
+  class="font6">[</font><font class="font7">'FireplaceQu'</font><font
+  class="font6">])),<br>
+    ])<br>
+    <br>
+    </font></td>
+ </tr>
+ <tr height=331 style='mso-height-source:userset;height:248.5pt'>
+  <td height=331 class=xl91 width=168 style='height:248.5pt;border-top:none;
+  width:126pt'>Chỉ số khuyết dữ liệu (Missing Indicator)</td>
+  <td class=xl82 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font9">def</font><font class="font6"> </font><font class="font11">missing_indicator</font><font
+  class="font6">(df, variable):</font><font class="font11"><span
+  style='mso-spacerun:yes'>  </span></font><font class="font6"><br>
+    <span style='mso-spacerun:yes'>    </span></font><font class="font9">return</font><font
+  class="font6"> np</font><font class="font8">.</font><font class="font6">where(df[variable]</font><font
+  class="font8">.</font><font class="font6">isnull(), </font><font class="font8">1</font><font
+  class="font6">, </font><font class="font8">0</font><font class="font6">)<br>
+    <br>
+    <br>
+    X_train[variable</font><font class="font8">+</font><font class="font7">'_NA'</font><font
+  class="font6">] </font><font class="font8">=</font><font class="font6">
+  missing_indicator(X_train, variable)</font></td>
+  <td class=xl76 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font6">indicator </font><font class="font8">=</font><font class="font6">
+  MissingIndicator(error_on_new</font><font class="font8">=</font><font
+  class="font9">True</font><font class="font6">, features</font><font
+  class="font8">=</font><font class="font7">'missing-only'</font><font
+  class="font6">)<br>
+    indicator</font><font class="font8">.</font><font class="font6">fit(X_train)<span
+  style='mso-spacerun:yes'>  </span><br>
+    tmp </font><font class="font8">=</font><font class="font6"> indicator</font><font
+  class="font8">.</font><font class="font6">transform(X_train)<br>
+    indicator_cols </font><font class="font8">=</font><font class="font6"> [c</font><font
+  class="font8">+</font><font class="font7">'_NA'</font><font class="font6"> </font><font
+  class="font9">for</font><font class="font6"> c </font><font class="font10">in</font><font
+  class="font6"> X_train</font><font class="font8">.</font><font class="font6">columns[indicator</font><font
+  class="font8">.</font><font class="font6">features_]]<br>
+    <br>
+    <br>
+    </font><font class="font12"># and now we concatenate</font><font
+  class="font6"><br>
+    X_train </font><font class="font8">=</font><font class="font6"> pd</font><font
+  class="font8">.</font><font class="font6">concat([<br>
+    <span style='mso-spacerun:yes'>    </span>X_train</font><font class="font8">.</font><font
+  class="font6">reset_index(),<br>
+    <span style='mso-spacerun:yes'>    </span>pd</font><font class="font8">.</font><font
+  class="font6">DataFrame(tmp, columns </font><font class="font8">=</font><font
+  class="font6"> indicator_cols)],<br>
+    <span style='mso-spacerun:yes'>    </span>axis</font><font class="font8">=1</font><font
+  class="font6">)<br>
+    <br>
+    <br>
+    </font><font class="font12"># now the same for the test set</font><font
+  class="font6"><br>
+    tmp </font><font class="font8">=</font><font class="font6"> indicator</font><font
+  class="font8">.</font><font class="font6">transform(X_test)<br>
+    X_test </font><font class="font8">=</font><font class="font6"> pd</font><font
+  class="font8">.</font><font class="font6">concat([<br>
+    <span style='mso-spacerun:yes'>    </span>X_test</font><font class="font8">.</font><font
+  class="font6">reset_index(),<br>
+    <span style='mso-spacerun:yes'>    </span>pd</font><font class="font8">.</font><font
+  class="font6">DataFrame(tmp, columns </font><font class="font8">=</font><font
+  class="font6"> indicator_cols)],<br>
+    <span style='mso-spacerun:yes'>    </span>axis</font><font class="font8">=1</font><font
+  class="font6">)<br>
+    </font></td>
+  <td class=xl76 width=612 style='border-top:none;border-left:none;width:459pt'><a
+  href="https://ngohongthai.github.io/funix/contents/c2-regession/exercise-4-feature-engineering/feature-engine/04.13Missing-Indicator-Feature-Engine.html#Feature-Engine's-missing-indicator-selects-all-variables-by-default"
+  target="_parent"><span style='color:black;text-decoration:none;font-family:
+  Courier, serif;mso-font-charset:0'><font class="font16"># Feature-Engine's
+  missing indicator selects all variables by default¶</font><font class="font6"><br>
+    <br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  AddMissingIndicator(missing_only</font><font class="font8">=</font><font
+  class="font9">True</font><font class="font6">)<br>
+    <br>
+    <br>
+    </font><font class="font16"># Feature-engine allows you to specify variable
+  groups easily<br>
+    </font><font class="font6"><br>
+    imputer </font><font class="font8">=</font><font class="font6">
+  AddMissingIndicator(variables</font><font class="font8">=</font><font
+  class="font6">[</font><font class="font7">'BsmtQual'</font><font class="font6">,
+  </font><font class="font7">'FireplaceQu'</font><font class="font6">, </font><font
+  class="font7">'LotFrontage'</font><font class="font6">])<br>
+    <br>
+    <br>
+    </font><font class="font16"># Feature-engine can be used with the
+  Scikit-learn pipeline</font><font class="font6"><br>
+    pipe </font><font class="font8">=</font><font class="font6">
+  Pipeline([<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'missing_ind'</font><font
+  class="font6">, AddMissingIndicator()),<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'imputer_mode'</font><font
+  class="font6">, CategoricalImputer(imputation_method</font><font class="font8">=</font><font
+  class="font7">'frequent'</font><font class="font6">, variables</font><font
+  class="font8">=</font><font class="font6">[</font><font class="font7">'FireplaceQu'</font><font
+  class="font6">, </font><font class="font7">'BsmtQual'</font><font
+  class="font6">])),<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'imputer_median'</font><font
+  class="font6">, MeanMedianImputer(imputation_method</font><font class="font8">=</font><font
+  class="font7">‘median'</font><font class="font6">, variables</font><font
+  class="font8">=</font><font class="font6">[</font><font class="font7">'LotFrontage'</font><font
+  class="font6">, </font><font class="font7">'MasVnrArea'</font><font
+  class="font6">, </font><font class="font7">'GarageYrBlt'</font><font
+  class="font6">])),<br>
+    ])<br>
+    </font></span></a></td>
+  <td class=xl70 width=291 style='border-top:none;border-left:none;width:218pt'><font
+  class="font24">- </font><font class="font18">feature-engine</font><font
+  class="font24"> sẽ tự mặc định tạo cột với tên &lt;feature name&gt;_na<span
+  style='mso-spacerun:yes'> </span></font></td>
+ </tr>
+ <tr height=267 style='mso-height-source:userset;height:200.5pt'>
+  <td height=267 class=xl91 width=168 style='height:200.5pt;border-top:none;
+  width:126pt'>Gán mẫu ngẫu nhiên (Random sample imputation)</td>
+  <td class=xl83 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font6">random_sample </font><font class="font8">=</font><font
+  class="font6"> data_train[</font><font class="font7">‘age'</font><font
+  class="font6">]</font><font class="font8">.</font><font class="font6">dropna()</font><font
+  class="font8">.</font><font class="font6">sample(<br>
+    <span style='mso-spacerun:yes'>    </span>data_test[</font><font
+  class="font7">‘age'</font><font class="font6">]</font><font class="font8">.</font><font
+  class="font6">isnull()</font><font class="font8">.</font><font class="font6">sum(),
+  random_state</font><font class="font8">=0</font><font class="font6">)<br>
+    <br>
+    </font><font class="font16"># Note: luôn lấy data trong tệp data train, số
+  lượng thì tuỳ thuộc vào số lượng N/A trong tập tương ứng<br>
+    <br>
+    </font><font class="font6"><br>
+    random_sample</font><font class="font8">.</font><font class="font6">index </font><font
+  class="font8">=</font><font class="font6"> data_test[data_test[</font><font
+  class="font7">'age'</font><font class="font6">]</font><font class="font8">.</font><font
+  class="font6">isnull()]</font><font class="font8">.</font><font class="font6">index<br>
+    <br>
+    </font><font class="font16"># pandas cần có cùng chỉ số để hợp nhất tập dữ
+  liệu<br>
+    <br>
+    <br>
+    </font><font class="font6"><br>
+    data_test</font><font class="font8">.</font><font class="font6">loc[data_test[</font><font
+  class="font7">'age'</font><font class="font6">]</font><font class="font8">.</font><font
+  class="font6">isnull(), </font><font class="font7">'Age_imputed'</font><font
+  class="font6">] </font><font class="font8">=</font><font class="font6">
+  random_sample<br>
+    <br>
+    </font><font class="font16"># thay thế NA trong biến mới tạo<br>
+    </font><font class="font6"><br>
+    <br>
+    <br>
+    </font></td>
+  <td class=xl72 width=564 style='border-top:none;border-left:none;width:423pt'>N/A</td>
+  <td class=xl72 width=612 style='border-top:none;border-left:none;width:459pt'><font
+  class="font16"># Feature-Engine Random Sampler captures all the variables by
+  default<br>
+    </font><font class="font6">imputer </font><font class="font8">=</font><font
+  class="font6"> RandomSampleImputer(random_state </font><font class="font8">=</font><font
+  class="font6"> </font><font class="font8">29</font><font class="font6">)<br>
+    </font></td>
+  <td class=xl73 width=291 style='border-top:none;border-left:none;width:218pt'>&nbsp;</td>
+ </tr>
+ <tr height=545 style='mso-height-source:userset;height:409.0pt'>
+  <td rowspan=3 height=1635 class=xl92 width=168 style='height:1227.0pt;
+  border-top:none;width:126pt'>Automatic selection of best imputation technique
+  with Sklearn</td>
+  <td colspan=2 rowspan=3 class=xl87 width=1021 style='width:766pt'><font
+  class="font9">import</font><font class="font6"> </font><font class="font13">pandas</font><font
+  class="font6"> </font><font class="font9">as</font><font class="font6"> </font><font
+  class="font13">pd</font><font class="font6"><br>
+    </font><font class="font9">import</font><font class="font6"> </font><font
+  class="font13">numpy</font><font class="font6"> </font><font class="font9">as</font><font
+  class="font6"> </font><font class="font13">np</font><font class="font6"><br>
+    <br>
+    </font><font class="font12"># import classes for imputation</font><font
+  class="font6"><br>
+    </font><font class="font9">from</font><font class="font6"> </font><font
+  class="font13">sklearn.compose</font><font class="font6"> </font><font
+  class="font9">import</font><font class="font6"> ColumnTransformer<br>
+    </font><font class="font9">from</font><font class="font6"> </font><font
+  class="font13">sklearn.pipeline</font><font class="font6"> </font><font
+  class="font9">import</font><font class="font6"> Pipeline<br>
+    </font><font class="font9">from</font><font class="font6"> </font><font
+  class="font13">sklearn.impute</font><font class="font6"> </font><font
+  class="font9">import</font><font class="font6"> SimpleImputer<br>
+    <br>
+    </font><font class="font12"># import extra classes for modelling</font><font
+  class="font6"><br>
+    </font><font class="font9">from</font><font class="font6"> </font><font
+  class="font13">sklearn.preprocessing</font><font class="font6"> </font><font
+  class="font9">import</font><font class="font6"> StandardScaler,
+  OneHotEncoder<br>
+    </font><font class="font9">from</font><font class="font6"> </font><font
+  class="font13">sklearn.linear_model</font><font class="font6"> </font><font
+  class="font9">import</font><font class="font6"> Lasso<br>
+    </font><font class="font9">from</font><font class="font6"> </font><font
+  class="font13">sklearn.model_selection</font><font class="font6"> </font><font
+  class="font9">import</font><font class="font6"> train_test_split,
+  GridSearchCV<br>
+    <br>
+    np</font><font class="font8">.</font><font class="font6">random</font><font
+  class="font8">.</font><font class="font6">seed(</font><font class="font8">0</font><font
+  class="font6">)<br>
+    <br>
+    </font><font class="font16"># load dataset with all the variables</font><font
+  class="font6"><br>
+    data </font><font class="font8">=</font><font class="font6"> pd</font><font
+  class="font8">.</font><font class="font6">read_csv(</font><font class="font7">'../../lab6-13_dataset/house-price/houseprice.csv'</font><font
+  class="font6">,)<br>
+    <br>
+    </font><font class="font16"># find categorical variables</font><font
+  class="font6"><br>
+    </font><font class="font12"># those of type 'Object' in the dataset</font><font
+  class="font6"><br>
+    features_categorical </font><font class="font8">=</font><font class="font6">
+  [c </font><font class="font9">for</font><font class="font6"> c </font><font
+  class="font10">in</font><font class="font6"> data</font><font class="font8">.</font><font
+  class="font6">columns </font><font class="font9">if</font><font class="font6">
+  data[c]</font><font class="font8">.</font><font class="font6">dtypes</font><font
+  class="font8">==</font><font class="font7">'O'</font><font class="font6">]<br>
+    <br>
+    </font><font class="font12"># find numerical variables</font><font
+  class="font6"><br>
+    </font><font class="font12"># those different from object and also
+  excluding the target SalePrice</font><font class="font6"><br>
+    features_numerical </font><font class="font8">=</font><font class="font6">
+  [c </font><font class="font9">for</font><font class="font6"> c </font><font
+  class="font10">in</font><font class="font6"> data</font><font class="font8">.</font><font
+  class="font6">columns </font><font class="font9">if</font><font class="font6">
+  data[c]</font><font class="font8">.</font><font class="font6">dtypes</font><font
+  class="font8">!=</font><font class="font7">'O'</font><font class="font6"> </font><font
+  class="font10">and</font><font class="font6"> c </font><font class="font8">!=</font><font
+  class="font7">'SalePrice'</font><font class="font6">]<br>
+    <br>
+    </font><font class="font16"># separate intro train and test set</font><font
+  class="font6"><br>
+    X_train, X_test, y_train, y_test </font><font class="font8">=</font><font
+  class="font6"> train_test_split(<br>
+    <span style='mso-spacerun:yes'>    </span>data</font><font class="font8">.</font><font
+  class="font6">drop(</font><font class="font7">'SalePrice'</font><font
+  class="font6">, axis</font><font class="font8">=1</font><font class="font6">),<span
+  style='mso-spacerun:yes'>  </span></font><font class="font12"># just the
+  features</font><font class="font6"><br>
+    <span style='mso-spacerun:yes'>    </span>data[</font><font class="font7">'SalePrice'</font><font
+  class="font6">],<span style='mso-spacerun:yes'>  </span></font><font
+  class="font12"># the target</font><font class="font6"><br>
+    <span style='mso-spacerun:yes'>    </span>test_size</font><font
+  class="font8">=0.3</font><font class="font6">,<span
+  style='mso-spacerun:yes'>  </span></font><font class="font12"># the
+  percentage of obs in the test set</font><font class="font6"><br>
+    <span style='mso-spacerun:yes'>    </span>random_state</font><font
+  class="font8">=0</font><font class="font6">)<span style='mso-spacerun:yes'> 
+  </span></font><font class="font12"># for reproducibility</font><font
+  class="font6"><br>
+    <br>
+    <br>
+    </font><font class="font12"># We create the preprocessing pipelines for
+  both</font><font class="font6"><br>
+    </font><font class="font12"># numerical and categorical data</font><font
+  class="font6"><br>
+    <br>
+    </font><font class="font12"># adapted from Scikit-learn code available here
+  under BSD3 license:</font><font class="font6"><br>
+    </font><font class="font12">#
+  https://scikit-learn.org/stable/auto_examples/compose/plot_column_transformer_mixed_types.html<br>
+    </font><font class="font6">numeric_transformer </font><font class="font8">=</font><font
+  class="font6"> Pipeline(steps</font><font class="font8">=</font><font
+  class="font6">[<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'imputer'</font><font
+  class="font6">, SimpleImputer(strategy</font><font class="font8">=</font><font
+  class="font7">'median'</font><font class="font6">)),<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'scaler'</font><font
+  class="font6">, StandardScaler())])<br>
+    <br>
+    categorical_transformer </font><font class="font8">=</font><font
+  class="font6"> Pipeline(steps</font><font class="font8">=</font><font
+  class="font6">[<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'imputer'</font><font
+  class="font6">, SimpleImputer(strategy</font><font class="font8">=</font><font
+  class="font7">'constant'</font><font class="font6">, fill_value</font><font
+  class="font8">=</font><font class="font7">'missing'</font><font class="font6">)),<br>
+    <span style='mso-spacerun:yes'>    </span>(</font><font class="font7">'onehot'</font><font
+  class="font6">, OneHotEncoder(handle_unknown</font><font class="font8">=</font><font
+  class="font7">'ignore'</font><font class="font6">))])<br>
+    <br>
+    preprocessor </font><font class="font8">=</font><font class="font6">
+  ColumnTransformer(<br>
+    <span style='mso-spacerun:yes'>    </span>transformers</font><font
+  class="font8">=</font><font class="font6">[<br>
+    <span style='mso-spacerun:yes'>        </span>(</font><font class="font7">'numerical'</font><font
+  class="font6">, numeric_transformer, features_numerical),<br>
+    <span style='mso-spacerun:yes'>        </span>(</font><font class="font7">'categorical'</font><font
+  class="font6">, categorical_transformer, features_categorical)])<br>
+    <br>
+    </font><font class="font12"># Note that to initialise the pipeline I pass
+  any argument to the transformers.</font><font class="font6"><br>
+    </font><font class="font12"># Those will be changed during the gridsearch
+  below.</font><font class="font6"><br>
+    <br>
+    <br>
+    </font><font class="font12"># Append classifier to preprocessing pipeline.</font><font
+  class="font6"><br>
+    </font><font class="font12"># Now we have a full prediction pipeline.<br>
+    </font><font class="font6">clf </font><font class="font8">=</font><font
+  class="font6"> Pipeline(steps</font><font class="font8">=</font><font
+  class="font6">[(</font><font class="font7">'preprocessor'</font><font
+  class="font6">, preprocessor),<br>
+    <span style='mso-spacerun:yes'>                      </span>(</font><font
+  class="font7">'regressor'</font><font class="font6">, Lasso(max_iter</font><font
+  class="font8">=2000</font><font class="font6">))])<br>
+    </font><font class="font12"><br>
+    <br>
+    <br>
+    # now we create the grid with all the parameters that we would like to
+  test<br>
+    </font><font class="font6">param_grid </font><font class="font8">=</font><font
+  class="font6"> {<br>
+    <span style='mso-spacerun:yes'>    </span></font><font class="font7">'preprocessor__numerical__imputer__strategy'</font><font
+  class="font6">: [</font><font class="font7">'mean'</font><font class="font6">,
+  </font><font class="font7">'median'</font><font class="font6">],<br>
+    <span style='mso-spacerun:yes'>    </span></font><font class="font7">'preprocessor__categorical__imputer__strategy'</font><font
+  class="font6">: [</font><font class="font7">'most_frequent'</font><font
+  class="font6">, </font><font class="font7">'constant'</font><font
+  class="font6">],<br>
+    <span style='mso-spacerun:yes'>    </span></font><font class="font7">'regressor__alpha'</font><font
+  class="font6">: [</font><font class="font8">10</font><font class="font6">, </font><font
+  class="font8">100</font><font class="font6">, </font><font class="font8">200</font><font
+  class="font6">],<br>
+    }<br>
+    <br>
+    grid_search </font><font class="font8">=</font><font class="font6">
+  GridSearchCV(clf, param_grid, cv</font><font class="font8">=5</font><font
+  class="font6">, n_jobs</font><font class="font8">=-1</font><font class="font6">,
+  scoring</font><font class="font8">=</font><font class="font7">'r2'</font><font
+  class="font6">)<br>
+    <br>
+    </font><font class="font12"># cv=3 is the cross-validation</font><font
+  class="font6"><br>
+    </font><font class="font12"># no_jobs =-1 indicates to use all available
+  cpus</font><font class="font6"><br>
+    </font><font class="font12"># scoring='r2' indicates to evaluate using the
+  r squared</font><font class="font6"><br>
+    <br>
+    </font><font class="font12"># for more details in the grid parameters
+  visit:</font><font class="font6"><br>
+    </font><font class="font12">#https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html<br>
+    <br>
+    <br>
+    # and now we train over all the possible combinations of the parameters
+  above</font><font class="font6"><br>
+    grid_search</font><font class="font8">.</font><font class="font6">fit(X_train,
+  y_train)<br>
+    <br>
+    </font><font class="font12"># and we print the best score over the train
+  set</font><font class="font6"><br>
+    </font><font class="font22">print</font><font class="font6">((</font><font
+  class="font7">&quot;best linear regression from grid search: </font><font
+  class="font23">%.3f</font><font class="font7">&quot;</font><font class="font6"><br>
+    <span style='mso-spacerun:yes'>       </span></font><font class="font8">%</font><font
+  class="font6"> grid_search</font><font class="font8">.</font><font
+  class="font6">score(X_train, y_train)))<br>
+    </font><font class="font12"><br>
+    # we can print the best estimator parameters like this</font><font
+  class="font6"><br>
+    grid_search</font><font class="font8">.</font><font class="font6">best_estimator_<br>
+    <br>
+    </font><font class="font12"># and find the best fit parameters like this</font><font
+  class="font6"><br>
+    grid_search</font><font class="font8">.</font><font class="font6">best_params_<br>
+    </font></td>
+  <td rowspan=3 class=xl89 width=612 style='border-top:none;width:459pt'>&nbsp;</td>
+  <td class=xl84 width=291 style='border-top:none;width:218pt'>&nbsp;</td>
+ </tr>
+ <tr height=545 style='mso-height-source:userset;height:409.0pt'>
+  <td height=545 class=xl85 width=291 style='height:409.0pt;width:218pt'>&nbsp;</td>
+ </tr>
+ <tr height=545 style='mso-height-source:userset;height:409.0pt'>
+  <td height=545 class=xl85 width=291 style='height:409.0pt;width:218pt'>&nbsp;</td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=168 style='width:126pt'></td>
+  <td width=457 style='width:343pt'></td>
+  <td width=564 style='width:423pt'></td>
+  <td width=612 style='width:459pt'></td>
+  <td width=291 style='width:218pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</div>
+
+
+<!----------------------------->
+<!--END OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD-->
+<!----------------------------->
+</body>
+
 </html>
