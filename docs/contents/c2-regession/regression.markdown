@@ -55,13 +55,13 @@ permalink: /contents/c2-regression/
       - [04.5 MissingIndicator Sklearn](exercise-4-feature-engineering/scikit-learn/04.5MissingIndicator-Sklearn.html){:target="_blank"}
       - [04.6 Automatic Imputation Method Detection Sklearn](exercise-4-feature-engineering/scikit-learn/04.6Automatic-Imputation-Method-Detection-Sklearn.html){:target="_blank"}
     - *feature-engine*
-      - [04.7 Mean Median Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/.04.7Mean-Median-Imputation-Feature-Engine.html){:target="_blank"}
-      - [04.8 Arbitrary Value Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.8Arbitrary-Value-Imputation-Feature-Engine.html){:target="_blank"}
-      - [04.9 End Tail Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.9End-Tail-Imputation-Feature-Engine.html){:target="_blank"}
-      - [04.10 Frequent Category Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.10Frequent-Category-Imputation-Feature-Engine.html){:target="_blank"}
-      - [04.11 Missing Category Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.11Missing-Category-Imputation-Feature-Engine.html){:target="_blank"}
-      - [04.12 Random Sample Imputation Feature Engine](exercise-4-feature-engineering/scikit-learn/04.12Random-Sample-Imputation-Feature-Engine.html){:target="_blank"}
-      - [04.13 Missing Indicator Feature Engine](exercise-4-feature-engineering/scikit-learn/04.13Missing-Indicator-Feature-Engine.html){:target="_blank"}
+      - [04.7 Mean Median Imputation Feature Engine](exercise-4-feature-engineering/feature-engine/04.7Mean-Median-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.8 Arbitrary Value Imputation Feature Engine](exercise-4-feature-engineering/feature-engine/04.8Arbitrary-Value-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.9 End Tail Imputation Feature Engine](exercise-4-feature-engineering/feature-engine/04.9End-Tail-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.10 Frequent Category Imputation Feature Engine](exercise-4-feature-engineering/feature-engine/04.10Frequent-Category-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.11 Missing Category Imputation Feature Engine](exercise-4-feature-engineering/feature-engine/04.11Missing-Category-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.12 Random Sample Imputation Feature Engine](exercise-4-feature-engineering/feature-engine/04.12Random-Sample-Imputation-Feature-Engine.html){:target="_blank"}
+      - [04.13 Missing Indicator Feature Engine](exercise-4-feature-engineering/feature-engine/04.13Missing-Indicator-Feature-Engine.html){:target="_blank"}
 
 <br>
 
