@@ -1,0 +1,772 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link id=Main-File rel=Main-File href="../MissingValueImputationMethods.htm">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\,";
+	mso-displayed-thousand-separator:"\.";}
+@page
+	{mso-footer-data:"&C&\0022Helvetica Neue\,Regular\0022&12&K000000&P";
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.25in;
+	mso-footer-margin:.25in;
+	mso-page-orientation:landscape;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(2);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../MissingValueImputationMethods.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link=blue vlink=fuchsia>
+
+<table border=0 cellpadding=0 cellspacing=0 width=2092 style='border-collapse:
+ collapse;table-layout:fixed;width:1569pt'>
+ <col width=168 style='mso-width-source:userset;mso-width-alt:5376;width:126pt'>
+ <col width=457 style='mso-width-source:userset;mso-width-alt:14634;width:343pt'>
+ <col width=564 style='mso-width-source:userset;mso-width-alt:18048;width:423pt'>
+ <col width=612 style='mso-width-source:userset;mso-width-alt:19584;width:459pt'>
+ <col width=291 style='mso-width-source:userset;mso-width-alt:9301;width:218pt'>
+ <col width=131 style='mso-width-source:userset;mso-width-alt:4181;width:98pt'>
+ <tr height=36 style='mso-height-source:userset;height:27.75pt'>
+  <td colspan=5 height=36 class=xl85 width=2092 style='height:27.75pt;
+  width:1569pt'>Imputation Methods</td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.5pt'>
+  <td height=27 class=xl69 width=168 style='height:20.5pt;width:126pt'><a
+  name="RANGE!A2">Methods</a></td>
+  <td class=xl70 width=457 style='border-left:none;width:343pt'>Pandas/Numpy</td>
+  <td class=xl70 width=564 style='border-left:none;width:423pt'>scikit-learn</td>
+  <td class=xl70 width=612 style='border-left:none;width:459pt'><font
+  class="font8">feature</font><font class="font8">-engine</font></td>
+  <td class=xl71 width=291 style='border-left:none;width:218pt'>Note</td>
+ </tr>
+ <tr height=523 style='mso-height-source:userset;height:392.75pt'>
+  <td height=523 class=xl72 width=168 style='height:392.75pt;border-top:none;
+  width:126pt'>Median/Mean imputation</td>
+  <td class=xl73 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font10">data[</font><font class="font11">'variable'</font><font
+  class="font10">].fillna(value)</font></td>
+  <td class=xl74 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font13">from</font><font class="font10"> </font><font class="font18">sklearn.impute</font><font
+  class="font10"> </font><font class="font13">import</font><font class="font10">
+  SimpleImputer<br>
+    </font><font class="font13">from</font><font class="font10"> </font><font
+  class="font18">sklearn.compose</font><font class="font10"> </font><font
+  class="font13">import</font><font class="font10"> ColumnTransformer<br>
+    </font><font class="font13">from</font><font class="font10"> </font><font
+  class="font18">sklearn.pipeline</font><font class="font10"> </font><font
+  class="font13">import</font><font class="font10"> Pipeline<br>
+    </font><font class="font10"> </font><font class="font18">imputer </font><font
+  class="font19">=</font><font class="font18"> SimpleImputer(strategy</font><font
+  class="font19">=</font><font class="font20">'median'</font><font
+  class="font18">)<br>
+    </font><font class="font10">imputer</font><font class="font12">.</font><font
+  class="font10">fit(X_train[cols])  X_train </font><font class="font12">=</font><font
+  class="font10"> imputer</font><font class="font12">.</font><font
+  class="font10">transform(X_train)<br>
+    </font><font class="font10">X_test </font><font class="font12">=</font><font
+  class="font10"> imputer</font><font class="font12">.</font><font
+  class="font10">transform(X_test)<br>
+    </font><font class="font10">pd</font><font class="font12">.</font><font
+  class="font10">DataFrame(X_train, columns</font><font class="font12">=</font><font
+  class="font10">cols)<br>
+    </font><font class="font10"> ================= numeric_features_mean </font><font
+  class="font12">=</font><font class="font10"> [</font><font class="font11">'LotFrontage'</font><font
+  class="font10">]<br>
+    </font><font class="font10">numeric_features_median </font><font
+  class="font12">=</font><font class="font10"> [</font><font class="font11">'MasVnrArea'</font><font
+  class="font10">, </font><font class="font11">'GarageYrBlt'</font><font
+  class="font10">]<br>
+    </font><font class="font10">preprocessor </font><font class="font12">=</font><font
+  class="font10"> ColumnTransformer(transformers</font><font class="font12">=</font><font
+  class="font10">[<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'mean_imputer'</font><font class="font10">,
+  SimpleImputer(strategy</font><font class="font12">=</font><font class="font11">'mean'</font><font
+  class="font10">), numeric_features_mean),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'median_imputer'</font><font class="font10">,
+  SimpleImputer(strategy</font><font class="font12">=</font><font class="font11">'median'</font><font
+  class="font10">), numeric_features_median)<br>
+    </font><font class="font10">], remainder</font><font class="font12">=</font><font
+  class="font11">'passthrough'</font><font class="font10">)<br>
+    </font><font class="font10"> preprocessor</font><font class="font12">.</font><font
+  class="font10">fit(X_train)<br>
+    </font><font class="font10">X_train </font><font class="font12">=</font><font
+  class="font10"> preprocessor</font><font class="font12">.</font><font
+  class="font10">transform(X_train)<br>
+    </font><font class="font10">X_test </font><font class="font12">=</font><font
+  class="font10"> preprocessor</font><font class="font12">.</font><font
+  class="font10">transform(X_test)<br>
+    </font><font class="font10"> # 'passthrough', [0, 1, 2, 3, 4,
+  5] remainder_cols </font><font class="font12">=</font><font class="font10">
+  [cols_to_use[c] </font><font class="font13">for</font><font class="font10"> c
+  </font><font class="font14">in</font><font class="font10"> [</font><font
+  class="font12">0</font><font class="font10">, </font><font class="font12">1</font><font
+  class="font10">, </font><font class="font12">2</font><font class="font10">, </font><font
+  class="font12">3</font><font class="font10">, </font><font class="font12">4</font><font
+  class="font10">, </font><font class="font12">5</font><font class="font10">]]<br>
+    </font><font class="font10">pd</font><font class="font12">.</font><font
+  class="font10">DataFrame(X_train,<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>            
+  </span>columns </font><font class="font12">=</font><font class="font10">
+  numeric_features_mean</font><font class="font12">+</font><font class="font10">numeric_features_median</font><font
+  class="font12">+</font><font class="font10">remainder_cols)</font><font
+  class="font12">.</font><font class="font10">head()<br>
+    </font><font class="font10"><br>
+    </font></td>
+  <td class=xl74 width=612 style='border-top:none;border-left:none;width:459pt'><font
+  class="font13">from</font><font class="font10"> </font><font class="font18">feature_engine.imputation</font><font
+  class="font10"> </font><font class="font13">import</font><font class="font10">
+  MeanMedianImputer  </font><font class="font21"># &nbsp;</font><font
+  class="font22">Feature</font><font class="font21">-Engine captures the
+  numerical variables automatically</font><font class="font10"><br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> MeanMedianImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">'median'</font><font class="font10">)<br>
+    </font><font class="font10">imputer</font><font class="font12">.</font><font
+  class="font10">fit(X_train) </font><font class="font21"># </font><font
+  class="font22">feature</font><font class="font21">-engine returns a dataframe</font><font
+  class="font10"><br>
+    </font><font class="font10">tmp </font><font class="font12">=</font><font
+  class="font10"> imputer</font><font class="font12">.</font><font
+  class="font10">transform(X_train)<br>
+    </font><font class="font10">tmp</font><font class="font12">.</font><font
+  class="font10">head()  </font><font class="font21"># </font><font
+  class="font22">Feature</font><font class="font21">-Engine allows you to&nbsp;</font><font
+  class="font22">specify</font><font class="font21">&nbsp;variable groups
+  easily</font><font class="font10"><br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> MeanMedianImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">'mean'</font><font class="font10">,<br>
+    </font><font class="font10"><span
+  style='mso-spacerun:yes'>                            </span>variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'LotFrontage'</font><font
+  class="font10">, </font><font class="font11">'MasVnrArea'</font><font
+  class="font10">])<br>
+    </font><font class="font10">imputer</font><font class="font12">.</font><font
+  class="font10">fit(X_train)<br>
+    </font></td>
+  <td class=xl74 width=291 style='border-top:none;border-left:none;width:218pt'><font
+  class="font23">- scikit-learn </font><font class="font0">return numpy array,
+  do đó phải có bước </font><font class="font23">pd</font><font class="font24">.</font><font
+  class="font23">DataFrame(X_train, columns</font><font class="font24">=</font><font
+  class="font23">cols) </font><font class="font0">để đưa kết quả về lại
+  dataframe - </font><font class="font23">ColumnTransformer </font><font
+  class="font0">trong </font><font class="font23">scikit-learn </font><font
+  class="font0">có thuộc tính<span style='mso-spacerun:yes'>  </span></font><font
+  class="font25">remainder</font><font class="font24">=</font><font
+  class="font23">‘passthrough' </font><font class="font0">là để giữ lại tất cả
+  các cột mà không xử lý input dữ liệu N/A.</font></td>
+ </tr>
+ <tr height=216 style='mso-height-source:userset;height:162.5pt'>
+  <td height=216 class=xl76 width=168 style='height:162.5pt;border-top:none;
+  width:126pt'>Gán giá trị ngẫu nhiên</td>
+  <td class=xl77 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font10">data[</font><font class="font11">'variable'</font><font
+  class="font10">].fillna(value)</font></td>
+  <td class=xl78 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font10">… imputer </font><font class="font12">=</font><font
+  class="font10"> SimpleImputer(strategy</font><font class="font12">=</font><font
+  class="font11">'constant'</font><font class="font10">, fill_value </font><font
+  class="font12">=</font><font class="font10"> </font><font class="font12">999</font><font
+  class="font10">)<br>
+    </font><font class="font10">…</font></td>
+  <td class=xl78 width=612 style='border-top:none;border-left:none;width:459pt'><font
+  class="font21"># Feature-Engine captures the numerical variables
+  automatically<br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> ArbitraryNumberImputer(arbitrary_number </font><font
+  class="font12">=</font><font class="font10"> </font><font class="font12">-999</font><font
+  class="font10">)<br>
+    </font><font class="font10"> </font><font class="font21"># Feature-engine
+  allows you to specify variable groups easily</font><font class="font10"><br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> ArbitraryNumberImputer(arbitrary_number</font><font
+  class="font12">=-999</font><font class="font10">,<br>
+    </font><font class="font10"><span
+  style='mso-spacerun:yes'>                                 </span>variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'LotFrontage'</font><font
+  class="font10">, </font><font class="font11">'MasVnrArea'</font><font
+  class="font10">])  </font><font class="font21"># We can impute different
+  variables with different numbers<br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> ArbitraryNumberImputer( imputer_dict</font><font
+  class="font12">= <span style='mso-spacerun:yes'>               </span></font><font
+  class="font10">{</font><font class="font11">‘LotFrontage’</font><font
+  class="font10">: </font><font class="font12">-999</font><font class="font10">,</font><font
+  class="font11">'MasVnrArea'</font><font class="font10">: </font><font
+  class="font12">-999</font><font class="font10">,</font><font class="font11">'GarageYrBlt'</font><font
+  class="font10">: </font><font class="font12">-1</font><font class="font10">})<br>
+    </font><font class="font26"><br>
+    </font></td>
+  <td class=xl83 width=291 style='border-top:none;border-left:none;width:218pt'>&nbsp;</td>
+ </tr>
+ <tr height=299 style='mso-height-source:userset;height:224.5pt'>
+  <td height=299 class=xl76 width=168 style='height:224.5pt;border-top:none;
+  width:126pt'>Gán giá trị cuối phân phối</td>
+  <td class=xl80 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font10">- imputed_value </font><font class="font12">=</font><font
+  class="font10"> data[</font><font class="font11">'variable'</font><font
+  class="font10">]</font><font class="font12">.</font><font class="font10">mean()
+  </font><font class="font12">+</font><font class="font10"> </font><font
+  class="font12">3</font><font class="font10"> </font><font class="font12">*</font><font
+  class="font10"> data[</font><font class="font11">'variable'</font><font
+  class="font10">]</font><font class="font12">.</font><font class="font10">std()<br>
+    </font><font class="font10">- [var </font><font class="font13">for</font><font
+  class="font10"> var </font><font class="font14">in</font><font class="font10">
+  data</font><font class="font12">.</font><font class="font10">columns </font><font
+  class="font13">if</font><font class="font10"> data[var]</font><font
+  class="font12">.</font><font class="font10">isnull()</font><font
+  class="font12">.</font><font class="font10">sum()</font><font class="font12">&gt;0</font><font
+  class="font10">]<br>
+    </font></td>
+  <td class=xl81 width=564 style='border-top:none;border-left:none;width:423pt'>N/A</td>
+  <td colspan=2 class=xl81 width=903 style='border-left:none;width:677pt'><font
+  class="font21"># Feature-Engine captures the numerical variables
+  automatically<br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> EndTailImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">'gaussian'</font><font class="font10">, tail</font><font
+  class="font12">=</font><font class="font11">'right'</font><font class="font10">)<br>
+    </font><font class="font10"><br>
+    </font><font class="font10"> </font><font class="font21"># Feature-engine
+  allows you to specify variable groups easily</font><font class="font10"><br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> EndTailImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">'iqr'</font><font class="font10">, tail</font><font
+  class="font12">=</font><font class="font11">'left'</font><font class="font10">,<br>
+    </font><font class="font10"><span
+  style='mso-spacerun:yes'>                         </span>variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'LotFrontage'</font><font
+  class="font10">, </font><font class="font11">'MasVnrArea'</font><font
+  class="font10">])<br>
+    </font><font class="font10">  </font><font class="font21">#&nbsp;Feature-engine
+  can be used with the Scikit-learn pipeline</font><font class="font10"> pipe </font><font
+  class="font12">=</font><font class="font10"> Pipeline([<br>
+    </font><font class="font10">(</font><font class="font11">‘imputer_skewed'</font><font
+  class="font10">,EndTailImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">'iqr'</font><font class="font10">,tail</font><font
+  class="font12">=</font><font class="font11">'right'</font><font class="font10">,variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'GarageYrBlt'</font><font
+  class="font10">,</font><font class="font11">'MasVnrArea'</font><font
+  class="font10">])),<br>
+    </font><font class="font10">(</font><font class="font11">'imputer_gaussian'</font><font
+  class="font10">,EndTailImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">'gaussian'</font><font class="font10">,tail</font><font
+  class="font12">=</font><font class="font11">'right'</font><font class="font10">,variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'LotFrontage'</font><font
+  class="font10">])),<br>
+    </font><font class="font10">])<br>
+    </font><font class="font10">pipe</font><font class="font12">.</font><font
+  class="font10">fit(X_train)<br>
+    </font><font class="font10">tmp </font><font class="font12">=</font><font
+  class="font10"> pipe</font><font class="font12">.</font><font class="font10">transform(X_train)<br>
+    </font><font class="font10"> </font></td>
+ </tr>
+ <tr height=171 style='mso-height-source:userset;height:128.5pt'>
+  <td height=171 class=xl76 width=168 style='height:128.5pt;border-top:none;
+  width:126pt'>Gán hạng mục thường xuất hiện</td>
+  <td class=xl77 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font10">data[</font><font class="font11">'variable'</font><font
+  class="font10">]</font><font class="font12">.</font><font class="font10">value_counts()</font><font
+  class="font12">.</font><font class="font10">idxmax()<br>
+    </font></td>
+  <td class=xl78 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font10">… imputer </font><font class="font12">=</font><font
+  class="font10"> SimpleImputer(strategy</font><font class="font12">=</font><font
+  class="font11">'most_frequent'</font><font class="font10">)<br>
+    </font><font class="font10">… preprocessor </font><font class="font12">=</font><font
+  class="font10"> ColumnTransformer(transformers</font><font class="font12">=</font><font
+  class="font10">[<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'numeric_imputer'</font><font class="font10">,
+  SimpleImputer(strategy</font><font class="font12">=</font><font class="font11">'mean'</font><font
+  class="font10">), features_numeric),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'categoric_imputer'</font><font class="font10">,
+  SimpleImputer(strategy</font><font class="font12">=</font><font class="font11">'most_frequent'</font><font
+  class="font10">), features_categoric)<br>
+    </font><font class="font10">])<br>
+    </font><font class="font10">…</font></td>
+  <td class=xl78 width=612 style='border-top:none;border-left:none;width:459pt'><font
+  class="font21"># Feature-Engine captures the numerical variables
+  automatically<br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> CategoricalImputer(imputation_method</font><font
+  class="font12">=</font><font class="font11">'frequent'</font><font
+  class="font10">)<br>
+    </font><font class="font10"> </font><font class="font21"># Feature-engine
+  allows you to specify variable groups easily</font><font class="font10"><br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10">CategoricalImputer(<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>   
+  </span>imputation_method</font><font class="font12">=</font><font
+  class="font11">'frequent'</font><font class="font10">, variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'BsmtQual'</font><font
+  class="font10">])<br>
+    </font></td>
+  <td class=xl83 width=291 style='border-top:none;border-left:none;width:218pt'>&nbsp;</td>
+ </tr>
+ <tr height=219 style='mso-height-source:userset;height:164.5pt'>
+  <td height=219 class=xl76 width=168 style='height:164.5pt;border-top:none;
+  width:126pt'>Gán giá trị bị thiếu là một biến hạng mục mới</td>
+  <td class=xl80 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font10">data</font><font class="font10">[</font><font class="font10">'</font><font
+  class="font11">variable</font><font class="font10">'</font><font
+  class="font10">]</font><font class="font12">.</font><font class="font10">fillna(</font><font
+  class="font10">'Missing'</font><font class="font10">, inplace</font><font
+  class="font12">=</font><font class="font13">True</font><font class="font10">)<br>
+    </font></td>
+  <td class=xl81 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font10">… imputer </font><font class="font12">=</font><font
+  class="font10"> SimpleImputer(strategy</font><font class="font12">=</font><font
+  class="font11">'constant'</font><font class="font10">, <br>
+    </font><font class="font10"><span
+  style='mso-spacerun:yes'>                       </span>fill_value </font><font
+  class="font12">=</font><font class="font10"> </font><font class="font11">'Missing'</font><font
+  class="font10">)<br>
+    </font><font class="font10">… preprocessor </font><font class="font12">=</font><font
+  class="font10"> ColumnTransformer(transformers</font><font class="font12">=</font><font
+  class="font10">[<br>
+    </font><font class="font10">(</font><font class="font11">'imputer_numeric'</font><font
+  class="font10">, SimpleImputer(strategy</font><font class="font12">=</font><font
+  class="font11">‘mean'</font><font class="font10">),features_numeric),<br>
+    </font><font class="font10">(</font><font class="font11">'imputer_categoric'</font><font
+  class="font10">,SimpleImputer(strategy</font><font class="font12">=</font><font
+  class="font11">'constant'</font><font class="font10">, fill_value</font><font
+  class="font12">=</font><font class="font11">'Missing'</font><font
+  class="font10">),<span style='mso-spacerun:yes'> 
+  </span>features_categoric)])<br>
+    </font><font class="font10"> …</font></td>
+  <td colspan=2 class=xl81 width=903 style='border-left:none;width:677pt'><font
+  class="font21"># Feature-Engine captures the numerical variables
+  automatically<br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> CategoricalImputer()<br>
+    </font><font class="font10"><br>
+    </font><font class="font10"> </font><font class="font21"># Feature-engine
+  allows you to specify variable groups easily</font><font class="font10"><br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> CategoricalImputer(variables</font><font class="font12">=</font><font
+  class="font10">[</font><font class="font11">'BsmtQual'</font><font
+  class="font10">])<br>
+    </font><font class="font21">#&nbsp;Feature-engine can be used with the
+  Scikit-learn pipeline </font><font class="font10">pipe </font><font
+  class="font12">=</font><font class="font10"> Pipeline([<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'imputer_mode'</font><font class="font10">,
+  CategoricalImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">'frequent'</font><font class="font10">, variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'BsmtQual'</font><font
+  class="font10">])),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'imputer_missing'</font><font class="font10">,
+  CategoricalImputer(variables</font><font class="font12">=</font><font
+  class="font10">[</font><font class="font11">'FireplaceQu'</font><font
+  class="font10">])),<br>
+    </font><font class="font10">])<br>
+    </font><font class="font10"><br>
+    </font></td>
+ </tr>
+ <tr height=299 style='mso-height-source:userset;height:224.5pt'>
+  <td height=299 class=xl76 width=168 style='height:224.5pt;border-top:none;
+  width:126pt'>Chỉ số khuyết dữ liệu (Missing Indicator)</td>
+  <td class=xl77 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font13">def</font><font class="font10"> </font><font class="font15">missing_indicator</font><font
+  class="font10">(df, variable):</font><font class="font15"><span
+  style='mso-spacerun:yes'>  </span></font><font class="font10"><br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font13">return</font><font class="font10"> np</font><font
+  class="font12">.</font><font class="font10">where(df[variable]</font><font
+  class="font12">.</font><font class="font10">isnull(), </font><font
+  class="font12">1</font><font class="font10">, </font><font class="font12">0</font><font
+  class="font10">)<br>
+    </font><font class="font10"> X_train[variable</font><font class="font12">+</font><font
+  class="font11">'_NA'</font><font class="font10">] </font><font class="font12">=</font><font
+  class="font10"> missing_indicator(X_train, variable)</font></td>
+  <td class=xl78 width=564 style='border-top:none;border-left:none;width:423pt'><font
+  class="font10">indicator </font><font class="font12">=</font><font
+  class="font10"> MissingIndicator(error_on_new</font><font class="font12">=</font><font
+  class="font13">True</font><font class="font10">, features</font><font
+  class="font12">=</font><font class="font11">'missing-only'</font><font
+  class="font10">)<br>
+    </font><font class="font10">indicator</font><font class="font12">.</font><font
+  class="font10">fit(X_train)<span style='mso-spacerun:yes'>  </span><br>
+    </font><font class="font10">tmp </font><font class="font12">=</font><font
+  class="font10"> indicator</font><font class="font12">.</font><font
+  class="font10">transform(X_train)<br>
+    </font><font class="font10">indicator_cols </font><font class="font12">=</font><font
+  class="font10"> [c</font><font class="font12">+</font><font class="font11">'_NA'</font><font
+  class="font10"> </font><font class="font13">for</font><font class="font10"> c
+  </font><font class="font14">in</font><font class="font10"> X_train</font><font
+  class="font12">.</font><font class="font10">columns[indicator</font><font
+  class="font12">.</font><font class="font10">features_]]<br>
+    </font><font class="font16"># and now we concatenate</font><font
+  class="font10"><br>
+    </font><font class="font10">X_train </font><font class="font12">=</font><font
+  class="font10"> pd</font><font class="font12">.</font><font class="font10">concat([<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>   
+  </span>X_train</font><font class="font12">.</font><font class="font10">reset_index(),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>pd</font><font
+  class="font12">.</font><font class="font10">DataFrame(tmp, columns </font><font
+  class="font12">=</font><font class="font10"> indicator_cols)],<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>axis</font><font
+  class="font12">=1</font><font class="font10">)<br>
+    </font><font class="font16"># now the same for the test set</font><font
+  class="font10"><br>
+    </font><font class="font10">tmp </font><font class="font12">=</font><font
+  class="font10"> indicator</font><font class="font12">.</font><font
+  class="font10">transform(X_test)<br>
+    </font><font class="font10">X_test </font><font class="font12">=</font><font
+  class="font10"> pd</font><font class="font12">.</font><font class="font10">concat([<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>   
+  </span>X_test</font><font class="font12">.</font><font class="font10">reset_index(),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>pd</font><font
+  class="font12">.</font><font class="font10">DataFrame(tmp, columns </font><font
+  class="font12">=</font><font class="font10"> indicator_cols)],<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>axis</font><font
+  class="font12">=1</font><font class="font10">)<br>
+    </font></td>
+  <td class=xl78 width=612 style='border-top:none;border-left:none;width:459pt'><a
+  href="https://ngohongthai.github.io/funix/contents/c2-regession/exercise-4-feature-engineering/feature-engine/04.13Missing-Indicator-Feature-Engine.html#Feature-Engine's-missing-indicator-selects-all-variables-by-default"
+  target="_parent"><span style='color:black;text-decoration:none'><font
+  class="font21"># Feature-Engine's missing indicator selects all variables by
+  default¶</font><font class="font10"> imputer </font><font class="font12">=</font><font
+  class="font10"> AddMissingIndicator(missing_only</font><font class="font12">=</font><font
+  class="font13">True</font><font class="font10">)<br>
+    </font><font class="font10"> </font><font class="font21"># Feature-engine
+  allows you to specify variable groups easily</font><font class="font10"><br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> AddMissingIndicator(variables</font><font class="font12">=</font><font
+  class="font10">[</font><font class="font11">'BsmtQual'</font><font
+  class="font10">, </font><font class="font11">'FireplaceQu'</font><font
+  class="font10">, </font><font class="font11">'LotFrontage'</font><font
+  class="font10">])<br>
+    </font><font class="font10"> # Feature-engine can be used with the
+  Scikit-learn pipeline<br>
+    </font><font class="font10"> pipe </font><font class="font12">=</font><font
+  class="font10"> Pipeline([<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'missing_ind'</font><font class="font10">,
+  AddMissingIndicator()),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'imputer_mode'</font><font class="font10">,
+  CategoricalImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">'frequent'</font><font class="font10">, variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'FireplaceQu'</font><font
+  class="font10">, </font><font class="font11">'BsmtQual'</font><font
+  class="font10">])),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'imputer_median'</font><font class="font10">,
+  MeanMedianImputer(imputation_method</font><font class="font12">=</font><font
+  class="font11">‘median'</font><font class="font10">, variables</font><font
+  class="font12">=</font><font class="font10">[</font><font class="font11">'LotFrontage'</font><font
+  class="font10">, </font><font class="font11">'MasVnrArea'</font><font
+  class="font10">, </font><font class="font11">'GarageYrBlt'</font><font
+  class="font10">])),<br>
+    </font><font class="font10">])<br>
+    </font></span></a></td>
+  <td class=xl78 width=291 style='border-top:none;border-left:none;width:218pt'><font
+  class="font0">- </font><font class="font23">feature-engine</font><font
+  class="font0"> sẽ tự mặc định tạo cột với tên &lt;feature name&gt;_na<span
+  style='mso-spacerun:yes'> </span></font></td>
+ </tr>
+ <tr height=267 style='mso-height-source:userset;height:200.5pt'>
+  <td height=267 class=xl76 width=168 style='height:200.5pt;border-top:none;
+  width:126pt'>Gán mẫu ngẫu nhiên (Random sample imputation)</td>
+  <td class=xl80 width=457 style='border-top:none;border-left:none;width:343pt'><font
+  class="font10">random_sample </font><font class="font12">=</font><font
+  class="font10"> data_train[</font><font class="font11">‘age'</font><font
+  class="font10">]</font><font class="font12">.</font><font class="font10">dropna()</font><font
+  class="font12">.</font><font class="font10">sample(<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>   
+  </span>data_test[</font><font class="font11">‘age'</font><font class="font10">]</font><font
+  class="font12">.</font><font class="font10">isnull()</font><font
+  class="font12">.</font><font class="font10">sum(), random_state</font><font
+  class="font12">=0</font><font class="font10">) </font><font class="font21">#
+  Note: luôn lấy data trong tệp data train, số lượng thì tuỳ thuộc vào số lượng
+  N/A trong tập tương ứng<br>
+    </font><font class="font10"> random_sample</font><font class="font12">.</font><font
+  class="font10">index </font><font class="font12">=</font><font class="font10">
+  data_test[data_test[</font><font class="font11">'age'</font><font
+  class="font10">]</font><font class="font12">.</font><font class="font10">isnull()]</font><font
+  class="font12">.</font><font class="font10">index </font><font class="font21">#
+  pandas cần có cùng chỉ số để hợp nhất tập dữ liệu </font><font class="font10"> data_test</font><font
+  class="font12">.</font><font class="font10">loc[data_test[</font><font
+  class="font11">'age'</font><font class="font10">]</font><font class="font12">.</font><font
+  class="font10">isnull(), </font><font class="font11">'Age_imputed'</font><font
+  class="font10">] </font><font class="font12">=</font><font class="font10">
+  random_sample </font><font class="font21"># thay thế NA trong biến mới
+  tạo<br>
+    </font><font class="font10"><br>
+    </font><font class="font10"><br>
+    </font><font class="font10"><br>
+    </font></td>
+  <td class=xl81 width=564 style='border-top:none;border-left:none;width:423pt'>N/A</td>
+  <td class=xl81 width=612 style='border-top:none;border-left:none;width:459pt'><font
+  class="font21"># Feature-Engine Random Sampler captures all the variables by
+  default<br>
+    </font><font class="font10">imputer </font><font class="font12">=</font><font
+  class="font10"> RandomSampleImputer(random_state </font><font class="font12">=</font><font
+  class="font10"> </font><font class="font12">29</font><font class="font10">)<br>
+    </font></td>
+  <td class=xl82 width=291 style='border-top:none;border-left:none;width:218pt'>&nbsp;</td>
+ </tr>
+ <tr height=1483 style='mso-height-source:userset;height:409.6pt'>
+  <td height=1483 class=xl76 width=168 style='height:409.6pt;border-top:none;
+  width:126pt'>Automatic selection of best imputation technique with Sklearn</td>
+  <td colspan=2 class=xl77 width=1021 style='border-left:none;width:766pt'><font
+  class="font13">import</font><font class="font10"> </font><font class="font18">pandas</font><font
+  class="font10"> </font><font class="font13">as</font><font class="font10"> </font><font
+  class="font18">pd</font><font class="font10"><br>
+    </font><font class="font13">import</font><font class="font10"> </font><font
+  class="font18">numpy</font><font class="font10"> </font><font class="font13">as</font><font
+  class="font10"> </font><font class="font18">np</font><font class="font10"><br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># import classes for imputation</font><font
+  class="font10"><br>
+    </font><font class="font13">from</font><font class="font10"> </font><font
+  class="font18">sklearn.compose</font><font class="font10"> </font><font
+  class="font13">import</font><font class="font10"> ColumnTransformer<br>
+    </font><font class="font13">from</font><font class="font10"> </font><font
+  class="font18">sklearn.pipeline</font><font class="font10"> </font><font
+  class="font13">import</font><font class="font10"> Pipeline<br>
+    </font><font class="font13">from</font><font class="font10"> </font><font
+  class="font18">sklearn.impute</font><font class="font10"> </font><font
+  class="font13">import</font><font class="font10"> SimpleImputer<br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># import extra classes for modelling</font><font
+  class="font10"><br>
+    </font><font class="font13">from</font><font class="font10"> </font><font
+  class="font18">sklearn.preprocessing</font><font class="font10"> </font><font
+  class="font13">import</font><font class="font10"> StandardScaler,
+  OneHotEncoder<br>
+    </font><font class="font13">from</font><font class="font10"> </font><font
+  class="font18">sklearn.linear_model</font><font class="font10"> </font><font
+  class="font13">import</font><font class="font10"> Lasso<br>
+    </font><font class="font13">from</font><font class="font10"> </font><font
+  class="font18">sklearn.model_selection</font><font class="font10"> </font><font
+  class="font13">import</font><font class="font10"> train_test_split,
+  GridSearchCV<br>
+    </font><font class="font10"><br>
+    </font><font class="font10">np</font><font class="font12">.</font><font
+  class="font10">random</font><font class="font12">.</font><font class="font10">seed(</font><font
+  class="font12">0</font><font class="font10">)<br>
+    </font><font class="font10"> </font><font class="font21"># load dataset
+  with all the variables</font><font class="font10"><br>
+    </font><font class="font10">data </font><font class="font12">=</font><font
+  class="font10"> pd</font><font class="font12">.</font><font class="font10">read_csv(</font><font
+  class="font11">'../../lab6-13_dataset/house-price/houseprice.csv'</font><font
+  class="font10">,)<br>
+    </font><font class="font10"> </font><font class="font21"># find categorical
+  variables</font><font class="font10"><br>
+    </font><font class="font16"># those of type 'Object' in the dataset</font><font
+  class="font10"><br>
+    </font><font class="font10">features_categorical </font><font class="font12">=</font><font
+  class="font10"> [c </font><font class="font13">for</font><font class="font10">
+  c </font><font class="font14">in</font><font class="font10"> data</font><font
+  class="font12">.</font><font class="font10">columns </font><font
+  class="font13">if</font><font class="font10"> data[c]</font><font
+  class="font12">.</font><font class="font10">dtypes</font><font class="font12">==</font><font
+  class="font11">'O'</font><font class="font10">]<br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># find numerical variables</font><font
+  class="font10"><br>
+    </font><font class="font16"># those different from object and also
+  excluding the target SalePrice</font><font class="font10"><br>
+    </font><font class="font10">features_numerical </font><font class="font12">=</font><font
+  class="font10"> [c </font><font class="font13">for</font><font class="font10">
+  c </font><font class="font14">in</font><font class="font10"> data</font><font
+  class="font12">.</font><font class="font10">columns </font><font
+  class="font13">if</font><font class="font10"> data[c]</font><font
+  class="font12">.</font><font class="font10">dtypes</font><font class="font12">!=</font><font
+  class="font11">'O'</font><font class="font10"> </font><font class="font14">and</font><font
+  class="font10"> c </font><font class="font12">!=</font><font class="font11">'SalePrice'</font><font
+  class="font10">]<br>
+    </font><font class="font10"> </font><font class="font21"># separate intro
+  train and test set</font><font class="font10"><br>
+    </font><font class="font10">X_train, X_test, y_train, y_test </font><font
+  class="font12">=</font><font class="font10"> train_test_split(<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>data</font><font
+  class="font12">.</font><font class="font10">drop(</font><font class="font11">'SalePrice'</font><font
+  class="font10">, axis</font><font class="font12">=1</font><font class="font10">),<span
+  style='mso-spacerun:yes'>  </span></font><font class="font16"># just the
+  features</font><font class="font10"><br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>data[</font><font
+  class="font11">'SalePrice'</font><font class="font10">],<span
+  style='mso-spacerun:yes'>  </span></font><font class="font16"># the target</font><font
+  class="font10"><br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>   
+  </span>test_size</font><font class="font12">=0.3</font><font class="font10">,<span
+  style='mso-spacerun:yes'>  </span></font><font class="font16"># the
+  percentage of obs in the test set</font><font class="font10"><br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>   
+  </span>random_state</font><font class="font12">=0</font><font class="font10">)<span
+  style='mso-spacerun:yes'>  </span></font><font class="font16"># for
+  reproducibility</font><font class="font10"><br>
+    </font><font class="font10"><br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># We create the preprocessing pipelines for
+  both</font><font class="font10"><br>
+    </font><font class="font16"># numerical and categorical data</font><font
+  class="font10"><br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># adapted from Scikit-learn code available here
+  under BSD3 license:</font><font class="font10"><br>
+    </font><font class="font16">#
+  https://scikit-learn.org/stable/auto_examples/compose/plot_column_transformer_mixed_types.html<br>
+    </font><font class="font10">numeric_transformer </font><font class="font12">=</font><font
+  class="font10"> Pipeline(steps</font><font class="font12">=</font><font
+  class="font10">[<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'imputer'</font><font class="font10">, SimpleImputer(strategy</font><font
+  class="font12">=</font><font class="font11">'median'</font><font
+  class="font10">)),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'scaler'</font><font class="font10">,
+  StandardScaler())])<br>
+    </font><font class="font10"><br>
+    </font><font class="font10">categorical_transformer </font><font
+  class="font12">=</font><font class="font10"> Pipeline(steps</font><font
+  class="font12">=</font><font class="font10">[<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'imputer'</font><font class="font10">, SimpleImputer(strategy</font><font
+  class="font12">=</font><font class="font11">'constant'</font><font
+  class="font10">, fill_value</font><font class="font12">=</font><font
+  class="font11">'missing'</font><font class="font10">)),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span>(</font><font
+  class="font11">'onehot'</font><font class="font10">,
+  OneHotEncoder(handle_unknown</font><font class="font12">=</font><font
+  class="font11">'ignore'</font><font class="font10">))])<br>
+    </font><font class="font10"><br>
+    </font><font class="font10">preprocessor </font><font class="font12">=</font><font
+  class="font10"> ColumnTransformer(<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>   
+  </span>transformers</font><font class="font12">=</font><font class="font10">[<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>        </span>(</font><font
+  class="font11">'numerical'</font><font class="font10">, numeric_transformer,
+  features_numerical),<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>        </span>(</font><font
+  class="font11">'categorical'</font><font class="font10">,
+  categorical_transformer, features_categorical)])<br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># Note that to initialise the pipeline I pass
+  any argument to the transformers.</font><font class="font10"><br>
+    </font><font class="font16"># Those will be changed during the gridsearch
+  below.</font><font class="font10"><br>
+    </font><font class="font10">  </font><font class="font16"># Append
+  classifier to preprocessing pipeline.</font><font class="font10"><br>
+    </font><font class="font16"># Now we have a full prediction pipeline.<br>
+    </font><font class="font10">clf </font><font class="font12">=</font><font
+  class="font10"> Pipeline(steps</font><font class="font12">=</font><font
+  class="font10">[(</font><font class="font11">'preprocessor'</font><font
+  class="font10">, preprocessor),<br>
+    </font><font class="font10"><span
+  style='mso-spacerun:yes'>                      </span>(</font><font
+  class="font11">'regressor'</font><font class="font10">, Lasso(max_iter</font><font
+  class="font12">=2000</font><font class="font10">))])<br>
+    </font><font class="font16"><br>
+    </font><font class="font16"> # now we create the grid with all the
+  parameters that we would like to test<br>
+    </font><font class="font10">param_grid </font><font class="font12">=</font><font
+  class="font10"> {<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font11">'preprocessor__numerical__imputer__strategy'</font><font
+  class="font10">: [</font><font class="font11">'mean'</font><font
+  class="font10">, </font><font class="font11">'median'</font><font
+  class="font10">],<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font11">'preprocessor__categorical__imputer__strategy'</font><font
+  class="font10">: [</font><font class="font11">'most_frequent'</font><font
+  class="font10">, </font><font class="font11">'constant'</font><font
+  class="font10">],<br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>    </span></font><font
+  class="font11">'regressor__alpha'</font><font class="font10">: [</font><font
+  class="font12">10</font><font class="font10">, </font><font class="font12">100</font><font
+  class="font10">, </font><font class="font12">200</font><font class="font10">],<br>
+    </font><font class="font10">}<br>
+    </font><font class="font10"><br>
+    </font><font class="font10">grid_search </font><font class="font12">=</font><font
+  class="font10"> GridSearchCV(clf, param_grid, cv</font><font class="font12">=5</font><font
+  class="font10">, n_jobs</font><font class="font12">=-1</font><font
+  class="font10">, scoring</font><font class="font12">=</font><font
+  class="font11">'r2'</font><font class="font10">)<br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># cv=3 is the cross-validation</font><font
+  class="font10"><br>
+    </font><font class="font16"># no_jobs =-1 indicates to use all available
+  cpus</font><font class="font10"><br>
+    </font><font class="font16"># scoring='r2' indicates to evaluate using the
+  r squared</font><font class="font10"><br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># for more details in the grid parameters
+  visit:</font><font class="font10"><br>
+    </font><font class="font16">#https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html   #
+  and now we train over all the possible combinations of the parameters above</font><font
+  class="font10"><br>
+    </font><font class="font10">grid_search</font><font class="font12">.</font><font
+  class="font10">fit(X_train, y_train)<br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># and we print the best score over the train
+  set</font><font class="font10"><br>
+    </font><font class="font27">print</font><font class="font10">((</font><font
+  class="font11">&quot;best linear regression from grid search: </font><font
+  class="font28">%.3f</font><font class="font11">&quot;</font><font
+  class="font10"><br>
+    </font><font class="font10"><span style='mso-spacerun:yes'>       </span></font><font
+  class="font12">%</font><font class="font10"> grid_search</font><font
+  class="font12">.</font><font class="font10">score(X_train, y_train)))<br>
+    </font><font class="font16"> # we can print the best estimator parameters
+  like this</font><font class="font10"><br>
+    </font><font class="font10">grid_search</font><font class="font12">.</font><font
+  class="font10">best_estimator_<br>
+    </font><font class="font10"><br>
+    </font><font class="font16"># and find the best fit parameters like this</font><font
+  class="font10"><br>
+    </font><font class="font10">grid_search</font><font class="font12">.</font><font
+  class="font10">best_params_<br>
+    </font></td>
+  <td class=xl83 width=612 style='border-top:none;border-left:none;width:459pt'>&nbsp;</td>
+  <td class=xl83 width=291 style='border-top:none;border-left:none;width:218pt'>&nbsp;</td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=168 style='width:126pt'></td>
+  <td width=457 style='width:343pt'></td>
+  <td width=564 style='width:423pt'></td>
+  <td width=612 style='width:459pt'></td>
+  <td width=291 style='width:218pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>
