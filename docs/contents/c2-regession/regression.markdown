@@ -75,3 +75,4 @@ permalink: /contents/c2-regression/
     - [Subgradient Descent](Subgradient-Descent.html){:target="_blank"}
     - [Missing Value Imputation Methods - theory](MissingValueImputationMethods.htm){:target="_blank"}
     - [Missing Value Imputation Methods - implementation (sklearn/feature-engine)](MissingValueImputationMethods-2.htm){:target="_blank"}
+    - [Categorical Encoding](categorical-encoding.htm){:target="_blank"}
