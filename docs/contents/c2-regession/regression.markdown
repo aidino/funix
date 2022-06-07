@@ -39,6 +39,17 @@ permalink: /contents/c2-regression/
     - [Lab 8.8: Chỉ số khuyết dữ liệu](lab-8-8-chi-so-khuyet-du-lieu.html){:target="_blank"}
     - [Lab 8.9: Gán theo KNN](lab-8-9-gan-theo-knn.html){:target="_blank"}
     - [Lab 8.10: Gán theo MICE](lab-8-10-MICE.html){:target="_blank"}
+  - Lab 9: Mã hóa biến hạng mục cơ bản
+    - [Lab 9.1: Mã hóa One-hot](lab-9-1-one-hot-encoding.html){:target="_blank"}
+    - [Lab 9.2: Mã hóa one-hot (OHE) của các hạng mục thường xuất hiện](lab-9-2-one-hot-encoding-of-top-categories.html){:target="_blank"}
+    - [Lab 9.3: Mã hóa số nguyên](lab-9-3-ordinal-encoding.html){:target="_blank"}
+    - [Lab 9.4: Mã hóa đếm/tần số](lab-9-4-count-or-frequency-encoding.html){:target="_blank"}
+    - [Lab 9.5: Mã hóa hướng dẫn có mục tiêu](lab-9-5-target-guided-ordinal-encoding.html){:target="_blank"}
+  - Lab 10: Co dãn đặc trưng
+    - [Lab 10.1: Cắt tỉa Outlier](lab-10-1-outlier-trimming.html){:target="_blank"}
+    - [Lab 10.2: Xử lý outlier](lab-10-2-handle-outlier.html){:target="_blank"}
+    - [Lab 10.3: Co giãn đặc trưng](lab-10-3-feature-scaling.html){:target="_blank"}
+    - [Lab 10.4: Xử lý biến thời gian](lab-10-4-enginering-date-time.html){:target="_blank"}
 
 <br>
 
@@ -62,6 +73,12 @@ permalink: /contents/c2-regression/
       - [04.11 Missing Category Imputation Feature Engine](exercise-4-feature-engineering/feature-engine/04.11Missing-Category-Imputation-Feature-Engine.html){:target="_blank"}
       - [04.12 Random Sample Imputation Feature Engine](exercise-4-feature-engineering/feature-engine/04.12Random-Sample-Imputation-Feature-Engine.html){:target="_blank"}
       - [04.13 Missing Indicator Feature Engine](exercise-4-feature-engineering/feature-engine/04.13Missing-Indicator-Feature-Engine.html){:target="_blank"}
+  - Exercise 5: Mã hóa biến hạng mục nâng cao
+    - [5.1 Mean Encoding](exercise-5-categorical-variable-encoding/5-1-Mean-Encoding.html){:target="_blank"}
+    - [5.2 Probability Ratio Encoding](exercise-5-categorical-variable-encoding/5-2-Probability-Ratio-Encoding.html){:target="_blank"}
+    - [5.3 Weight of Evidence](exercise-5-categorical-variable-encoding/5-3-Weight-of-Evidence.html){:target="_blank"}
+    - [5.4 Comparison categorical encoding](exercise-5-categorical-variable-encoding/5-4-Comparison-categorical-encoding-techniques.html){:target="_blank"}
+    - [5.5 Enginering rare categorical](exercise-5-categorical-variable-encoding/5-5-Engineering-Rare-Categories.html){:target="_blank"}
 
 <br>
 
