@@ -1,0 +1,622 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link rel=File-List href="Feature-scaling.fld/filelist.xml">
+<style id="Feature-scaling_8813_Styles">
+<!--table
+	{mso-displayed-decimal-separator:"\,";
+	mso-displayed-thousand-separator:"\.";}
+@page
+	{mso-footer-data:"&C&\0022Helvetica Neue\,Regular\0022&12&K000000&P";
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.25in;
+	mso-footer-margin:.25in;}
+.font0
+	{color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font5
+	{color:black;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font6
+	{color:green;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font7
+	{color:#333333;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font8
+	{color:#3D7B7B;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font9
+	{color:#666666;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font10
+	{color:#BA2121;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font11
+	{color:#B41700;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font12
+	{color:#333333;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+tr
+	{mso-height-source:auto;}
+col
+	{mso-width-source:auto;}
+br
+	{mso-data-placement:same-cell;}
+.style0
+	{text-align:general;
+	vertical-align:top;
+	white-space:normal;
+	mso-rotate:0;
+	color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-style-name:Normal;
+	mso-style-id:0;}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Helvetica Neue";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:top;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:normal;
+	mso-rotate:0;}
+.xl65
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #FEFFFE;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #C8C8C8;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl66
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #FEFFFE;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #FEFFFE;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl67
+	{mso-style-parent:style0;
+	color:#FEFFFE;
+	font-weight:700;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #89847F;
+	border-left:.5pt solid #FEFFFE;
+	background:#1DB100;
+	mso-pattern:black none;}
+.xl68
+	{mso-style-parent:style0;
+	font-family:"Helvetica Neue Medium";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #89847F;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl69
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;}
+.xl70
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #89847F;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl71
+	{mso-style-parent:style0;
+	font-family:"Helvetica Neue Medium";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #89847F;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #C8C8C8;}
+.xl72
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl73
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl74
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border-top:.5pt solid #C8C8C8;
+	border-right:.5pt solid #C8C8C8;
+	border-bottom:.5pt solid #C8C8C8;
+	border-left:.5pt solid #89847F;}
+.xl75
+	{mso-style-parent:style0;
+	border:.5pt solid #C8C8C8;}
+.xl76
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;}
+.xl77
+	{mso-style-parent:style0;
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+.xl78
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	text-align:center;
+	vertical-align:middle;
+	white-space:nowrap;}
+.xl79
+	{mso-style-parent:style0;
+	font-family:Courier;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	border:.5pt solid #C8C8C8;
+	background:#F7F7F6;
+	mso-pattern:black none;}
+-->
+</style>
+</head>
+
+<body link=blue vlink=fuchsia>
+<!--[if !excel]>&nbsp;&nbsp;<![endif]-->
+<!--The following information was generated by Microsoft Excel's Publish as Web
+Page wizard.-->
+<!--If the same item is republished from Excel, all information between the DIV
+tags will be replaced.-->
+<!----------------------------->
+<!--START OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD -->
+<!----------------------------->
+
+<div id="Feature-scaling_8813" align=center x:publishsource="Excel">
+
+<table border=0 cellpadding=0 cellspacing=0 width=1480 style='border-collapse:
+ collapse;table-layout:fixed;width:1110pt'>
+ <col width=180 style='mso-width-source:userset;mso-width-alt:5760;width:135pt'>
+ <col width=480 style='mso-width-source:userset;mso-width-alt:15360;width:360pt'>
+ <col width=219 style='mso-width-source:userset;mso-width-alt:6997;width:164pt'>
+ <col width=601 style='mso-width-source:userset;mso-width-alt:19242;width:451pt'>
+ <col width=131 style='mso-width-source:userset;mso-width-alt:4181;width:98pt'>
+ <tr height=21 style='height:16.0pt'>
+  <td colspan=4 height=21 class=xl78 width=1480 style='height:16.0pt;
+  width:1110pt'>Feature scaling</td>
+ </tr>
+ <tr height=19 style='height:14.0pt'>
+  <td height=19 class=xl65 width=180 style='height:14.0pt;width:135pt'>Methods</td>
+  <td class=xl66 width=480 style='border-left:none;width:360pt'>Description</td>
+  <td class=xl66 width=219 style='border-left:none;width:164pt'>Observations</td>
+  <td class=xl67 width=601 style='border-left:none;width:451pt'>Scikit-learn</td>
+ </tr>
+ <tr height=224 style='height:168.0pt'>
+  <td height=224 class=xl68 width=180 style='height:168.0pt;border-top:none;
+  width:135pt'>Chuẩn tắc hóa (Standardisation)</td>
+  <td class=xl69 width=480 style='border-top:none;border-left:none;width:360pt'>-
+  Chuẩn tắc hóa gồm căn giữa biến ở 0 và chuẩn tắc hóa phương sai thành 1. Quy
+  trình là trừ đi mean của mỗi quan sát rồi chia cho độ lệch chuẩn:<br>
+    <font class="font5">z = </font><font class="font0">(</font><font
+  class="font5">x - x_mean</font><font class="font0">)</font><font class="font5">/std</font><font
+  class="font0"><br>
+    <br>
+    <br>
+    - căn giữa mean ở 0<br>
+    - co giãn phương sai ở 1<br>
+    - duy trì hình dạng của phân phối ban đầu<br>
+    - giá trị min/max của các biến khác nhau thay đổi<br>
+    - duy trì outlier<br>
+    <br>
+    </font></td>
+  <td class=xl70 width=219 style='border-top:none;border-left:none;width:164pt'>Chuẩn
+  tắc hóa tốt với các thuật toán yêu cầu đặc trung tập trung ở 0.</td>
+  <td class=xl70 width=601 style='border-top:none;border-left:none;width:451pt'><font
+  class="font8"># thiết lập StandardScaler</font><font class="font7"><br>
+    </font><font class="font7">scaler </font><font class="font9">=</font><font
+  class="font7"> StandardScaler()<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># khớp scaler với tập huấn luyện, nó sẽ học các
+  tham số</font><font class="font7"><br>
+    </font><font class="font7">scaler</font><font class="font9">.</font><font
+  class="font7">fit(X_train)<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># biến đổi tập huấn luyện và tập kiểm tra</font><font
+  class="font7"><br>
+    </font><font class="font7">X_train_scaled </font><font class="font9">=</font><font
+  class="font7"> scaler</font><font class="font9">.</font><font class="font7">transform(X_train)<br>
+    </font><font class="font7">X_test_scaled </font><font class="font9">=</font><font
+  class="font7"> scaler</font><font class="font9">.</font><font class="font7">transform(X_test)<br>
+    </font></td>
+ </tr>
+ <tr height=355 style='height:266.0pt'>
+  <td height=355 class=xl71 width=180 style='height:266.0pt;border-top:none;
+  width:135pt'>Chuẩn hóa trung bình (Mean normalisation)</td>
+  <td class=xl72 width=480 style='border-top:none;border-left:none;width:360pt'>Chuẩn
+  hóa trung bình gồm việc căn giữa các biến ở 0 và điều chỉnh lại phạm vi giá
+  trị. Quy trình gồm việc trừ đi giá trị trung bình của mỗi quan sát rồi chia
+  cho hiệu giữa max và min:<br>
+    <font class="font5">x_scaled = (x - x_mean)/( x_max - x_min)</font><font
+  class="font0"><br>
+    <br>
+    <br>
+    <br>
+    - Tập trung mean ở 0<br>
+    - Phương sai sẽ khác<br>
+    - Có thể thay đổi hình dạng của phân phối ban đầu<br>
+    - min và max nằm trong khoảng từ -1 đến 1<br>
+    - duy trì các outlier<br>
+    <br>
+    </font></td>
+  <td class=xl73 width=219 style='border-top:none;border-left:none;width:164pt'>Chuẩn
+  hóa trung bình khá tốt với các thuật toán yêu cầu đặc trưng căn giữa ở 0.</td>
+  <td class=xl73 width=601 style='border-top:none;border-left:none;width:451pt'><font
+  class="font8"># thiết lập StandardScaler để nó loại bỏ mean</font><font
+  class="font7"><br>
+    </font><font class="font8"># nhưng không chia cho độ lêch chuẩn</font><font
+  class="font7"><br>
+    </font><font class="font7">scaler_mean </font><font class="font9">=</font><font
+  class="font7"> StandardScaler(with_mean</font><font class="font9">=</font><font
+  class="font6">True</font><font class="font7">, with_std</font><font
+  class="font9">=</font><font class="font6">False</font><font class="font7">)<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># thiết lập robustscaler để nó KHÔNG loại median</font><font
+  class="font7"><br>
+    </font><font class="font8"># nhưng chuẩn hóa bằng max()-min(), quan trọng
+  với</font><font class="font7"><br>
+    </font><font class="font8"># phạm vi quantile từ 0-100, thể hiện min và max</font><font
+  class="font7"><br>
+    </font><font class="font7">scaler_minmax </font><font class="font9">=</font><font
+  class="font7"> RobustScaler(with_centering</font><font class="font9">=</font><font
+  class="font6">False</font><font class="font7">,<br>
+    </font><font class="font7"><span
+  style='mso-spacerun:yes'>                             </span>with_scaling</font><font
+  class="font9">=</font><font class="font6">True</font><font class="font7">,<br>
+    </font><font class="font7"><span
+  style='mso-spacerun:yes'>                             </span>quantile_range</font><font
+  class="font9">=</font><font class="font7">(</font><font class="font9">0</font><font
+  class="font7">, </font><font class="font9">100</font><font class="font7">))<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># khớp scaler với tập huấn luyện để nó học các
+  tham số</font><font class="font7"><br>
+    </font><font class="font7">scaler_mean</font><font class="font9">.</font><font
+  class="font7">fit(X_train)<br>
+    </font><font class="font7">scaler_minmax</font><font class="font9">.</font><font
+  class="font7">fit(X_train)<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># biến đổi tập huấn luyện và tập kiểm tra</font><font
+  class="font7"><br>
+    </font><font class="font7">X_train_scaled </font><font class="font9">=</font><font
+  class="font7"> scaler_minmax</font><font class="font9">.</font><font
+  class="font7">transform(scaler_mean</font><font class="font9">.</font><font
+  class="font7">transform(X_train))<br>
+    </font><font class="font7">X_test_scaled </font><font class="font9">=</font><font
+  class="font7"> scaler_minmax</font><font class="font9">.</font><font
+  class="font7">transform(scaler_mean</font><font class="font9">.</font><font
+  class="font7">transform(X_test))<br>
+    </font></td>
+ </tr>
+ <tr height=187 style='height:140.0pt'>
+  <td height=187 class=xl71 width=180 style='height:140.0pt;border-top:none;
+  width:135pt'>Co giãn về min/max - MinMaxScaling</td>
+  <td class=xl74 width=480 style='border-top:none;border-left:none;width:360pt'>Co
+  giãn về min-max các giá trị từ 0 đến 1. Nó trừ min từ tất cả các quan sát rồi
+  chia cho phạm vi giá trị:<br>
+    <font class="font5">X_scaled = (X - X.min / (X.max - X.min)<br>
+    </font><font class="font0"><br>
+    <br>
+    - không tập trung mean ở 0<br>
+    - phương sai thay đổi trên các biến<br>
+    - có thể không duy trì hình dạng của phân phối ban đầu<br>
+    - các giá trị min và max là 0 và 1<br>
+    - nhạy với outlier<br>
+    </font></td>
+  <td class=xl75 width=219 style='border-top:none;border-left:none;width:164pt'>&nbsp;</td>
+  <td class=xl76 width=601 style='border-top:none;border-left:none;width:451pt'><font
+  class="font8"># thiết lập MinMaxScaler</font><font class="font7"><br>
+    </font><font class="font7">scaler </font><font class="font9">=</font><font
+  class="font7"> MinMaxScaler()<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># khớp scaler với tập huấn luyện, nó sẽ học các
+  tham số</font><font class="font7"><br>
+    </font><font class="font7">scaler</font><font class="font9">.</font><font
+  class="font7">fit(X_train)<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># biến đổi tập huấn luyện và tập kiểm tra</font><font
+  class="font7"><br>
+    </font><font class="font7">X_train_scaled </font><font class="font9">=</font><font
+  class="font7"> scaler</font><font class="font9">.</font><font class="font7">transform(X_train)<br>
+    </font><font class="font7">X_test_scaled </font><font class="font9">=</font><font
+  class="font7"> scaler</font><font class="font9">.</font><font class="font7">transform(X_test)<br>
+    </font></td>
+ </tr>
+ <tr height=477 style='height:358.0pt'>
+  <td height=477 class=xl71 width=180 style='height:358.0pt;border-top:none;
+  width:135pt'>Co giãn về giá trị lớn nhất tuyệt đối - MaxAbsScaling</td>
+  <td class=xl72 width=480 style='border-top:none;border-left:none;width:360pt'>MaxAbsScaling
+  co giãn dữ liệu thành giá trị tuyệt đối lớn nhất.<br>
+    <font class="font5">X_scaled = X / abs(X.max)<br>
+    </font><font class="font0"><br>
+    <br>
+    - Không căn giữa ở 0 (nhưng có thể với một phương pháp khác)<br>
+    - phương sai thay đổi trên các biến<br>
+    - không giữ hình dạng của phân phối ban đầu<br>
+    - nhạy với outlier<br>
+    </font></td>
+  <td class=xl77 width=219 style='border-top:none;border-left:none;width:164pt'>&nbsp;</td>
+  <td class=xl73 width=601 style='border-top:none;border-left:none;width:451pt'><font
+  class="font8"># thiết lập scaler</font><font class="font7"><br>
+    scaler </font><font class="font9">=</font><font class="font7">
+  MaxAbsScaler()<br>
+    <br>
+    </font><font class="font8"># khớp scaler với tập huấn luyện, nó sẽ học các
+  tham số</font><font class="font7"><br>
+    scaler</font><font class="font9">.</font><font class="font7">fit(X_train)<br>
+    <br>
+    </font><font class="font8"># biến đổi tập huấn luyện và tập kiểm tra</font><font
+  class="font7"><br>
+    X_train_scaled </font><font class="font9">=</font><font class="font7">
+  scaler</font><font class="font9">.</font><font class="font7">transform(X_train)<br>
+    X_test_scaled </font><font class="font9">=</font><font class="font7">
+  scaler</font><font class="font9">.</font><font class="font7">transform(X_test)<br>
+    </font><font class="font0"><br>
+    </font><font class="font11">##### &nbsp;Căn giữa + MaxAbsScaling ####</font><font
+  class="font8"><br>
+    <br>
+    <br>
+    # thiết lập StandardScaler để nó loại bỏ mean</font><font class="font12"><br>
+    </font><font class="font8"># nhưng không chia cho độ lệch chuẩn</font><font
+  class="font7"><br>
+    scaler_mean </font><font class="font9">=</font><font class="font7">
+  StandardScaler(with_mean</font><font class="font9">=</font><font class="font6">True</font><font
+  class="font7">, with_std</font><font class="font9">=</font><font class="font6">False</font><font
+  class="font7">)<br>
+    <br>
+    </font><font class="font8"># thiết lập MaxAbsScaler chuẩn hóa</font><font
+  class="font7"><br>
+    scaler_maxabs </font><font class="font9">=</font><font class="font7">
+  MaxAbsScaler()<br>
+    <br>
+    </font><font class="font8"># khớp scaler với tập huấn luyện để nó học các
+  tham số</font><font class="font7"><br>
+    scaler_mean</font><font class="font9">.</font><font class="font7">fit(X_train)<br>
+    scaler_maxabs</font><font class="font9">.</font><font class="font7">fit(X_train)<br>
+    <br>
+    </font><font class="font8"># biến đổi tập huấn luyện và tập kiểm tra</font><font
+  class="font7"><br>
+    X_train_scaled </font><font class="font9">=</font><font class="font7">
+  scaler_maxabs</font><font class="font9">.</font><font class="font7">transform(scaler_mean</font><font
+  class="font9">.</font><font class="font7">transform(X_train))<br>
+    X_test_scaled </font><font class="font9">=</font><font class="font7">
+  scaler_maxabs</font><font class="font9">.</font><font class="font7">transform(scaler_mean</font><font
+  class="font9">.</font><font class="font7">transform(X_test))<br>
+    </font></td>
+ </tr>
+ <tr height=205 style='height:154.0pt'>
+  <td height=205 class=xl71 width=180 style='height:154.0pt;border-top:none;
+  width:135pt'>Co giãn về trung vị và phân vị - RobustScaling</td>
+  <td class=xl74 width=480 style='border-top:none;border-left:none;width:360pt'>Trong
+  quy trình này, median bị loại khỏi các quan sát rồi bị co lại lệ thành IQR.
+  IQR là phạm vi giữa quartile thứ nhất (quantile thứ 25) và quartile thứ ba
+  (quantile thứ 75).<br>
+    <font class="font5">X_scaled = X - X_median / ( X.quantile(0.75) -
+  X.quantile(0.25) )<br>
+    </font><font class="font0"><br>
+    <br>
+    - căn giữa ở 0<br>
+    - phương sai thay đổi trên các biến<br>
+    - không giữ hình dạng của phân phối ban đầu.<br>
+    - các giá trị min, max thay đổi<br>
+    - outlier mạnh mẽ<br>
+    </font></td>
+  <td class=xl76 width=219 style='border-top:none;border-left:none;width:164pt'>Phương
+  pháp RobustScaling này tạo ra các ước tính mạnh mẽ hơn cho trung tâm và phạm
+  vi của biến, và được khuyến nghị dùng nếu dữ liệu hiển thị outlier.</td>
+  <td class=xl76 width=601 style='border-top:none;border-left:none;width:451pt'><font
+  class="font8">## Yêu cầu 7</font><font class="font7"><br>
+    </font><font class="font8"># thiết lập RobustScaler</font><font
+  class="font7"><br>
+    </font><font class="font7">scaler </font><font class="font9">=</font><font
+  class="font7"> RobustScaler()<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># khớp scaler với tập huấn luyện, nó sẽ học các
+  tham số</font><font class="font7"><br>
+    </font><font class="font7">scaler</font><font class="font9">.</font><font
+  class="font7">fit(X_train)<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># biến đổi tập huấn luyện và tập kiểm tra</font><font
+  class="font7"><br>
+    </font><font class="font7">X_train_scaled </font><font class="font9">=</font><font
+  class="font7"> scaler</font><font class="font9">.</font><font class="font7">transform(X_train)<br>
+    </font><font class="font7">X_test_scaled </font><font class="font9">=</font><font
+  class="font7"> scaler</font><font class="font9">.</font><font class="font7">transform(X_test)<br>
+    </font></td>
+ </tr>
+ <tr height=443 style='height:332.0pt'>
+  <td height=443 class=xl71 width=180 style='height:332.0pt;border-top:none;
+  width:135pt'>Chuẩn hóa độ dài vectơ đơn vị</td>
+  <td class=xl72 width=480 style='border-top:none;border-left:none;width:360pt'>Trong
+  quy trình này, chúng ta co giãn các thành phần của vectơ đặc trưng sao cho
+  vectơ hoàn chỉnh có độ dài là 1, hoặc nói cách khác, có chuẩn là
+  1.&nbsp;<br>
+    <br>
+    <font class="font5">Lưu ý</font><font class="font0">&nbsp;rằng quy trình
+  chuẩn hóa này sẽ chuẩn hóa vectơ&nbsp;</font><font class="font5">đặc trưng</font><font
+  class="font0">&nbsp;chứ không phải vectơ&nbsp;</font><font class="font5">quan
+  sát</font><font class="font0">. Vì vậy, chúng ta chia chuẩn của vectơ đặc
+  trưng cho từng quan sát trên các biến khác nhau mà không phải chia chuẩn của
+  vectơ&nbsp;</font><font class="font5">quan sát</font><font class="font0">&nbsp;cho
+  các quan sát có cùng đối tượng.<br>
+    <br>
+    <br>
+    <br>
+    Co giãn về vectơ đơn vị được tính bằng cách chia từng vectơ đặc trưng cho
+  khoảng cách Manhattan (chuẩn l1) hoặc khoảng cách Euclid của vectơ (chuẩn
+  l2):<br>
+    <br>
+    </font><font class="font5">X_scaled_l1 = X / l1(X) (norm1)<br>
+    X_scaled_l2 = X / l2(X) (norm2)<br>
+    </font></td>
+  <td class=xl73 width=219 style='border-top:none;border-left:none;width:164pt'><font
+  class="font0">Cũng&nbsp;</font><font class="font5">lưu ý</font><font
+  class="font0">&nbsp;rằng khi khoảng cách Euclid bình phương các giá trị của
+  các thành phần vectơ đặc trưng, outlier sẽ có trọng số lớn hơn. Chúng ta
+  thường ưu tiên sử dụng chuẩn hóa l1 với outlier.</font></td>
+  <td class=xl79 width=601 style='border-top:none;border-left:none;width:451pt'><font
+  class="font8">## Co giãn thành l1<br>
+    </font><font class="font7"><br>
+    </font><font class="font8"># thiết lập Normalizer</font><font class="font7"><br>
+    scaler </font><font class="font9">=</font><font class="font7">
+  Normalizer(norm</font><font class="font9">=</font><font class="font10">'l1'</font><font
+  class="font7">)<br>
+    <br>
+    </font><font class="font8"># khớp scaler, quy trình này sẽ KHÔNG THỰC HIỆN
+  BẤT CỨ ĐIỀU GÌ</font><font class="font7"><br>
+    scaler</font><font class="font9">.</font><font class="font7">fit(X_train)<br>
+    <br>
+    </font><font class="font8"># biến đổi tập huấn luyện và tập kiểm tra</font><font
+  class="font7"><br>
+    X_train_scaled </font><font class="font9">=</font><font class="font7">
+  scaler</font><font class="font9">.</font><font class="font7">transform(X_train)<br>
+    X_test_scaled </font><font class="font9">=</font><font class="font7">
+  scaler</font><font class="font9">.</font><font class="font7">transform(X_test)<br>
+    <br>
+    <br>
+    </font><font class="font8"><br>
+    ## Co giãn thành l2<br>
+    <br>
+    # thiết lập scaler</font><font class="font7"><br>
+    scaler </font><font class="font9">=</font><font class="font7">
+  Normalizer(norm</font><font class="font9">=</font><font class="font10">'l2'</font><font
+  class="font7">)<br>
+    <br>
+    </font><font class="font8"># khớp scaler, quy trình này sẽ KHÔNG THỰC HIỆN
+  BẤT CỨ ĐIỀU GÌ</font><font class="font7"><br>
+    scaler</font><font class="font9">.</font><font class="font7">fit(X_train)<br>
+    <br>
+    </font><font class="font8"># biến đổi tập huấn luyện và tập kiểm tra</font><font
+  class="font7"><br>
+    X_train_scaled </font><font class="font9">=</font><font class="font7">
+  scaler</font><font class="font9">.</font><font class="font7">transform(X_train)<br>
+    X_test_scaled </font><font class="font9">=</font><font class="font7">
+  scaler</font><font class="font9">.</font><font class="font7">transform(X_test)<br>
+    </font></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=180 style='width:135pt'></td>
+  <td width=480 style='width:360pt'></td>
+  <td width=219 style='width:164pt'></td>
+  <td width=601 style='width:451pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</div>
+
+
+<!----------------------------->
+<!--END OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD-->
+<!----------------------------->
+</body>
+
+</html>
