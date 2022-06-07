@@ -13136,7 +13136,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13159,7 +13159,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># load dữ liệu giá nhà ở Boston</span>
@@ -13188,7 +13188,53 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/ngohongthai/Documents/projects/tensorflow-env/env/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function load_boston is deprecated; `load_boston` is deprecated in 1.0 and will be removed in 1.2.
+
+    The Boston housing prices dataset has an ethical problem. You can refer to
+    the documentation of this function for further details.
+
+    The scikit-learn maintainers therefore strongly discourage the use of this
+    dataset unless the purpose of the code is to study and educate about
+    ethical issues in data science and machine learning.
+
+    In this special case, you can fetch the dataset from the original
+    source::
+
+        import pandas as pd
+        import numpy as np
+
+
+        data_url = &#34;http://lib.stat.cmu.edu/datasets/boston&#34;
+        raw_df = pd.read_csv(data_url, sep=&#34;\s+&#34;, skiprows=22, header=None)
+        data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
+        target = raw_df.values[1::2, 2]
+
+    Alternative datasets include the California housing dataset (i.e.
+    :func:`~sklearn.datasets.fetch_california_housing`) and the Ames housing
+    dataset. You can load the datasets as follows::
+
+        from sklearn.datasets import fetch_california_housing
+        housing = fetch_california_housing()
+
+    for the California housing dataset and::
+
+        from sklearn.datasets import fetch_openml
+        housing = fetch_openml(name=&#34;house_prices&#34;, as_frame=True)
+
+    for the Ames housing dataset.
+    
+  warnings.warn(msg, category=FutureWarning)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13260,7 +13306,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># hàm tạo biểu đồ tần suất, biểu đồ Q-Q và</span>
@@ -13299,7 +13345,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tìm các outlier trong RM</span>
@@ -13335,7 +13381,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># hiển thị các outlier trong LSTAT</span>
@@ -13371,7 +13417,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># các outlier trong CRIM</span>
@@ -13416,7 +13462,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yêu cầu 1</span>
@@ -13430,14 +13476,14 @@ $( document ).ready(function(){
     <span class="c1"># các ranh giới.</span>
 
     <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-    <span class="n">IQR</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">IQR</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
 
     <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-    <span class="n">lower_boundary</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="o">...</span> <span class="o">*</span> <span class="n">distance</span><span class="p">)</span>
-    <span class="n">upper_boundary</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">...</span> <span class="o">*</span> <span class="o">...</span><span class="p">)</span>
+    <span class="n">lower_boundary</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">IQR</span> <span class="o">*</span> <span class="n">distance</span><span class="p">)</span>
+    <span class="n">upper_boundary</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">IQR</span> <span class="o">*</span> <span class="n">distance</span><span class="p">)</span>
 
     <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-    <span class="k">return</span> <span class="n">upper_boundary</span><span class="p">,</span> <span class="o">...</span>
+    <span class="k">return</span> <span class="n">upper_boundary</span><span class="p">,</span> <span class="n">lower_boundary</span>
 </pre></div>
 
     </div>
@@ -13447,14 +13493,14 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yêu cầu 2</span>
 <span class="c1"># tìm các giới hạn cho RM</span>
 
 <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-<span class="n">RM_upper_limit</span><span class="p">,</span> <span class="n">RM_lower_limit</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="n">boston</span><span class="p">,</span> <span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">RM_upper_limit</span><span class="p">,</span> <span class="n">RM_lower_limit</span> <span class="o">=</span> <span class="n">find_skewed_boundaries</span><span class="p">(</span><span class="n">boston</span><span class="p">,</span> <span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
 <span class="n">RM_upper_limit</span><span class="p">,</span> <span class="n">RM_lower_limit</span>
 </pre></div>
 
@@ -13468,13 +13514,13 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(7.730499999999999, 4.778500000000001)</pre>
+<pre>(7.730500000000001, 4.778499999999999)</pre>
 </div>
 
 </div>
@@ -13485,14 +13531,14 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yêu cầu 3</span>
 <span class="c1"># các giới hạn cho LSTAT</span>
 
 <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-<span class="n">LSTAT_upper_limit</span><span class="p">,</span> <span class="n">LSTAT_lower_limit</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">LSTAT_upper_limit</span><span class="p">,</span> <span class="n">LSTAT_lower_limit</span> <span class="o">=</span> <span class="n">find_skewed_boundaries</span><span class="p">(</span><span class="n">boston</span><span class="p">,</span> <span class="s1">&#39;LSTAT&#39;</span> <span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
 <span class="n">LSTAT_upper_limit</span><span class="p">,</span> <span class="n">LSTAT_lower_limit</span>
 </pre></div>
 
@@ -13506,7 +13552,7 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -13523,14 +13569,14 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yêu cầu 4</span>
 <span class="c1"># các giới hạn cho CRIM</span>
 
 <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-<span class="n">CRIM_upper_limit</span><span class="p">,</span> <span class="n">CRIM_lower_limit</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">CRIM_upper_limit</span><span class="p">,</span> <span class="n">CRIM_lower_limit</span> <span class="o">=</span> <span class="n">find_skewed_boundaries</span><span class="p">(</span><span class="n">boston</span><span class="p">,</span> <span class="s1">&#39;CRIM&#39;</span> <span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
 <span class="n">CRIM_upper_limit</span><span class="p">,</span> <span class="n">CRIM_lower_limit</span>
 </pre></div>
 
@@ -13544,7 +13590,7 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13561,14 +13607,14 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yêu cầu 5: gắn cờ các outlier trong tập dữ liệu</span>
 
 <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-<span class="n">outliers_RM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">boston</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">...</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
-                       <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">...</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">...</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+<span class="n">outliers_RM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">boston</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">RM_upper_limit</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                       <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">boston</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">RM_lower_limit</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13578,14 +13624,14 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yêu cầu 6: gắn cờ các outlier trong tập dữ liệu</span>
 
 <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-<span class="n">outliers_LSTAT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
-                       <span class="o">...</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+<span class="n">outliers_LSTAT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">boston</span><span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">LSTAT_upper_limit</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                       <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">boston</span><span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">LSTAT_lower_limit</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13595,13 +13641,14 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yêu cầu 7: gắn cờ các outlier trong tập dữ liệu</span>
 
 <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-<span class="n">outliers_CRIM</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">outliers_CRIM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">boston</span><span class="p">[</span><span class="s1">&#39;CRIM&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">CRIM_upper_limit</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                       <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">boston</span><span class="p">[</span><span class="s1">&#39;CRIM&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">CRIM_lower_limit</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13611,16 +13658,16 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yêu cầu 8: cắt tỉa tập dữ liệu</span>
 
 <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-<span class="n">boston_trimmed</span> <span class="o">=</span> <span class="n">boston</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">outliers_RM</span> <span class="o">+</span> <span class="n">outliers_LSTAT</span> <span class="o">+</span> <span class="o">...</span><span class="p">),</span> <span class="p">]</span>
+<span class="n">boston_trimmed</span> <span class="o">=</span> <span class="n">boston</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">outliers_RM</span> <span class="o">+</span> <span class="n">outliers_LSTAT</span> <span class="o">+</span> <span class="n">outliers_CRIM</span><span class="p">),</span> <span class="p">]</span>
 
 <span class="c1">## VIẾT CODE Ở ĐÂY:</span>
-<span class="n">boston</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">boston_trimmed</span><span class="o">....</span>
+<span class="n">boston</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">boston_trimmed</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
     </div>
@@ -13633,7 +13680,7 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -13767,10 +13814,48 @@ $( document ).ready(function(){
 <p>Với LSTAT và CRIM, chúng ta vẫn thấy nhiều outlier. Khi chúng ta xóa các điểm dữ liệu khỏi tập dữ liệu, tất cả các tham số của phân phối (mean, quantile và IQR) sẽ được tính toán lại, do đó, các giá trị trước đây không được coi là outlier bây giờ lại là outlier trong biến -trimmed- mới.</p>
 <p>Đây là một đặc điểm không mong muốn của cách xử lý outlier này.</p>
 <h2 id="M&#7899;i:-outlier-trimming-v&#7899;i-Feature-engine">M&#7899;i: outlier trimming v&#7899;i Feature-engine<a class="anchor-link" href="#M&#7899;i:-outlier-trimming-v&#7899;i-Feature-engine">&#182;</a></h2><p>Tìm hiểu thêm về cắt tỉa outlier với Feature-engine trong tài liệu:</p>
-<p><a href="https://feature-engine.readthedocs.io/en/latest/outliers/OutlierTrimmer.html">https://feature-engine.readthedocs.io/en/latest/outliers/OutlierTrimmer.html</a></p>
+<p><a href="https://feature-engine.readthedocs.io/en/1.3.x/api_doc/outliers/OutlierTrimmer.html">https://feature-engine.readthedocs.io/en/1.3.x/api_doc/outliers/OutlierTrimmer.html</a></p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">feature_engine.outliers</span> <span class="kn">import</span> <span class="n">OutlierTrimmer</span>
+
+<span class="n">strimmer</span> <span class="o">=</span> <span class="n">OutlierTrimmer</span><span class="p">(</span><span class="n">capping_method</span><span class="o">=</span><span class="s1">&#39;iqr&#39;</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">strimmer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">boston</span><span class="p">)</span>
+<span class="n">boston_trimmed</span> <span class="o">=</span> <span class="n">strimmer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">boston</span><span class="p">)</span>
+<span class="n">boston</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">boston_trimmed</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>((506, 3), (417, 3))</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
