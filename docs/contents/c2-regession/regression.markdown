@@ -50,6 +50,17 @@ permalink: /contents/c2-regression/
     - [Lab 10.2: Xử lý outlier](lab-10-2-handle-outlier.html){:target="_blank"}
     - [Lab 10.3: Co giãn đặc trưng](lab-10-3-feature-scaling.html){:target="_blank"}
     - [Lab 10.4: Xử lý biến thời gian](lab-10-4-enginering-date-time.html){:target="_blank"}
+  - [Lab 11: Lựa chọn đặc trưng theo phương pháp gói](lab-11-1-lua-chon-dac-trung-bang-phuong-phap-goi.html){:target="_blank"}
+  - Lab 12: Lựa chọn đặc trưng theo phương pháp lọc
+    - [Lab 12.1: Lọc theo các thống kê cơ bản](lab-12-1-loc-theo-thong-ke-co-ban.html){:target="_blank"}
+    - [Lab 12.2: Lọc theo RMSE](lab-12-2-loc-theo-RMSE.html){:target="_blank"}
+  - Lab 13: Lựa chọn đặc trưng theo phương pháp nhúng và lai hóa
+    - [Lab 13.1: Hệ số Hồi quy tuyến tính](lab-13-1-he-so-hoi-quy-tuyen-tinh.html){:target="_blank"}
+    - [Lab 13.2: Hệ số hồi quy bị ảnh hưởng bởi điều chuẩn](lab-13-2-regression-coefficients-and-regularisation.html){:target="_blank"}
+    - [Lab 13.3: Phương pháp nhúng với Lasso](lab-13-3-lasso.html){:target="_blank"}
+    - [Lab 13.4: Phương pháp xáo trộn ngẫu nhiên](lab-13-4-xao-tron-ngau-nhien.html){:target="_blank"}
+    - [Lab 13.5: Phương pháp lai hóa: Loại bỏ đặc trưng bằng đệ quy](lab-13-5-phuong-phap-lai-hoa-loai-bo-dac-trung-bang-de-quy.html){:target="_blank"}
+    - [Lab 13.6: Phương pháp lai hóa: Thêm đặc trưng bằng đệ quy](lab-13-6-phuong-phap-lai-hoa-them-dac-trung-bang-de-quy.html){:target="_blank"}
 
 <br>
 
@@ -79,7 +90,14 @@ permalink: /contents/c2-regression/
     - [5.3 Weight of Evidence](exercise-5-categorical-variable-encoding/5-3-Weight-of-Evidence.html){:target="_blank"}
     - [5.4 Comparison categorical encoding](exercise-5-categorical-variable-encoding/5-4-Comparison-categorical-encoding-techniques.html){:target="_blank"}
     - [5.5 Enginering rare categorical](exercise-5-categorical-variable-encoding/5-5-Engineering-Rare-Categories.html){:target="_blank"}
-
+  - Exercise 6: Phương pháp lọc nâng cao ở cuộc thi KDD
+    - [6.1 Phương pháp lọc bằng mã hóa trung bình mục tiêu ở cuộc thi KDD](exercise-6-avanced-filter-at-KDD-competition/6-1-method-used-in-a-KDD-competition.html){:target="_blank"}
+    - [6.2 KDD method with Feature engine](exercise-6-avanced-filter-at-KDD-competition/6-2-KDD-method-with-Feature-engine.html){:target="_blank"}
+  - Exercise 7: Các phương pháp lai hóa với feature-engine
+    - [7-1 Phương pháp xáo trộn ngẫu nhiên](exercise-7-cac-phuong-phap-lai-hoa-voi-feature-engine/7-1-Feature-shuffling-with-Feature-engine.html){:target="_blank"}
+    - [7-2 Phương pháp lai hóa: Loại bỏ đặc trưng bằng đệ quy](exercise-7-cac-phuong-phap-lai-hoa-voi-feature-engine/7-2-Recursive-feature-elimination-with-Feature-engine.html){:target="_blank"}
+    - [7-3 Phương pháp lai hóa: Thêm đặc trưng bằng đệ quy](exercise-7-cac-phuong-phap-lai-hoa-voi-feature-engine/7-3-Recursive-feature-addition-with-Feature-engine.html){:target="_blank"}
+  
 <br>
 
 - **Assignments**
