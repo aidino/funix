@@ -52,8 +52,9 @@ permalink: /contents/c2-regression/
     - [Lab 10.4: Xử lý biến thời gian](lab-10-4-enginering-date-time.html){:target="_blank"}
 
   <br>
-  
+
   **Phần 4: Lựa chọn đặc trưng**
+  
   - [Lab 11: Lựa chọn đặc trưng theo phương pháp gói](lab-11-1-lua-chon-dac-trung-bang-phuong-phap-goi.html){:target="_blank"}
   - Lab 12: Lựa chọn đặc trưng theo phương pháp lọc
     - [Lab 12.1: Lọc theo các thống kê cơ bản](lab-12-1-loc-theo-thong-ke-co-ban.html){:target="_blank"}
