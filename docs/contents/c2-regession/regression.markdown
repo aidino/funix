@@ -118,3 +118,4 @@ permalink: /contents/c2-regression/
     - [Categorical Encoding](categorical-encoding.htm){:target="_blank"}
     - [Outlier Handing](outlier-handling.htm){:target="_blank"}
     - [Feature Scaling](Feature-scaling.htm){:target="_blank"}
+    - [Feature Selection](feature-selection.html){:target="_blank"}
