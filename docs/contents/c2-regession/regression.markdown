@@ -119,3 +119,4 @@ permalink: /contents/c2-regression/
     - [Outlier Handing](outlier-handling.htm){:target="_blank"}
     - [Feature Scaling](Feature-scaling.htm){:target="_blank"}
     - [Feature Selection](feature-selection.html){:target="_blank"}
+    - [ARIMA](ARIMA.html){:target="_blank"}
