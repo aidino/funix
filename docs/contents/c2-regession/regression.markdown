@@ -107,6 +107,7 @@ permalink: /contents/c2-regression/
 
 - **Assignments**
   - [Assignment 1: Dự đoán số lượng bình luận trên Facebook](asm1.html){:target="_blank"}
+  - [Assignment 2: Dự đoán giá nhà nâng cao](asm2.html){:target="_blank"}
 
 <br>
 
