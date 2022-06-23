@@ -148,3 +148,13 @@ Want to find $w$ and $b$ to minimize $\mathrm{J}(w, b)$
 
 
 
+## Computation Graph - Đồ thị tính toán
+
+Đồ thị tính toán được sắp xếp từ trái sang phải:
+
+![computation-graph](images/computation-graph.png)
+
+## Tính đạo hàm theo đồ thị tính toán
+
+Chúng ta tính toán đạo hàm trên đồ thị từ phải sang trái sẽ dễ hơn rất nhiều. **dvar** là đạo hàm của biến đầu ra cuối cùng với các đại lượng trung gian khác nhau.
+
