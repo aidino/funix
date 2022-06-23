@@ -74,11 +74,77 @@ Thông thường, Loss (error) function sẽ là: $\mathscr{L}(\hat{y}, y) = \fr
 
 Nhưng trong Logistic regression thì hàm này là hàm nồi (convex function) do đó tồn tại các cực tiểu cục bộ => không thể giải quyết được bài toán tối ưu.
 
-Vậy trong Logistic regression, Loss function sẽ là:
+Vậy trong Logistic regression, **Loss function** sẽ là:
 $$
 \mathscr{L}(\hat{y}, y) = -(y\log(\hat{y}) + (1-y)\log(1-\hat{y}))
 $$
 **Giải thích:**
 
-* Nếu $y=1$
-* 
+* Nếu $y=1$  thì $\mathscr{L}(\hat{y}, y) = -\log(\hat{y})$ , 
+
+  để loss function $\mathscr{L}(\hat{y}, y)$ có giá trị nhỏ nhất thì $\log(\hat{y})$ lớn $\Rightarrow \hat{y}$ lớn
+
+  mà $\hat{y}$ là hàm *sigmoid* do đó $\hat{y} \approx  1$ 
+
+* Nếu $y=0$  thì $\mathscr{L}(\hat{y}, y) = -\log(1-\hat{y})$ , 
+
+  để loss function $\mathscr{L}(\hat{y}, y)$ có giá trị nhỏ nhất thì $\log(1-\hat{y})$ lớn $\Rightarrow \hat{y}$ nhỏ
+
+  mà $\hat{y}$ là hàm *sigmoid* do đó $\hat{y} \approx  0$ 
+
+**Note**: Loss function là hàm mất mát của một observation đơn lẻ, còn với toàn bộ tập training thì gọi là Cost function
+
+**Cost function:**
+$$
+\begin{array}{rcl}
+\mathrm{J}(w, b) & = & \frac{1}{m}\sum_{i=1}^{m}\mathscr{L}(\hat{y}, y) \\
+ & = & -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(\hat{y}^{(i)}) + (1-y^{(i)})\log(1-\hat{y}^{(i)}) \\
+\end{array}
+$$
+
+## Gradient descent
+
+**Recap:**
+
+- Function:
+
+  $\hat{y} = \sigma(w^{T}x + b)$ trong đó $\sigma(z) = \frac{1}{1+e^{-z}}$
+
+- Cost function:
+  $$
+  \begin{array}{rcl}
+  \mathrm{J}(w, b) & = & \frac{1}{m}\sum_{i=1}^{m}\mathscr{L}(\hat{y}, y) \\
+   & = & -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(\hat{y}^{(i)}) + (1-y^{(i)})\log(1-\hat{y}^{(i)}) \\
+  \end{array}
+  $$
+  
+
+Want to find $w$ and $b$ to minimize $\mathrm{J}(w, b)$ 
+
+![cost-function1](images/cost-function1.png)
+
+- Step1: khởi tạo **w** và **b** thành **0,0** hoặc khởi tạo chúng thành một giá trị ngẫu nhiên trong hàm lồi rồi thử cải thiện các giá trị đạt tới giá trị nhỏ nhất.
+
+  Trong hồi quy Logistic, người ta thường sử dụng **0,0** thay cho ngẫu nhiên.
+
+- Step2: Sử dụng vòng lặp và triển khai tính toán:
+  $$
+  \left\{ \begin{array}{cl}
+  w = w - \alpha * \frac{\mathcal{d}J(w,b)}{dw} \\
+  b = b - \alpha * \frac{\mathcal{d}J(w,b)}{db}
+  \end{array} \right.
+  $$
+  trong đó: $\alpha$ là *Learning rate*
+
+- Step4: Kiểm tra điều kiện dừng của vòng lặp, ở đây có thể là đủ số lượng vòng lặp, hoặc đạo hàm riêng tại 1 điểm nào đó nhỏ hơn một giá trị cho trước.
+
+
+
+## Derivatives - Đạo hàm
+
+*Xem lại kiến thức môn 1.*
+
+> Đạo hàm là độ tăng của hàm số khi các biến độc lập cấu tạo lên hàm số tăng một lượng rất nhỏ.
+
+
+
