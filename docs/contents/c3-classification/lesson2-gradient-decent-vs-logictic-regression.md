@@ -158,3 +158,42 @@ Want to find $w$ and $b$ to minimize $\mathrm{J}(w, b)$
 
 Chúng ta tính toán đạo hàm trên đồ thị từ phải sang trái sẽ dễ hơn rất nhiều. **dvar** là đạo hàm của biến đầu ra cuối cùng với các đại lượng trung gian khác nhau.
 
+![computing-derivatives](images/computing-derivatives.png)
+
+**Chain rule** cho rằng
+
+Nếu $x -> y -> z$ (**x** ảnh hưởng đến **y** và **y** ảnh hưởng đến **z**) thì
+$$
+\frac{d z}{dx} = \frac{d z}{dy} \frac{d y}{dx}
+$$
+
+## Logistic Regression Gradient Descent
+
+**Recap:**
+
+- $z = w^{T}x + b$
+
+- $\hat{y} = a = \sigma(z)$
+
+- $\mathscr{L}(a, y) = -(y\log(a) + (1-y)\log(1-a))$
+
+
+![logistic-regression-derivatives](images/logistic-regression-derivatives.png)
+
+Lưu ý: 
+
+- Theo chiều xuôi là chiều tính Cost function
+- Theo chiều ngược là chiều tính đạo hàm của Cost function
+
+$d(a) = \frac{d \mathcal{L}}{da} = \frac{d }{da}(-(y\log(a) + (1-y)\log(1-a))) = -\frac{y}{a} + \frac{1-y}{1-a}$
+
+$d(z) = \frac{d \mathcal{L}}{dz} = a -y$
+
+$d(w_1) = x_1 * d(z)$
+
+$d(w_2) = x_2 * d(z)$
+
+$d(b) = d(z)$
+
+
+
