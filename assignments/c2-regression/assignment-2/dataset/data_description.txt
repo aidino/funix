@@ -1,4 +1,4 @@
-MSSubClass: Identifies the type of dwelling involved in the sale.	
+MSSubClass: Identifies kiểu nhà có liên quan in the sale.	
 
         20	1-STORY 1946 & NEWER ALL STYLES
         30	1-STORY 1945 & OLDER
@@ -19,20 +19,20 @@ MSSubClass: Identifies the type of dwelling involved in the sale.
 
 MSZoning: Identifies the general zoning classification of the sale.
 		
-       A	Agriculture
-       C	Commercial
-       FV	Floating Village Residential
-       I	Industrial
-       RH	Residential High Density
-       RL	Residential Low Density
-       RP	Residential Low Density Park 
-       RM	Residential Medium Density
+       A	Agriculture - Nông nghiệp
+       C	Commercial - Thương mại
+       FV	Floating Village Residential - Khu dân cư
+       I	Industrial - Công nghiệp  
+       RH	Residential High Density - Mật độ dân cư cao
+       RL	Residential Low Density - Mật độ dân cư thấp
+       RP	Residential Low Density Park - Khu dân cư mật độ thấp
+       RM	Residential Medium Density - Mật độ dân cư trung bình
 	
-LotFrontage: Linear feet of street connected to property
+LotFrontage: Linear feet of street connected to property (Đường phố kết nối thẳng đến nhà)
 
-LotArea: Lot size in square feet
+LotArea: Lot size in square feet - Kích thước lô tính bằng feet vuông
 
-Street: Type of road access to property
+Street: Type of road access to property 
 
        Grvl	Gravel	
        Pave	Paved
