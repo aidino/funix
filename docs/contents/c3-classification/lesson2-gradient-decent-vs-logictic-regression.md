@@ -195,5 +195,44 @@ $d(w_2) = x_2 * d(z)$
 
 $d(b) = d(z)$
 
+## Gradient Decent on **m**  examples 
 
+Ta có:
 
+$\mathcal{J}(\overrightarrow{w}, b) = \frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(a^{(i)}, y)$
+
+trong đó:
+
+$a^{(i)} = \hat{y}^{(i)} = \sigma(z^{(i)}) = \sigma(\overrightarrow{w}^{T}x^{(i)} + b)$
+
+**Coding**:
+
+```python
+# Đạo hàm
+J = 0; dw1 = 0; dw2 = 0; db = 0;
+
+#weight
+w1 = 0; w2 = 0; b = 0;
+
+for i = 1 to m
+    # Forward
+    z(i) = w1*x1(i) + w2*x2(i) + b
+    a(i) = Sigmoid(z(i))
+    J += (y(i)*log(a(i)) + (1-y(i))*log(1-a(i)))
+
+    # Backward pass
+    dz(i) = a(i) - y(i)
+    dw1 += dz(i) * x1(i)
+    dw2 += dz(i) * x2(i)
+    db += dz(i)
+
+J = J/m
+dw1 = dw1/m
+dw2 = dw2/m
+db = db/m
+
+# Gradient decent
+w1 = w1 - alpha *dw1
+w2 = w2 - alpha *dw2
+b = b - alpha * db
+```

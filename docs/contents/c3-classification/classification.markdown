@@ -10,7 +10,7 @@ permalink: /contents/c3-classification/
 **Phần 1: Hồi quy Logistic**
 <br>
 - [Bài 1: Giới thiệu bài toán phân loại](lesson1-introduction.html){:target="_blank"}
-- Bài 2: Gradient Descent với hồi quy Logistic
+- [Bài 2: Gradient Descent với hồi quy Logistic](lesson2-gradient-decent-vs-logictic-regression.html){:target="_blank"}
 - Bài 3: Numpy và vector hoá
 
 **Phần 2: Mạng Neural**
