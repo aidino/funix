@@ -14,12 +14,12 @@
   \vdots  & \vdots  & \vdots & \vdots\\
    x^{(1)} & x^{(2)} & \cdots   & x^{(m)} \\
    \vdots & \vdots & \vdots & \vdots
-  \end{bmatrix} \in \mathbb{R}^{(n\ast m)}$
+  \end{bmatrix} \in \mathbb{R}^{(n\times m)}$
 - $\textbf{X}.shape = (n, m)$
 - $\textbf{y} = [y^{(1)}, y^{(2)} ... , y^{(m)}]$
 - $\textbf{y}.shape = (1,m)$
 
-**Note**: trong ký hiệu này thì, mỗi cột là một observation. Trong một số tài liệu, hoặc theo những gì thường được ký hiệu trong các phần trước, thường sẽ biểu diễn trong một ma trận $\mathbb{R}^{(m\ast n)}$ với $m$ hàng tương ứng với $m$ observations.
+**Note**: trong ký hiệu này thì, mỗi cột là một observation. Trong một số tài liệu, hoặc theo những gì thường được ký hiệu trong các phần trước, thường sẽ biểu diễn trong một ma trận $\mathbb{R}^{(m\times n)}$ với $m$ hàng tương ứng với $m$ observations.
 
 Nhưng trong tài liệu này sẽ biểu diễn ngược lại, điều đó sẽ thuận lợi hơn, dễ triển khai hơn trong neural network
 

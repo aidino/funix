@@ -43,6 +43,8 @@ permalink: /contents/c3-classification/
 
 - [Lab 1: Dự đoán cảm xúc từ các bài bình luận sản phẩm](lab-1-du-doan-cam-xuc-dua-tren-binh-luan.html){:target="_blank"}
 - Lab 2: Hồi quy logistic với vectơ hóa và numpy
+  - Lab 2.1: Numpy và Vectơ hóa trong Python
+  - Lab 2.2: Hồi quy Logistic
 - Lab 3: SNN (mạng nơron nông)
 - Lab 4: DNN và ứng dụng
 - Lab 5: Điều chuẩn trong mạng DNN
