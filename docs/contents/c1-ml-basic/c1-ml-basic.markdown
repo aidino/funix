@@ -1,11 +1,4 @@
----
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-layout: page
-title: Introduction to Machine Learning
-permalink: /contents/c1-ml-basic/
----
 
 - **Labs**
     - Lab 1: Jupyter Notebook
