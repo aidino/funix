@@ -4,6 +4,6 @@
 
 layout: page
 title: Final Project
-permalink: /contents/c5-final-project/
+permalink: /contents/final-project/
 ---
 

@@ -4,7 +4,7 @@
 
 layout: page
 title: Machine Learning - Classification
-permalink: /contents/c3-classification/
+permalink: /contents/classification-in-machine-learning/
 ---
 
 **Phần 1: Hồi quy Logistic**
