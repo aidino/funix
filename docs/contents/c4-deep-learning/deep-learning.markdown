@@ -4,7 +4,7 @@
 
 layout: page
 title: Machine Learning - Deep Learning
-permalink: /contents/deep-learning/
+permalink: /contents/c4-deep-learning/
 ---
 
 - [Labs](#)

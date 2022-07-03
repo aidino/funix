@@ -7,10 +7,10 @@ title: Home
 permalink: /
 ---
 - [x] [Introduction to Machine Learning]({{ site.baseurl }}/contents/introduction-machine-learning){:target="_blank"}
-- [x] [Machine Learning - Regression]({{ site.baseurl }}/contents/regression-in-machine-learning){:target="_blank"}
-- [ ] [Machine Learning: Classification]({{ site.baseurl }}/contents/classification-in-machine-learning){:target="_blank"}
-- [ ] [Machine Learning: Deep Learning]({{ site.baseurl }}/contents/deep-learning){:target="_blank"}
-- [ ] [Final Project]({{ site.baseurl }}/contents/final-project){:target="_blank"}
+- [x] [Machine Learning - Regression]({{ site.baseurl }}/contents/c2-regression){:target="_blank"}
+- [ ] [Machine Learning: Classification]({{ site.baseurl }}/contents/c3-classification){:target="_blank"}
+- [ ] [Machine Learning: Deep Learning]({{ site.baseurl }}/contents/c4-deep-learning){:target="_blank"}
+- [ ] [Final Project]({{ site.baseurl }}/contents/c5-final-project){:target="_blank"}
   
 - [Others documents](#)
   - [Python Basic](contents/python-basic.html){:target="_blank"}
