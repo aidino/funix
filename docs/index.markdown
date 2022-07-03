@@ -6,7 +6,7 @@ layout: home
 title: Home
 permalink: /
 ---
-- [x] [Introduction to Machine Learning]({{ site.baseurl }}/contents/introduction-machine-learning){:target="_blank"}
+- [x] [Introduction to Machine Learning]({{ site.baseurl }}/contents/c1-ml-basic){:target="_blank"}
 - [x] [Machine Learning - Regression]({{ site.baseurl }}/contents/c2-regression){:target="_blank"}
 - [ ] [Machine Learning: Classification]({{ site.baseurl }}/contents/c3-classification){:target="_blank"}
 - [ ] [Machine Learning: Deep Learning]({{ site.baseurl }}/contents/c4-deep-learning){:target="_blank"}
