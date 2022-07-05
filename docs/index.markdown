@@ -19,4 +19,4 @@ permalink: /
   - [Matplotlib](contents/matplotlib.html){:target="_blank"}
   - [Đại số tuyến tính với Numpy](contents/daisotuyentinh_numpy.html){:target="_blank"}
   - [NLP Basic](contents/nlp-basic/nlp-basic.html){:target="_blank"}
-  - [Awesome Cheatsheet](contents/awesome-cheatsheet/awesome-cheatsheet.html){:target="_blank"}
+  - [Awesome Cheatsheet](contents/awesome-cheatsheet/awesome-cheatsheet-night.html){:target="_blank"}
