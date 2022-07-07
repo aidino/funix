@@ -270,16 +270,92 @@ z = np.where(x > 0, x, x * alpha)
 
 Sẽ rất khó để chọn lựa hay hướng dẫn chi tiết cách chọn lựa, Andrew Ng nghĩ rằng, bạn nên thử nghiệm các lựa chọn khác nhau và đánh giá chúng.
 
+### Đạo hàm một số activation functions
+
+Áp dụng các công thức đạo hàm:
+$$
+(\frac{u}{v})' = \frac{u'v - uv'}{v^2} \\
+\\
+(e^x)' = e^x \\
+\\
+(e^{ux})' = u'e^{ux}
+$$
+
+**Sigmoid** 
+$$
+\begin{array}{rcl}
+\sigma(z) & = & \frac{1}{1 + e^{-z}} \\
+\sigma'(z) & = & \frac{-(1+e^{-z})'}{(1+e^{-z})^2} \\
+ & = & \sigma(z)(1- \sigma(z))
+\end{array}
+$$
 
 
-### Back propagation
+**Tanh**
+$$
+\begin{array}{rcl}
+\tanh(z) & = & \frac{e^z - e^{-z}}{e^z + e^{-z}} \\
+\tanh'(z) & = & \frac{(e^z - e^{-z})'(e^z + e^{-z}) - (e^{z} - e^{-z})(e^z + e^{-z})'}{(e^z + e^{-z})^2} \\
+ & = & \frac{(e^z + e^{-z})^2 - (e^z - e^{-z})^2}{(e^z + e^{-z})^2} \\
+ & = & 1 - tanh(z)^2
+\end{array}
+$$
+
+
+**ReLU**
+$$
+\begin{array}{rcl}
+g(z) & = & \max(0,z) \\
+g'(z) & = &  \left\{ \begin{array}{cl}
+1 & : \ z \geq 0 \\
+0 & : \ z < 0
+\end{array} \right. \\
+\end{array}
+$$
+
+**Leaky ReLU**
+$$
+\begin{array}{rcl}
+g(z) & = & \max(0.01z,z) \\
+g'(z) & = &  \left\{ \begin{array}{cl}
+1 & : \ z \geq 0 \\
+0.01 & : \ z < 0
+\end{array} \right. \\
+\end{array}
+$$
+
+### Gradient decent
 
 ![chain-neural-network](images/chain-neural-network.jpg)
 
-- Lan truyền xuôi dùng để tính giá trị dự đoán, suy ra mất mát dựa vào Loss function: $\mathscr{L}(a, y) = -(y\log(a) + (1-y)\log(1-a))$
-- Lan truyền ngược dùng để tính đạo hàm từng phần của Loss Function cho các trọng số ở mỗi Layer
+- Lan truyền xuôi (Forward propagation) dùng để tính giá trị dự đoán, suy ra mất mát dựa vào Loss function: $\mathscr{L}(a, y) = -(y\log(a) + (1-y)\log(1-a))$
+- Lan truyền ngược (Back propagation) dùng để tính đạo hàm từng phần của Loss Function cho các trọng số ở mỗi Laye
 
 
+**Tính toán Gradient decent**
 
+`Repeat:`
+      `Compute prediction` ($\hat{y}[i]$, i = 1, ..., m)
+      `Get derivatives:` $dW^{[1]}$, $db^{[1]}$, $dW^{[2]}$, $db^{[2]}$
+      `Update:` 
+              $W^{[1]}$ = $W^{[1]}$ - `LearningRate` * $dW^{[1]}$
+              $b^{[1]}$ = $b^{[1]}$ - `LearningRate` * $db^{[1]}$
+              $W^{[2]}$ = $W^{[2]}$ - `LearningRate` * $dW^{[2]}$
+              $b^{[2]}$ = $b^{[2]}$ - `LearningRate` * $db^{[2]}$
 
+**Forward propagation:**
+          $Z^{[1]} = W^{[1]} \times A^{[0]} + b^{[1]}$    # $A^{[0]}$ is $X$
+          $A^{[1]} =  g^{[1]}(Z^{[1]})$
+          $Z^{[2]} = W^{[2]} \times A^{[1]} + b^{[2]}$
+          $A^{[2]} =  g^{[2]}(Z^{[2]})$ 
+  $g^{[2]}$ is **sigmoid** if the output is between 0 and 1
 
+**Back propagation:**
+          $dZ^{[2]} = A^{[2]} - Y$ 
+          $dW^{[2]} = (dZ^{[2]} * A^{[1]T}) / m $
+          $db^{[2]} = dZ^{[2]} / m $
+          $dZ^{[1]} = (W^{[2]T} * dZ^{[2]}) * g'^{[1]}(Z^{[1]})$    # element wise product (*)
+          $dW^{[1]} = (dZ^{[1]} * A^{[0]T}) / m$    # $A^{[0]}$ is $X$
+          $db^{[1]} = Sum(dZ^{[1]}) / m $
+
+There are transposes with multiplication because to keep demensions correct.
