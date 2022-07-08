@@ -359,3 +359,5 @@ $$
           $db^{[1]} = Sum(dZ^{[1]}) / m $
 
 There are transposes with multiplication because to keep demensions correct.
+
+![grad_summary](images/grad_summary.png)
