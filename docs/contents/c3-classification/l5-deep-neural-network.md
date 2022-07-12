@@ -38,3 +38,29 @@ Khi bắt đầu ứng dụng, chúng ta chưa cần bắt đầu trực tiếp 
 
 ### Xây dựng các blocks cho Deep Neural Network
 
+Tại layer $l: W^{[l]}, b^{[l]}$
+
+- **Forward**
+
+  - Input: $a^{[l-1]}$
+  - output: $a^{[l]}$
+  - Equations: $z^{[l]} = W^{[l]}a^{[l-1]} + b^{[l]}$
+  - then: $a^{[l]} = g^{[l]}(z^{[l]})$
+  - -> **cache** $z^{[l]}, a^{[l-1]}$
+
+- **Backward**
+
+  - Input: $da^{[l]}$
+
+  - output: 
+
+    - $dz^{[l]} = da^{[l]}g'^{[l]}(z^{[l]})$
+
+    - $dw^{[l]} = da^{[l]}a^{[l-1]} $
+
+    - $db^{[l]} = $
+
+    - $da^{[l-1]} = $
+
+      
+
