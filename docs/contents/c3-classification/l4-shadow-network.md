@@ -6,19 +6,19 @@
 
 - Chiều xuôi:  **Loss functions**
 
-  - $z = w^{T}x + b$
+  - $\large z = w^{T}x + b$
 
 
-  - $\hat{y} = a = \sigma(z)$
+  - $\large \hat{y} = a = \sigma(z)$
 
 
-  - $\mathscr{L}(a, y) = -(y\log(a) + (1-y)\log(1-a))$
+  - $\large \mathscr{L}(a, y) = -(y\log(a) + (1-y)\log(1-a))$
 
 - Chiều ngược: **Gradient**
-  - $d(a) = \frac{d \mathcal{L}}{da} = \frac{d }{da}(-(y\log(a) + (1-y)\log(1-a))) = -\frac{y}{a} + \frac{1-y}{1-a}$
-  - $d(z) = \frac{d \mathcal{L}}{dz} = a -y$
-  - $d(w_1) = x_1 * d(z)$
-  - $d(w_2) = x_2 * d(z)$
+  - $\large d(a) = \frac{d \mathcal{L}}{da} = \frac{d }{da}(-(y\log(a) + (1-y)\log(1-a))) = -\frac{y}{a} + \frac{1-y}{1-a}$
+  - $\large d(z) = \frac{d \mathcal{L}}{dz} = a -y$
+  - $\large d(w_1) = x_1 * d(z)$
+  - $\large d(w_2) = x_2 * d(z)$
 
 
 
@@ -77,10 +77,10 @@ Shallow network thì thường chỉ có từ 1 đến 2 hidden layer
 
 Cho input **x**: 
 
-- $z^{[1]} = \textbf W^{[1]}x + \textbf b^{[1]}$
-- $a^{[1]} = \sigma(z^{[1]})$
-- $z^{[2]} = \textbf W^{[2]}a^{[1]} + \textbf b^{[2]}$
-- $a^{[2]} = \sigma(z^{[2]})$
+- $\large z^{[1]} = \textbf W^{[1]}x + \textbf b^{[1]}$
+- $\large a^{[1]} = \sigma(z^{[1]})$
+- $\large z^{[2]} = \textbf W^{[2]}a^{[1]} + \textbf b^{[2]}$
+- $\large a^{[2]} = \sigma(z^{[2]})$
 
 
 
@@ -88,13 +88,13 @@ Cho input **x**:
 
 Ta có: 
 
-$\textbf{X} = \begin{bmatrix}
+$\large \textbf{X} = \begin{bmatrix}
 \vdots  & \vdots  & \vdots & \vdots\\
  x^{(1)} & x^{(2)} & \cdots   & x^{(m)} \\
  \vdots & \vdots & \vdots & \vdots
 \end{bmatrix}$
 
-$\textbf{A}^{[1]} = \begin{bmatrix}
+$\large \textbf{A}^{[1]} = \begin{bmatrix}
 \vdots  & \vdots  & \vdots & \vdots\\
  a^{[1](1)} & a^{[1](2)} & \cdots   & a^{[1](m)} \\
  \vdots & \vdots & \vdots & \vdots
@@ -102,25 +102,25 @@ $\textbf{A}^{[1]} = \begin{bmatrix}
 
 
 
-$Z^{[1]} = W^{[1]}X + b^{[1]}$
+$\large Z^{[1]} = W^{[1]}X + b^{[1]}$
 
-$A^{[1]} = \sigma(Z^{[1]})$
+$\large A^{[1]} = \sigma(Z^{[1]})$
 
-$Z^{[2]} = W^{[2]}A^{[1]} + b^{[2]}$
+$\large Z^{[2]} = W^{[2]}A^{[1]} + b^{[2]}$
 
-$A^{[2]} = \sigma(Z^{[2]})$
+$\large A^{[2]} = \sigma(Z^{[2]})$
 
 
 
 `for i = 1 to m:`
 
-​		$z^{[1](i)} = W^{[1]}x^{i} + b^{[1]}$
+​		$\large z^{[1](i)} = W^{[1]}x^{i} + b^{[1]}$
 
-​		$a^{[1](i)} = \sigma(z^{[1](i)})$
+​		$\large a^{[1](i)} = \sigma(z^{[1](i)})$
 
-​		$z^{[2](i)} = W^{[2]}a^{[1](i)} + b^{[2]}$
+​		$\large z^{[2](i)} = W^{[2]}a^{[1](i)} + b^{[2]}$
 
-​		$a^{[2](i)} = \sigma(z^{[2](i)})$
+​		$\large a^{[2](i)} = \sigma(z^{[2](i)})$
 
 
 
@@ -145,7 +145,7 @@ Nếu không có các hàm kích hoạt phi tuyến, thì mạng nơ-ron của c
 #### **Sigmoid**
 
 $$
-\sigma(x) = \frac{ 1 }{ 1 + e^{-x} }
+\large \sigma(x) = \frac{ 1 }{ 1 + e^{-x} }
 $$
 
 ![sigmoid-graph](images/sigmoid-graph.png)
@@ -174,7 +174,7 @@ def sigmoid(x):
 #### **Tanh**
 
 $$
-\tanh(x) = \frac{e^x – e^{-x}}{e^x + e^{-x}}
+\large \tanh(x) = \frac{e^x – e^{-x}}{e^x + e^{-x}}
 $$
 
 ![tanh](images/tanh.svg)
@@ -187,7 +187,7 @@ Cũng như **Sigmoid**, hàm **Tanh** bị bão hoà ở 2 đầu (gradient thay
 
 Hàm **tanh** còn có thể được biểu diễn bằng hàm sigmoid như sau:
 $$
-\tanh(x) = 2 \sigma(2x) -1
+\large \tanh(x) = 2 \sigma(2x) -1
 $$
 **Code**
 
@@ -203,7 +203,7 @@ a = np.tanh(z)
 #### **ReLU**
 
 $$
-f(x) = max(0, x)
+\large f(x) = max(0, x)
 $$
 
 ![relu](images/relu.svg)
@@ -235,7 +235,7 @@ a = np.maximum(z, 0)
 #### Leaky ReLU
 
 $$
-f(x) = \mathbb{1}(x < 0) (\alpha x) + \mathbb{1}(x>=0) (x)
+\large f(x) = \mathbb{1}(x < 0) (\alpha x) + \mathbb{1}(x>=0) (x)
 $$
 
 với $\alpha$ là hằng số nhỏ.
@@ -274,16 +274,16 @@ Sẽ rất khó để chọn lựa hay hướng dẫn chi tiết cách chọn l�
 
 Áp dụng các công thức đạo hàm:
 $$
-(\frac{u}{v})' = \frac{u'v - uv'}{v^2} \\
+\large (\frac{u}{v})' = \frac{u'v - uv'}{v^2} \\
 \\
-(e^x)' = e^x \\
+\large (e^x)' = e^x \\
 \\
-(e^{ux})' = u'e^{ux}
+\large (e^{ux})' = u'e^{ux}
 $$
 
 **Sigmoid** 
 $$
-\begin{array}{rcl}
+\large \begin{array}{rcl}
 \sigma(z) & = & \frac{1}{1 + e^{-z}} \\
 \sigma'(z) & = & \frac{-(1+e^{-z})'}{(1+e^{-z})^2} \\
  & = & \sigma(z)(1- \sigma(z))
@@ -293,7 +293,7 @@ $$
 
 **Tanh**
 $$
-\begin{array}{rcl}
+\large \begin{array}{rcl}
 \tanh(z) & = & \frac{e^z - e^{-z}}{e^z + e^{-z}} \\
 \tanh'(z) & = & \frac{(e^z - e^{-z})'(e^z + e^{-z}) - (e^{z} - e^{-z})(e^z + e^{-z})'}{(e^z + e^{-z})^2} \\
  & = & \frac{(e^z + e^{-z})^2 - (e^z - e^{-z})^2}{(e^z + e^{-z})^2} \\
@@ -304,7 +304,7 @@ $$
 
 **ReLU**
 $$
-\begin{array}{rcl}
+\large \begin{array}{rcl}
 g(z) & = & \max(0,z) \\
 g'(z) & = &  \left\{ \begin{array}{cl}
 1 & : \ z \geq 0 \\
@@ -315,7 +315,7 @@ $$
 
 **Leaky ReLU**
 $$
-\begin{array}{rcl}
+\large \begin{array}{rcl}
 g(z) & = & \max(0.01z,z) \\
 g'(z) & = &  \left\{ \begin{array}{cl}
 1 & : \ z \geq 0 \\
@@ -328,7 +328,7 @@ $$
 
 ![chain-neural-network](images/chain-neural-network.jpg)
 
-- Lan truyền xuôi (Forward propagation) dùng để tính giá trị dự đoán, suy ra mất mát dựa vào Loss function: $\mathscr{L}(a, y) = -(y\log(a) + (1-y)\log(1-a))$
+- Lan truyền xuôi (Forward propagation) dùng để tính giá trị dự đoán, suy ra mất mát dựa vào Loss function: $\large \mathscr{L}(a, y) = -(y\log(a) + (1-y)\log(1-a))$
 - Lan truyền ngược (Back propagation) dùng để tính đạo hàm từng phần của Loss Function cho các trọng số ở mỗi Laye
 
 
@@ -360,4 +360,145 @@ $$
 
 There are transposes with multiplication because to keep demensions correct.
 
-![grad_summary](images/grad_summary.png)
+<img src="images/grad_summary.png" alt="grad_summary" style="zoom:30%;" />
+
+## Code
+
+- Variables: 
+  - `X` -- dữ liệu đầu vào có shape `(2, số ví dụ)`
+  - `Y` -- vectơ "true" label có shape `(1, số ví dụ)`
+  - `n_x` -- kích thước lớp đầu vào `= X.shape[0]`
+  - `n_h = 4` -- kích thước lớp ẩn
+  - `n_y` -- kích thước lớp đầu ra `= Y.shape[0]`
+
+- Xác định cấu trúc mạng Neural
+
+```python
+def layer_sizes(X, Y):
+    """
+    parameters:
+    X -- tập dữ liệu đầu vào có shape (kích thước đầu vào, số ví dụ)
+    Y -- các nhãn có shape (kích thước đầu ra, số ví dụ)
+    
+    return:
+    n_x -- kích thước lớp đầu vào
+    n_h -- kích thước lớp ẩn
+    n_y -- kích thước lớp đầu ra
+    """
+    n_x = X.shape[0] # kích thước lớp đầu vào
+    n_h = 4
+    n_y =  Y.shape[0]# kích thước lớp đầu ra
+    return (n_x, n_h, n_y)
+```
+
+- Khởi tạo các tham số mô hình
+  - `W1` -- ma trận trọng số có shape `(n_h, n_x)`
+  - `b1` -- vectơ bias có shape `(n_h, 1)`
+  - `W2` -- ma trận trọng số có shape `(n_y, n_h)`
+  - `b2` -- vectơ bias có shape `(n_y, 1)`
+
+```python
+def initialize_parameters(n_x, n_h, n_y):
+    """
+    parameters:
+    n_x -- kích thước lớp đầu vào
+    n_h -- kích thước lớp ẩn
+    n_y -- kích thước lớp đầu ra
+    
+    return:
+    params -- dictionary của python chứa các tham số:
+                    W1 -- ma trận trọng số có shape (n_h, n_x)
+                    b1 -- vectơ bias có shape (n_h, 1)
+                    W2 -- ma trận trọng số có shape (n_y, n_h)
+                    b2 -- vectơ bias có shape (n_y, 1)
+    """
+    
+    np.random.seed(2) # thiết lập seed để đầu ra khớp nhau dù khởi tạo ngẫu nhiên.
+    
+    W1 = np.random.randn(n_h, n_x) * 0.01
+    b1 = np.zeros((n_h, 1))
+    W2 = np.random.randn(n_y, n_h) * 0.01
+    b2 = np.zeros((n_y, 1))
+   
+    parameters = {"W1": W1,
+                  "b1": b1,
+                  "W2": W2,
+                  "b2": b2}
+    
+    return parameters
+```
+
+- Forward propagation
+  - Tính `Z1, A1, Z2, A2`
+  - Save caculated variable to `cache` to use in backpropagation
+
+```python
+def forward_propagation(X, parameters):
+    """
+    parameters:
+    X -- dữ liệu đầu vào có kích thước (n_x, m)
+    parameters -- dictionary của python chứa các tham số (đầu ra của hàm khởi tạo)
+    
+    return:
+    A2 -- Đầu ra sigmoid của kích hoạt thứ hai
+    cache -- dictionary chứa "Z1", "A1", "Z2" và "A2"
+    """
+    
+    W1 = parameters["W1"]
+    b1 = parameters["b1"]
+    W2 = parameters["W2"]
+    b2 = parameters["b2"]
+    
+    # Thực hiện lan truyền xuôi để tính A2 (xác suất)
+    Z1 = np.dot(W1, X) + b1
+    A1 = np.tanh(Z1)
+    Z2 = np.dot(W2, A1) + b2
+    A2 = sigmoid(Z2)
+    
+    cache = {"Z1": Z1,
+             "A1": A1,
+             "Z2": Z2,
+             "A2": A2}
+    
+    return A2, cache
+```
+
+- Compute Cost
+
+Có nhiều cách để thực hiện hàm mất mát cross-entropy . Trong code này sẽ xử dụng:
+$$
+-\sum\limits_{i=0}^{m}  y^{(i)}\log(a^{[2](i)})
+$$
+
+```python
+logprobs = np.multiply(np.log(A2),Y)
+cost = - np.sum(logprobs)                *# không cần sử dụng vòng lặp for!*
+```
+
+```python
+def compute_cost(A2, Y, parameters):
+    """
+    Tính cross-entropy cost cho phương trình (13)
+    
+    parameters:
+    A2 -- Đầu ra sigmoid của kích hoạt thứ hai có shape (1, số ví dụ)
+    Y -- vectơ "true" label có shape (1, số ví dụ)
+    parameters -- dictionary của python chứa các tham số W1, b1, W2 và b2
+    
+    return:
+    cost -- cross-entropy cost cho phương trình (13)
+    """
+    
+    m = Y.shape[1] # số ví dụ
+
+    # Tính cross-entropy cost
+    logprobs = np.multiply(np.log(A2), Y) + np.multiply(np.log(1 - A2), 1 - Y)
+    cost = - np.sum(logprobs) / m
+    
+    cost = np.squeeze(cost)     # đảm bảo cost là chiều mà chúng ta mong muốn
+                                # Chẳng hạn: biến [[17]] thành 17
+    assert(isinstance(cost, float))
+   
+    return cost
+```
+

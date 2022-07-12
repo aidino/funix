@@ -38,29 +38,113 @@ Khi bắt đầu ứng dụng, chúng ta chưa cần bắt đầu trực tiếp 
 
 ### Xây dựng các blocks cho Deep Neural Network
 
-Tại layer $l: W^{[l]}, b^{[l]}$
+<img src="images/neural-network-blocks.jpg" alt="neural-network-blocks" style="zoom:100%;" />
+$$
+\large \color{purple} x = a^{[0]} \longrightarrow  \color{Red} z^{[1]} = w^{[1]}a^{[0]} + b^{[1]} \longrightarrow a^{[1]} = g^{[1]}(z^{[1]}) \color{Black} \to \cdots \to \color{green} z^{[l]} = w^{[l]}a^{[l-1]} + b^{[l]} \longrightarrow a^{[l]} = g^{[l]}(z^{[l]}) \color{black} \longrightarrow \mathcal{L}(y, a^{[l]})
+$$
+Tại layer $\large l: w^{[l]}, b^{[l]}$
 
 - **Forward**
 
-  - Input: $a^{[l-1]}$
-  - output: $a^{[l]}$
-  - Equations: $z^{[l]} = W^{[l]}a^{[l-1]} + b^{[l]}$
-  - then: $a^{[l]} = g^{[l]}(z^{[l]})$
-  - -> **cache** $z^{[l]}, a^{[l-1]}$
+  - Input: $\large a^{[l-1]}$
+  - Output: $\large a^{[l]}$
+  - $\longrightarrow$ **cache:** $\large \color{red} a^{[l]}, z^{[l]}$ 
+
+  $$
+  \large\begin{array}{rcl}
+  z^{[l]} & = & W^{[l]}a^{[l-1]} + b^{[l]} \\
+  a^{[l]} & = & g^{[l]}(z^{[l]}) \\
+  \end{array}
+  $$
+
+  
 
 - **Backward**
 
-  - Input: $da^{[l]}$
+  - Input: $\large da^{[l]}$
+  - Output: $\large da^{[l-1]}, dw^{[l]}, db^{[l]}$
 
-  - output: 
+  Ta có: $\large da^{[l]} \text{ is short of } \frac{d\mathcal{L}(y, a^{[l]})}{da^{[l]}} $
+  $$
+  \Large \begin{array}{rcl}
+  dz^{[l]} & = & \frac{d\mathcal{L}}{da^{[l]}} * \frac{da^{[l]}}{dz^{[l]}} \\
+   & = & \color{red} da^{[l]}*g'^{[l]}(z^{[l]}) \\
+  dw^{[l]} & = & \frac{d\mathcal{L}}{da^{[l]}} * \frac{da^{[l]}}{dz^{[l]}} * \frac{dz^{[l]}}{dw^{[l]}}\\
+   & = & \color{red} dz^{[l]} * a^{[l-1]}\\
+  db^{[l]} & = & \frac{d\mathcal{L}}{da^{[l]}} * \frac{da^{[l]}}{dz^{[l]}} * \frac{dz^{[l]}}{db^{[l]}}\\
+   & = & \color{red} dz^{[l]}\\
+  
+  da^{[l-1]} & = & \frac{d\mathcal{L}}{da^{[l]}} * \frac{da^{[l]}}{dz^{[l]}} * \frac{dz^{[l]}}{da^{[l-1]}}\\
+   & = & \color{red} dz^{[l]} * w^{[l]}\\
+  \end{array}
+  $$
+  
 
-    - $dz^{[l]} = da^{[l]}g'^{[l]}(z^{[l]})$
 
-    - $dw^{[l]} = da^{[l]}a^{[l-1]} $
 
-    - $db^{[l]} = $
 
-    - $da^{[l-1]} = $
 
-      
+### Python
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
