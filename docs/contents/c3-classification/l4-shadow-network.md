@@ -364,14 +364,14 @@ There are transposes with multiplication because to keep demensions correct.
 
 ## Code
 
-- Variables: 
+- **Variables**: 
   - `X` -- dữ liệu đầu vào có shape `(2, số ví dụ)`
   - `Y` -- vectơ "true" label có shape `(1, số ví dụ)`
   - `n_x` -- kích thước lớp đầu vào `= X.shape[0]`
   - `n_h = 4` -- kích thước lớp ẩn
   - `n_y` -- kích thước lớp đầu ra `= Y.shape[0]`
 
-- Xác định cấu trúc mạng Neural
+- **Xác định cấu trúc mạng Neural**
 
 ```python
 def layer_sizes(X, Y):
@@ -428,7 +428,7 @@ def initialize_parameters(n_x, n_h, n_y):
     return parameters
 ```
 
-- Forward propagation
+- **Forward propagation**
   - Tính `Z1, A1, Z2, A2`
   - Save caculated variable to `cache` to use in backpropagation
 
@@ -463,7 +463,9 @@ def forward_propagation(X, parameters):
     return A2, cache
 ```
 
-- Compute Cost
+- **Compute Cost (Optional)**
+
+Trong forward_propagation and backward_propagation thực tế không cần dùng cost, tính cost chỉ là để đánh giá, vẽ biểu đồ ...
 
 Có nhiều cách để thực hiện hàm mất mát cross-entropy . Trong code này sẽ xử dụng:
 $$
@@ -500,5 +502,184 @@ def compute_cost(A2, Y, parameters):
     assert(isinstance(cost, float))
    
     return cost
+```
+
+- **Back propagation**
+
+Hàm kích hoạt $g^{[1]}(z^{[1]}) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$(hàm tanh), do đó $g'^{[1]}(z^{[1]}) = 1 - (g^{[1]}(z^{[1]})^{2}$ 
+
+```python
+def backward_propagation(parameters, cache, X, Y):
+    """
+    Triển khai lan truyền ngược theo các hướng trên.
+    
+    parammeters:
+    parameters -- dictionary của python chứa các tham số
+    cache -- dictionary chứa "Z1", "A1", "Z2" và "A2".
+    X -- dữ liệu đầu vào có shape (2, số ví dụ)
+    Y -- vectơ "true" label có shape (1, số ví dụ)
+    
+    return:
+    grads -- dictionary của python chứa các gradient liên quan tới các tham số khác
+    """
+    m = X.shape[1]
+    
+    # Trước tiên, truy xuất W1 và W2 từ dictionary "parameters"
+    W1 = parameters["W1"]
+    W2 = parameters["W2"]
+    
+    # Cũng truy xuất A1 và A2 từ dictionary "cache".
+    A1 = cache["A1"]
+    A2 = cache["A2"]
+    
+    # Truyền ngược: tính dW1, db1, dW2, db2.
+    dZ2 = A2 - Y
+    dW2 = 1 / m * np.dot(dZ2, A1.T)
+    db2 = 1 / m * np.sum(dZ2, axis=1, keepdims=True)
+    dZ1 = np.multiply(np.dot(W2.T, dZ2), 1 - np.power(A1, 2))
+    dW1 = 1 / m * np.dot(dZ1, X.T)
+    db1 = 1 / m * np.sum(dZ1, axis=1, keepdims=True)
+    
+    grads = {"dW1": dW1,
+             "db1": db1,
+             "dW2": dW2,
+             "db2": db2}
+    
+    return grads
+```
+
+- **Update parameters**
+
+```python
+def update_parameters(parameters, grads, learning_rate = 1.2):
+    """
+    Cập nhật các tham số sử dụng quy tắc cập nhật gradient descent ở trên
+    
+    params:
+    parameters -- dictionary của python chứa các tham số 
+    grads -- dictionary của python chứa các gradient
+    
+    return:
+    parameters -- dictionary của python chứa các tham số đã cập nhật 
+    """
+    # Truy xuất từng tham số từ dictionary "parameters"
+    W1 = parameters["W1"]
+    b1 = parameters["b1"]
+    W2 = parameters["W2"]
+    b2 = parameters["b2"]
+    
+    # Truy xuất từng gradient từ dictionary "grads"
+    dW1 = grads["dW1"]
+    db1 = grads["db1"]
+    dW2 = grads["dW2"]
+    db2 = grads["db2"]
+    
+    # Quy tắc cập nhật cho từng tham số
+    W1 = W1 - learning_rate * dW1
+    b1 = b1 - learning_rate * db1
+    W2 = W2 - learning_rate * dW2
+    b2 = b2 - learning_rate * db2
+    
+    parameters = {"W1": W1,
+                  "b1": b1,
+                  "W2": W2,
+                  "b2": b2}
+    
+    return parameters
+```
+
+- **Put it all together -- `nn_model()`**
+
+```python
+def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False):
+    """
+    parameters:
+    X -- tập dữ liệu có shape (2, số ví dụ)
+    Y -- nhãn có shape (1, số ví dụ)
+    n_h -- kích thước lớp ẩn
+    num_iterations -- Số lần lặp trong vòng lặp gradient descent
+    print_cost -- nếu True, cứ mỗi 1000 lần lặp lại in ra cost
+    
+    return:
+    parameters -- các tham số được tìm hiểu bởi mô hình. Có thể dùng chúng để dự đoán.
+    """
+    
+    np.random.seed(3)
+    n_x = layer_sizes(X, Y)[0]
+    n_y = layer_sizes(X, Y)[2]
+    
+    # Khởi tạo các tham số rồi truy xuất W1, b1, W2, b2. Đầu vào: "n_x, n_h, n_y". Đầu ra = "W1, b1, W2, b2, parameters".
+    parameters = initialize_parameters(n_x, n_h, n_y)
+    W1 = parameters["W1"]
+    b1 = parameters["b1"]
+    W2 = parameters["W2"]
+    b2 = parameters["b2"]
+    
+    # Vòng lặp (gradient descent)
+
+    for i in range(0, num_iterations):
+         
+        # Lan truyền xuôi. Đầu vào: "X, parameters". Đầu ra: "A2, cache".
+        A2, cache = forward_propagation(X, parameters)
+        
+        # Hàm chi phí. Đầu vào: "A2, Y, parameters". Đầu ra: "cost".
+        cost = compute_cost(A2, Y, parameters)
+ 
+        # Lan truyền ngược. Đầu vào: "parameters, cache, X, Y". Đầu ra: "grads".
+        grads = backward_propagation(parameters, cache, X, Y)
+ 
+        # Cập nhật tham số gradient descent. Đầu vào: "parameters, grads". Đầu ra: "parameters".
+        parameters = update_parameters(parameters, grads)
+        
+        # In ra cost sau mỗi 1000 lần lặp
+        if print_cost and i % 1000 == 0:
+            print ("Cost after iteration %i: %f" %(i, cost))
+
+    return parameters
+```
+
+------------
+
+- **Predict**
+
+predictions =  $y_{prediction} = \begin{cases} 1 & \text{if}\ activation > 0.5 \\ 0 & \text{otherwise} \end{cases}$
+
+```python
+def predict(parameters, X):
+    """
+    Sử dụng các tham số đã tìm hiểu để dự đoán một lớp cho từng ví dụ trong X
+    
+    params:
+    parameters -- dictionary của python chứa các tham số 
+    X -- dữ liệu đầu vào có kích thước (n_x, m)
+    
+    return:
+    predictions -- vectơ có các dự đoán của mô hình (red: 0 / blue: 1)
+    """
+    
+    # Tính xác suất sử dụng truyền xuôi và phân loại thành 0/1 sử dụng 0.5 làm ngưỡng.
+    A2, cache = forward_propagation(X, parameters)
+    predictions = np.round(A2)
+    
+    return predictions
+```
+
+- **Visualization**
+
+```python
+parameters = nn_model(X, Y, n_h = 4, num_iterations = 10000, print_cost=True)
+
+# Vẽ biểu đồ ranh giới quyết định
+plot_decision_boundary(lambda x: predict(parameters, x.T), X, Y)
+plt.title("Decision Boundary for hidden layer size " + str(4))
+```
+
+![](images/output_lab3.png)
+
+- **Accuracy**
+
+```python
+predictions = predict(parameters, X)
+print ('Accuracy: %d' % float((np.dot(Y,predictions.T) + np.dot(1-Y,1-predictions.T))/float(Y.size)*100) + '%')
 ```
 
