@@ -84,7 +84,9 @@ Tại layer $\large l: w^{[l]}, b^{[l]}$
 
 
 
-### Python
+### Code
+
+
 
 
 
