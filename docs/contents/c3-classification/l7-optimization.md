@@ -48,7 +48,7 @@ Có 2 bước:
 
 
 
-<img src="../../../labs/c3-classification/lab-6-optimization/images/kiank_shuffle.png" style="width:550px;height:300px;">
+<img src="images/kiank_shuffle.png" style="width:550px;height:300px;">
 
 
 
@@ -56,7 +56,7 @@ Có 2 bước:
 
 
 
-<img src="../../../labs/c3-classification/lab-6-optimization/images/kiank_partition.png" style="width:550px;height:300px;">
+<img src="images/kiank_partition.png" style="width:550px;height:300px;">
 
 
 
@@ -121,7 +121,7 @@ Momentum tính đến các gradient trong quá khứ để cập nhật một c�
 
 
 
-<img src="../../../labs/c3-classification/lab-6-optimization/images/opt_momentum.png" style="width:400px;height:250px;">
+<img src="images/opt_momentum.png" style="width:400px;height:250px;">
 
 <center> <u><font color='red'>**Hình 3**</u><font color='red'>: Các mũi tên màu đỏ chỉ hướng được thực hiện bởi một bước của mini-batch gradient descent. Các điểm màu xanh dương hiển thị hướng của gradient (đối với mini-batch hiện tại) ở mỗi bước. Thay vì chỉ tuân theo gradient, chúng ta để gradient ảnh hưởng đến $ v $ và sau đó thực hiện một bước theo hướng của $v$.<br> <font color='black'> </center>
 
@@ -203,6 +203,7 @@ def update_parameters_with_momentum(parameters, grads, v, beta, learning_rate):
 Adam là một trong những thuật toán tối ưu hóa hiệu quả nhất để huấn luyện mạng nơ-ron. Nó kết hợp các ý tưởng từ RMSProp (được mô tả trong bài giảng) và Momentum.
 
 **Adam hoạt động như thế nào?**
+
 1. Nó tính trung bình có trọng số theo cấp số nhân của các gradient trước và lưu trữ nó trong các biến $ v $ (trước bias correction) và $ v ^ {correction} $ (với bias correction).
 2. Nó tính trung bình có trọng số theo cấp số nhân của các bình phương của các gradient trước và lưu trữ nó trong các biến $ s $ (trước bias correction) và $ s ^ {corrected} $ (với bias correction).
 3. Nó cập nhật các thông số theo một hướng dựa trên việc kết hợp thông tin từ "1" và "2".
