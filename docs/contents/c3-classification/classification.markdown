@@ -18,7 +18,7 @@ permalink: /contents/c3-classification/
 - [Bài 4: Shallow Neural Network (Mạng Nơron nông)](l4-shadow-network.html){:target="_blank"}
 - [Bài 5: Deep Neural Network (Mạng Nơron sâu)](l5-deep-neural-network.html){:target="_blank"}
 - [Bài 6: Regularization (điều chuẩn)](l6-Regularization.html){:target="_blank"}
-- Bài 7: Tối ưu mô hình DNN
+- [Bài 7: Tối ưu mô hình DNN](l7-optimization.html){:target="_blank"}
 - Bài 8: Hyperparameters Tuning (Điều chỉnh siêu tham số)
   
 **Phần 3: Các thuật toán phân loại khác**
