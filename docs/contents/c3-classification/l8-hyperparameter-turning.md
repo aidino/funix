@@ -193,3 +193,54 @@ Có thể sử dụng trung bình có trọng số trên các mini-batch. Chúng
 
 ### Softmax Regression
 
+- Tất cả các ví dụ trước đó, chúng ta đều nói về phân loại nhị phân, nghĩa là chỉ có đúng hoặc sai, 0 hoặc 1. Có một loại tổng quát hoá của hồi quy logistic là hồi quy Softmax được dùng cho phân loại/hồi quy đa lớp
+
+- Ví dụ: nếu chúng ta đang phân loại theo lớp: dog, cat, baby chick và none of that.
+
+  - Dog `class = 1`
+
+  - Cat `class = 2`
+
+    Baby chick `class = 3`
+
+    None `class = 0`
+
+    Biểu diễn vectơ dog `y = [0 1 0 0]`
+
+    Biểu diễn vectơ cat `y = [0 0 1 0]`
+
+    Biểu diễn vectơ baby chick `y = [0 0 0 1]`
+
+    Biểu diễn vectơ none `y = [1 0 0 0]`
+
+- Ký hiệu: 
+  - `C = số lượng class`
+  - Phạm vi của lớp là `(0, ..., C-1)`
+  - Trong lớp đầu ra `Ny = C`
+
+- Mỗi giá trị C ở lớp đầu ra chứa xác suất của ví dụ thuộc về từng lớp.
+
+- Ở lớp cuối, chúng ta cần kích hoạt hàm kích hoạt Softmax thay vì hàm sigmoid.
+
+- Phương trình kích hoạt Softmax:
+
+  - $t = e^{Z[l]}$ `# shape(C, m)  `
+  - $A[l] = \frac{e^{Z[l]}}{\sum t}$ `# shape(C, m), sum(t) - tổng của các t cho từng ví dụ (shape (1, m))`
+
+  
+
+### Training một softmax classifier
+
+- Có một kích hoạt là **hard max** nhận 1 cho giá trị lớn nhất và 0 cho các giá trị khác (**np.max** trên trục tung nếu đang dùng NumPy).
+- Tên **Softmax** bắt nguồn từ việc làm mềm (**soften**) các giá trị mà không làm cứng (hard) như hard max. **Softmax** là tổng quát hóa của hàm kích hoạt logistic cho C lớp. Nếu C = 2, softmax giảm xuống hồi quy logistic.
+- Hàm mất mát sử dụng với softmax: $\mathcal{L}(y, \hat{y}) = - \sum_{j= 0}^{C-1} y[j]*log(\hat{y})$
+- Hàm chi phí sử dụng softmax: $\mathcal{J}(w[1], b[1],  \cdots ) = - \frac{1}{m} \sum_{i=0}^{m}\mathcal{L}(y, \hat{y})$
+- Back propagation cho softmax: $dZ[l] = \hat{y} - y$
+- Đạo hàm của softmax: $\hat{y} * (1 - \hat{y})$
+
+**Ví dụ:**
+
+![](images/softmax-example.png)
+
+## Code
+
