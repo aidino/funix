@@ -244,3 +244,19 @@ Có thể sử dụng trung bình có trọng số trên các mini-batch. Chúng
 
 ## Code
 
+Sử dụng scikit-learn để tạo neural network
+
+```python
+from sklearn.neural_network import MLPClassifier
+
+# # number of hidden layers and number of neurons in each layer is 64, 8
+clf_sentiment = MLPClassifier(solver='adam', alpha=1e-5, activation='relu',
+                    hidden_layer_sizes=(64, 8), random_state=1) 
+
+clf_sentiment.fit(sentiment_X_train, sentiment_y_train)
+
+print ("***Sentiment result***")
+print("Train accuracy: {}".format(clf_sentiment.score(sentiment_X_train, sentiment_y_train)))
+print("Validation accuracy: {}".format(clf_sentiment.score(sentiment_X_valid, sentiment_y_valid)))
+```
+
