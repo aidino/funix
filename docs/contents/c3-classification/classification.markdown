@@ -24,7 +24,7 @@ permalink: /contents/c3-classification/
 **Phần 3: Các thuật toán phân loại khác**
 <br>
 - [Bài 9: SVM](l9-svm.html){:target="_blank"}
-- Bài 10: Cây quyết định (decision tree - DT)
+- [Bài 10: Cây quyết định (decision tree - DT)](l10-decision-tree.html){:target="_blank"}
 - Bài 11: Rời rạc hóa
 - Bài 12: Lựa chọn đặc trưng dựa theo cây quyết định
 
