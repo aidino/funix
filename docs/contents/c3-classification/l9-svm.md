@@ -33,10 +33,48 @@ Sử dụng các hàm Kernel mô tả **quan hệ giữa hai điểm dữ liệu
   K(X,Y) = tanh(\gamma . Z^TY + r)
   $$
   
-
 - Polynomial Kernel
 
 $$
 K(X,Y) = (\gamma.X^TY + r)^d, \gamma > 0
 $$
+
+## Code
+
+**Xây dựng phân loại với scikit-learn**
+
+```python
+from sklearn.svm import LinearSVC
+sentiment_clf = LinearSVC(C=1, random_state=0, max_iter=2000)
+sentiment_clf.fit(sentiment_X_train, sentiment_y_train)
+
+print ("***Sentiment result***")
+print("Train accuracy: {}".format(sentiment_clf.score(sentiment_X_train, sentiment_y_train)))
+print("Validation accuracy: {}".format(sentiment_clf.score(sentiment_X_valid, sentiment_y_valid)))
+```
+
+
+
+**Hyperparameter turning**
+
+```python
+from sklearn.model_selection import GridSearchCV
+
+tuned_parameters = {
+    "C": [1, 2, 5, 10, 20, 100]
+}
+
+tuned_sentiment_cls = GridSearchCV(
+                        LinearSVC(C=1),
+                        param_grid=tuned_parameters,
+                        n_jobs=2,
+                        verbose=1,
+)
+
+tuned_sentiment_cls.fit(sentiment_X_train, sentiment_y_train)
+
+print ("***Sentiment result***")
+print("Train accuracy: {}".format(tuned_sentiment_cls.score(sentiment_X_train, sentiment_y_train)))
+print("Validation accuracy: {}".format(tuned_sentiment_cls.score(sentiment_X_valid, sentiment_y_valid)))
+```
 
