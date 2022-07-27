@@ -30,7 +30,25 @@
 
 ### Code
 
+- Scikit-learn
 
+```python
+from sklearn.tree import DecisionTreeClassifier
+
+decision_tree_model = DecisionTreeClassifier(max_depth=6)
+decision_tree_model.fit(train_X, train_y)
+
+# Predict
+decision_tree_model.predict(sample_validation_data)
+decision_tree_model.predict_proba(sample_validation_data)
+
+# Score
+print (decision_tree_model.score(train_X, train_y))
+print ('----------')
+print (decision_tree_model.score(val_X, val_y))
+
+
+```
 
 
 
