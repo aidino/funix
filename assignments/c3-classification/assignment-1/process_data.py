@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from prefect import task, flow
 from sklearn import impute
 from sklearn.model_selection import train_test_split
@@ -29,6 +30,9 @@ def get_train_test_split(data: pd.DataFrame):
         "y_train": y_train,
         "y_test": y_test
     }
+
+def max_value(dataFrame, variable, top):
+    return np.where(dataFrame[variable]>top, top, dataFrame[variable])
     
 def handle_numerical_data(data: dict):
     X_train = data['X_train']
@@ -40,6 +44,17 @@ def handle_numerical_data(data: dict):
     imputer.transform(X_test)
     assert(X_train[numerical].isnull().sum().sum() == 0)
     assert(X_test[numerical].isnull().sum().sum() == 0)
+    
+    # Handle outliers
+    X_train['Rainfall'] = max_value(X_train, 'Rainfall', 3.2)
+    X_train['Evaporation'] = max_value(X_train, 'Evaporation', 21.8)
+    X_train['WindSpeed9am'] = max_value(X_train, 'WindSpeed9am', 55)
+    X_train['WindSpeed3pm'] = max_value(X_train, 'WindSpeed3pm', 57)
+    X_test['Rainfall'] = max_value(X_test, 'Rainfall', 3.2)
+    X_test['Evaporation'] = max_value(X_test, 'Evaporation', 21.8)
+    X_test['WindSpeed9am'] = max_value(X_test, 'WindSpeed9am', 55)
+    X_train['WindSpeed3pm'] = max_value(X_train, 'WindSpeed3pm', 57)
+    
     data['X_train'] = X_train
     data['X_test'] = X_test
     return data
@@ -56,6 +71,14 @@ def handle_categorical_data(data: dict):
     assert(X_test[categorical].isnull().sum().sum() == 0)
     data['X_train'] = X_train
     data['X_test'] = X_test
+    return data
+
+def encode_categorical_data(data: dict):
+    X_train = data['X_train']
+    X_test = data['X_test']
+    y_train = data['y_train']
+    y_test = data['y_test']
+    
     return data
 
 # ============================================================================== #
