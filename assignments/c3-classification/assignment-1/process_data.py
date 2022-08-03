@@ -5,6 +5,10 @@ from sklearn import impute
 from sklearn.model_selection import train_test_split
 from feature_engine.imputation import MeanMedianImputer
 from feature_engine.imputation import CategoricalImputer
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+import category_encoders as ce
+
+# binary encode categorical data
 
 # ============================================================================== #
 #                               Create tasks                                     #
@@ -73,11 +77,24 @@ def handle_categorical_data(data: dict):
     data['X_test'] = X_test
     return data
 
-def encode_categorical_data(data: dict):
+def encode_data(data: dict):
     X_train = data['X_train']
     X_test = data['X_test']
     y_train = data['y_train']
     y_test = data['y_test']
+    
+    numerical = [col for col in X_train.columns if X_train[col].dtypes != 'O']
+    categorical = [col for col in X_train.columns if X_train[col].dtypes == 'O']
+    
+    le = LabelEncoder()
+    y_train = le.fit_transform(y_train)
+    y_test = le.transform(y_test)
+    
+    # Binary encode for 'RainToday'
+    
+    encoder = ce.BinaryEncoder(cols=['RainToday'])
+    X_train = encoder.fit_transform(X_train)
+    X_test = encoder.transform(X_test)
     
     return data
 
