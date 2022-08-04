@@ -25,7 +25,7 @@ permalink: /contents/c3-classification/
 <br>
 - [Bài 9: SVM](l9-svm.html){:target="_blank"}
 - [Bài 10: Cây quyết định (decision tree - DT)](l10-decision-tree.html){:target="_blank"}
-- Bài 11: Rời rạc hóa
+- [Bài 11: Rời rạc hóa](l11-discretisation.html){:target="_blank"}
 - Bài 12: Lựa chọn đặc trưng dựa theo cây quyết định
 
 **Phần 4: Học máy với dữ liệu không cân bằng**
@@ -35,7 +35,7 @@ permalink: /contents/c3-classification/
 - Bài 16: Oversampling (lấy mẫu thừa)
 
 **Phần 5: Các kỹ thuật Ensemble trong học máy**
-- Bài 17: Tổng quan về Ensembling
+- [Bài 17: Tổng quan về Ensembling](l13-du-lieu-khong-can-bang.html){:target="_blank"}
 - Bài 18: Phương pháp Ensemble với dữ liệu không cân bằng
   
 **Labs**
