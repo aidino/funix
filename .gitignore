@@ -142,3 +142,4 @@ labs/c3-classification/datasets/amazon_baby.csv
 labs/c3-classification/lab-9-decision-tree/datasets/lending-club-data.csv
 labs/c3-classification/lab-11-feature-selection-with-DT/dataset/dataset_2.csv
 labs/c3-classification/lab-11-feature-selection-with-DT/dataset/houseprice.csv
+labs/c3-classification/lab-13-undersampling/car_eval_34/*
