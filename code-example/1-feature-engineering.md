@@ -1149,46 +1149,332 @@ df['time_london'] = df['time_utc'].dt.tz_convert('Europe/London')
 
 ### 1.7 Features Selection
 
-#### 1.7.1 Lựa chọn đặc trưng theo các phương pháp xuôi
+#### 1.7.1 Constant-Quasi, Constant-Duplicates
 
-Lựa chọn đặc trưng theo các phương pháp xuôi bắt đầu bằng cách huấn luyện mô hình học máy cho từng đặc trưng trong tập dữ liệu và lựa chọn đặc trưng mở đầu khiến mô hình hoạt động tốt nhất theo tiêu chí đánh giá nhất định.
+- **Constant features**
 
-Ở bước thứ hai, nó tạo ra các mô hình học máy cho tất cả các tổ hợp đặc trưng đã chọn ở bước trước và đặc trưng thứ hai. Nó chọn cặp tạo ra thuật toán hoạt động tốt nhất.
+  ```python
+  from sklearn.feature_selection import VarianceThreshold
+  
+  sel = VarianceThreshold(threshold=0)
+  sel.fit(X_train)  # fit finds the features with zero variance
+  
+  # capture non-constant feature names
+  feat_names = X_train.columns[sel.get_support()]
+  
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  
+  # Feature-engine
+  from feature_engine.selection import DropConstantFeatures
+  
+  sel = DropConstantFeatures(tol=1, variables=None, missing_values='raise')
+  sel.fit(X_train)
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  
+  
+  ```
 
-Phương pháp này tiếp tục bằng cách thêm mỗi lần 1 đặc trưng vào các đặc trưng đã chọn ở các bước trước cho đến khi xác định trước tiêu chí dừng.
+- **Quasi-constant features**
 
-Về lý thuyết, các mô hình có nhiều đặc trưng hơn sẽ hoạt động tốt hơn. Thuật toán sẽ tiếp tục thêm các đặc trưng mới cho đến khi đáp ứng tiêu chí, chẳng hạn: cho đến khi chất lượng của mô hình không tăng vượt quá một ngưỡng nhất định hoặc cho đến khi lựa chọn được một số đặc trưng nhất định như được triển khai trong thư viện mà chúng ta sẽ thảo luận trong notebook này.
+  ```python
+  from sklearn.feature_selection import VarianceThreshold
+  
+  sel = VarianceThreshold(threshold=0.01)
+  sel.fit(X_train)  # fit finds the features with zero variance
+  
+  # capture non-constant feature names
+  feat_names = X_train.columns[sel.get_support()]
+  
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  
+  #Feature-engine
+  from feature_engine.selection import DropConstantFeatures
+  
+  sel = DropConstantFeatures(tol=0.998, variables=None, missing_values='raise')
+  sel.fit(X_train)
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  ```
 
-Ví dụ, phép đo chất lượng mô hình có thể là roc_auc cho phân loại và r^2 cho hồi quy và nó do người dùng xác định.
+- **Duplicated features**
 
-Lựa chọn đặc trưng theo các phương pháp xuôi được gọi là thủ tục tham lam vì nó đánh giá nhiều tổ hợp đối tượng có thể: đơn, đôi, ba,... Do đó, nó rất khó tính toán và thậm chí là không khả thi nếu không gian đặc trưng lớn.
+  ```python
+  #Feature-engine
+  from sklearn.pipeline import Pipeline
+  from feature_engine.selection import DropDuplicateFeatures
+  
+  sel = DropDuplicateFeatures(variables=None, missing_values='raise')
+  sel.fit(X_train)
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  ```
 
+- **Pipeline**
 
-mlxtend là một gói đặc biệt trong Python thực hiện kiểu lựa chọn đặc trưng này: http://rasbt.github.io/mlxtend/
+  ```python
+  from sklearn.pipeline import Pipeline
+  from feature_engine.selection import DropDuplicateFeatures, DropConstantFeatures
+  
+  pipe = Pipeline([
+      ('constant', DropConstantFeatures(tol=0.998)),
+      ('duplicated', DropDuplicateFeatures()),
+  ])
+  
+  pipe.fit(X_train)
+  X_train = pipe.transform(X_train)
+  X_test = pipe.transform(X_test)
+  ```
 
+  
 
-Trong triển khai mlxtend của Lựa chọn đặc trưng theo các phương pháp xuôi, tiêu chí dừng là số lượng đặc trưng được đặt tùy ý. Do đó, việc tìm kiếm sẽ kết thúc khi chúng ta đạt được số lượng đặc trưng được chọn mong muốn.
+#### 1.7.2 Correlation
 
+- **Hệ số tương quan**
 
-Điều này hơi tùy ý, chúng ta có thể đang chọn một số đặc trưng gần tối ưu hoặc tương tự như vậy, một số lượng lớn các đặc trưng. Tuy nhiên, bằng cách xem xét phép đo chất lượng mà thuật toán trả về khi lựa chọn đặc trưng, chúng ta có thể có biết liệu nhiều đặc trưng hơn có thêm giá trị không.
+Chọn những features mà có tương quan cao với target và không tương quan với các features khác
 
-**Lưu ý**
-Nếu muốn dừng tìm kiếm bằng cách sử dụng tiêu chí khác, chúng ta sẽ phải tự viết code thuật toán :(
+```python
+from sklearn.ensemble import RandomForestClassifier
+from feature_engine.selection import DropCorrelatedFeatures, SmartCorrelatedSelection
 
-Chúng ta sẽ sử dụng thuật toán lựa chọn đặc trưng theo các phương pháp xuôi từ mlxtend trong tập dữ liệu phân loại và hồi quy. 
+sel = DropCorrelatedFeatures(
+    threshold=0.8,
+    method='pearson',
+    missing_values='ignore'
+)
+sel.fit(X_train)
+sel.correlated_feature_sets_
 
-```bash
-conda install mlxtend -y
+X_train = sel.transform(X_train)
+X_test = sel.transform(X_test)
+
 ```
+
+- **SmartCorrelationSelection**
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from feature_engine.selection import DropCorrelatedFeatures, SmartCorrelatedSelection
+
+#We will keep a feature from each correlation group based on the performance of a random forest.
+# random forest
+rf = RandomForestClassifier(
+    n_estimators=10,
+    random_state=20,
+    n_jobs=4,
+)
+
+# correlation selector
+sel = SmartCorrelatedSelection(
+    variables=None, # if none, selector examines all numerical variables
+    method="pearson",
+    threshold=0.8,
+    missing_values="raise",
+    selection_method="model_performance",
+    estimator=rf,
+    scoring="roc_auc",
+    cv=3,
+)
+
+# this may take a while, because we are training
+# a random forest per correlation group
+sel.fit(X_train, y_train)
+sel.correlated_feature_sets_
+
+#we can select the feature with the highest variance from each group.
+sel = SmartCorrelatedSelection(
+    variables=None,
+    method="pearson",
+    threshold=0.8,
+    missing_values="raise",
+    selection_method="variance",
+    estimator=None,
+    scoring="roc_auc",
+    cv=3,
+)
+
+sel.fit(X_train, y_train)
+
+
+```
+
+- **Pipeline**
+
+```python
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_auc_score
+from sklearn.pipeline import Pipeline
+
+from feature_engine.selection import (
+    DropConstantFeatures,
+    DropDuplicateFeatures,
+    SmartCorrelatedSelection,
+)
+
+pipe = Pipeline([
+    ('constant', DropConstantFeatures(tol=0.998)),
+    ('duplicated', DropDuplicateFeatures()),
+    ('correlation', SmartCorrelatedSelection(selection_method='variance')),
+])
+
+pipe.fit(X_train)
+X_train = pipe.transform(X_train)
+X_test = pipe.transform(X_test)
+
+
+```
+
+
+
+#### 1.7.3 Filter Statistical Tests
+
+```python
+from sklearn.feature_selection import VarianceThreshold, f_classif, SelectKBest
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import roc_auc_score
+
+sel_ = SelectKBest(f_classif, k=20).fit(X_train, y_train)
+
+# capture selected feature names
+features_to_keep = X_train.columns[sel_.get_support()]
+
+# select features
+X_train_anova = sel_.transform(X_train)
+X_test_anova = sel_.transform(X_test)
+
+# numpy array to dataframe
+X_train_anova = pd.DataFrame(X_train_anova)
+X_train_anova.columns = features_to_keep
+
+X_test_anova = pd.DataFrame(X_test_anova)
+X_test_anova.columns = features_to_keep
+```
+
+
+
+#### 1.7.4 Filter other metrics
+
+- **Univariate roc-auc or mse (or any other metric really)**
+
+```python
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+from sklearn.metrics import roc_auc_score, mean_squared_error
+
+from feature_engine.selection import SelectBySingleFeaturePerformance
+
+# Classification
+# set up a machine learning model
+rf = RandomForestClassifier(
+    n_estimators=10, random_state=1, n_jobs=4)
+
+# set up the selector
+sel = SelectBySingleFeaturePerformance(
+    variables=None,
+    estimator=rf,
+    scoring="roc_auc",
+    cv=3,
+    threshold=0.5)
+
+# find predictive features
+sel.fit(X_train, y_train)
+X_train = sel.transform(X_train)
+X_test = sel.transform(X_test)
+
+#Regression
+# set up the machine learning model
+rf = RandomForestRegressor(
+    n_estimators=10, max_depth=2, random_state=1, n_jobs=4)
+
+# set up the selector
+sel = SelectBySingleFeaturePerformance(
+    variables=None,
+    estimator=rf,
+    scoring="r2",
+    cv=3,
+    threshold=0.5)
+
+# find predictive features
+sel.fit(X_train, y_train)
+# select features in the dataframes
+X_train = sel.transform(X_train)
+X_test = sel.transform(X_test)
+
+```
+
+- **Select with Target Mean as Performance Proxy**
+
+Feature-engine automatically detects categorical and numerical variables. 	
+    	- Categories in categorical variables will be replaced by the mean value of the target.
+    	- Numerical variables will be first discretised and then, each bin replaced by the target mean value
+
+```python
+from sklearn.metrics import roc_auc_score
+from feature_engine.selection import SelectByTargetMeanPerformance
+
+sel = SelectByTargetMeanPerformance(
+    variables=None, # automatically finds categorical and numerical variables
+    scoring="roc_auc_score", # the metric to evaluate performance
+    threshold=0.6, # the threshold for feature selection, 
+    bins=3, # the number of intervals to discretise the numerical variables
+    strategy="equal_frequency", # whether the intervals should be of equal size or equal number of observations
+    cv=2,# cross validation
+    random_state=1, #seed for reproducibility
+)
+sel.fit(X_train, y_train)
+# after fitting, we can find the categorical variables
+# using this attribute
+sel.variables_categorical_
+# and here we find the numerical variables
+sel.variables_numerical_ 
+# here the selector stores the roc-auc per feature
+sel.feature_performance_
+
+X_train = sel.transform(X_train)
+X_test = sel.transform(X_test)
+```
+
+
+
+#### 1.7.5 Wrapper
+
+- **Step forward feature selection**
 
 ```python
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.metrics import roc_auc_score, r2_score
-
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 
-# ===== REGRESSION ========
-# lựa chọn đặc trưng theo các phương pháp xuôi
+#Classification
+# within the SFS we indicate:
+# 1) the algorithm we want to create, in this case RandomForests
+# (note that I use few trees to speed things up)
+# 2) the stopping criteria: want to select 10 features 
+# 3) wheter to perform step forward or step backward
+# 4) the evaluation metric: in this case the roc_auc
+# 5) the cross-validation
+# this is going to take a while, do not despair
+sfs = SFS(RandomForestClassifier(n_estimators=10, n_jobs=4, random_state=0), 
+           k_features=10, # the more features we want, the longer it will take to run
+           forward=True, 
+           floating=False, # see the docs for more details in this parameter
+           verbose=2, # this indicates how much to print out intermediate steps
+           scoring='roc_auc',
+           cv=2)
+
+sfs = sfs.fit(np.array(X_train), y_train)
+selected_feat = X_train.columns[list(sfs.k_feature_idx_)]
+
+
+#Regression
+# step forward feature selection
 sfs = SFS(RandomForestRegressor(n_estimators=10, n_jobs=4, random_state=10), 
            k_features=20, 
            forward=True, 
@@ -1197,40 +1483,41 @@ sfs = SFS(RandomForestRegressor(n_estimators=10, n_jobs=4, random_state=10),
            scoring='r2',
            cv=2)
 
-sfs = sfs.fit(np.array(X_train), np.array(y_train))    
-
-# chỉ số của các cột đã chọn 
-sfs.k_feature_idx_
-
-# các cột đã chọn
-X_train.columns[list(sfs.k_feature_idx_)]
-
+sfs = sfs.fit(np.array(X_train), y_train)
+selected_feat = X_train.columns[list(sfs.k_feature_idx_)]
 ```
 
 
 
-#### 1.7.2 Lựa chọn đặc trưng theo các phương pháp ngược
-
-Lựa chọn đặc trưng theo các phương pháp ngược bắt đầu bằng cách khớp mô hình học máy sử dụng tất cả các đặc trưng trong tập dữ liệu và xác đinh chất lượng mô hình.
-
-Sau đó, nó huấn luyện mô hình trên tất cả các tổ hợp có thể có của tất cả các đặc trưng - 1, loại bỏ đặc trưng trả về mô hình có chất lượng thấp cao nhất khi bỏ đặc trưng đó đi.
-
-Ở bước thứ ba, huấn luyện các mô hình trong tất cả các tổ hợp có thể của các đặc trưng còn lại từ bước hai bớt đi 1 đặc trưng và loại bỏ đặc trưng khiến mô hình hoạt động tốt nhất.
-
-Thuật toán dừng theo một tiêu chí do người dùng xác định. Tiêu chí này có thể là chất lượng mô hình không giảm vượt quá một ngưỡng nhất định hoặc đạt tới số lượng đặc trưng đã chọn nhất định như trong triển khai mlxtend.
-
-
-Ví dụ, phép đo chất lượng mô hình có thể là roc_auc cho phân loại và r^2 cho hồi quy và nó do người dùng xác định.
-
-Lựa chọn đặc trưng theo các phương pháp ngược được gọi là thủ tục tham lam vì nó đánh giá tất cả các tổ hợp đặc trưng n, rồi n-1, n-2,... Do đó, nó rất khó tính toán và thậm chí là không khả thi nếu không gian đặc trưng lớn.
+- **Step backward feature selection**
 
 ```python
-
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.metrics import roc_auc_score, r2_score
-
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 
+#Classification
+# within the SFS we indicate:
+# 1) the algorithm we want to create, in this case RandomForests
+# (note that I use few trees to speed things up)
+# 2) the stopping criteria: want to select 50 features
+# 3) wheter to perform step forward or step backward
+# 4) the evaluation metric: in this case the roc_auc
+# 5) the want cross-validation
+# this is going to take a while, do not despair
+sfs = SFS(RandomForestClassifier(n_estimators=10, n_jobs=4, random_state=0),
+          k_features=65, # the lower the features we want, the longer this will take
+          forward=False,
+          floating=False,
+          verbose=2,
+          scoring='roc_auc',
+          cv=2)
+
+sfs = sfs.fit(np.array(X_train), y_train)
+selected_feat = X_train.columns[list(sfs.k_feature_idx_)]
+
+# Regression
+# step backward feature selection algorithm
 sfs = SFS(RandomForestRegressor(n_estimators=10, n_jobs=4, random_state=10), 
            k_features=20, 
            forward=False, 
@@ -1238,32 +1525,44 @@ sfs = SFS(RandomForestRegressor(n_estimators=10, n_jobs=4, random_state=10),
            verbose=2,
            scoring='r2',
            cv=2)
-
-sfs = sfs.fit(np.array(X_train), np.array(y_train))
-
+sfs = sfs.fit(np.array(X_train), y_train)
 selected_feat = X_train.columns[list(sfs.k_feature_idx_)]
 ```
 
 
 
-#### 1.7.3 Tìm kiếm đầy đủ
-
-Tìm kiếm đầy đủ tìm tập hợp con các đặc trưng tốt nhất trong số tất cả các tập hợp con đặc trưng có thể theo một phép đo đặc trưng xác định cho một thuật toán học máy nhất định.
-
- Ví dụ: nếu chúng ta huấn luyện hồi quy logistic và tập dữ liệu gồm 4 đặc trưng, thuật toán sẽ đánh giá tất cả **15** tổ hợp đặc trưng như sau:
-
-- tất cả các tổ hợp có thể của 1 đặc trưng
-- tất cả các tổ hợp có thể của 2 đặc trưng
-- tất cả các tổ hợp có thể của 3 đặc trưng
-- tất cả 4 đặc trưng
-
-và chọn tổ hợp dẫn đến chất lượng tốt nhất (ví dụ: độ chính xác của phân loại) của hồi quy logistic.
-
-Tìm kiếm đầy đủ là một thuật toán tham lam vì nó đánh giá tất cả các kết hợp đặc trưng có thể có. Nó rất khó tính toán và thậm chí là không khả thi nếu không gian đặc trưng lớn.
+- **Exhaustive Feature Selection**
 
 ```python
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+from sklearn.metrics import roc_auc_score, r2_score
 from mlxtend.feature_selection import ExhaustiveFeatureSelector as EFS
 
+# Classification
+# within the EFS we indicate:
+# 1) the algorithm we want to create, in this case RandomForests
+# (note that I use few trees to speed things up)
+# 2) the number of minimum features we want our model to have
+# 3) the number of maximum features we want our model to have
+# with 2 and 3 we regulate the number of possible feature combinations to
+# be evaluated by the model.
+# 4) the evaluation metric: in this case the roc_auc
+# 5) the cross-validation
+efs = EFS(RandomForestClassifier(n_estimators=5,
+                                 n_jobs=4,
+                                 random_state=0,
+                                 max_depth=2),
+                                 min_features=1,
+                                 max_features=2,
+                                 scoring='roc_auc',
+                                 print_progress=True,
+                                 cv=2)
+
+# search features
+efs = efs.fit(np.array(X_train), y_train)
+selected_feat = X_train.columns[list(efs.best_idx_)]
+
+# Regression
 efs = EFS(RandomForestRegressor(n_estimators=5,
                                 n_jobs=4,
                                 random_state=0,
@@ -1273,146 +1572,13 @@ efs = EFS(RandomForestRegressor(n_estimators=5,
                                 scoring='r2',
                                 print_progress=True,
                                 cv=2)
+
 efs = efs.fit(np.array(X_train), y_train)
-
-X_train.columns[list(efs.best_idx_)]
-```
-
-Tìm kiếm đầy đủ rất khó tính toán, chúng ta không thường sử dụng quy trình này cho những lý do tương tự, nhưng nếu truy cập tới các siêu máy tính thì có thể thử.
-
-
-
-#### 1.7.4 Lọc dựa trên các kiểm định thống kê
-
-```python
-from sklearn.feature_selection import VarianceThreshold, f_classif, SelectKBest
-
-# Loại bỏ các đặc trưng không đổi
-constant_features = [
-    feat for feat in X_train.columns if X_train[feat].std() == 0
-]
-X_train.drop(labels=constant_features, axis=1, inplace=True)
-X_test.drop(labels=constant_features, axis=1, inplace=True)
-
-# Loại bỏ các đặc trưng gần như không đổi
-sel = VarianceThreshold(threshold=0.01) # đặt ngưỡng = 0.01
-sel.fit(X_train) # tìm các đặc trưng với phương sai thấp
-
-features_to_keep = X_train.columns[sel.get_support()]
-
-X_train = sel.transform(X_train)
-X_test = sel.transform(X_test)
-
-X_train= pd.DataFrame(X_train)
-X_train.columns = features_to_keep
-
-X_test= pd.DataFrame(X_test)
-X_test.columns = features_to_keep
-
-# Loại bỏ các đặc trưng trùng lặp
-duplicated_feat = []
-for i in range(0, len(X_train.columns)):
-    if i % 10 == 0:  # điều này giúp chúng ta hiểu vòng lặp diễn ra thế nào
-        print(i)
-
-    col_1 = X_train.columns[i]
-
-    for col_2 in X_train.columns[i + 1:]:
-        if X_train[col_1].equals(X_train[col_2]):
-            duplicated_feat.append(col_2)
-
-X_train.drop(labels=duplicated_feat, axis=1, inplace=True)
-X_test.drop(labels=duplicated_feat, axis=1, inplace=True)
-
-# Loại bỏ các đặc trưng tương quan
-def correlation(dataset, threshold):
-    
-    col_corr = set()  # tập hợp tất cả tên của các cột tương quan
-    corr_matrix = dataset.corr()
-    
-    for i in range(len(corr_matrix.columns)):
-        for j in range(i):
-            # chúng ta cần tìm giá trị hệ số tuyệt đối
-            if abs(corr_matrix.iloc[i, j]) > threshold:
-                colname = corr_matrix.columns[i]  # lấy tên của cột
-                col_corr.add(colname)
-    return col_corr
-
-corr_features = correlation(X_train, 0.8)
-
-X_train.drop(labels=corr_features, axis=1, inplace=True)
-X_test.drop(labels=corr_features, axis=1, inplace=True)
-
-# Lựa chọn các đặc trưng dựa trên anova
-sel_ = SelectKBest(f_classif, k=20).fit(X_train, y_train) # set k=20
-
-# thu thập tên các đặc trưng đã chọn
-features_to_keep = X_train.columns[sel_.get_support()]
-
-# lựa chọn đặc trưng
-X_train_anova = sel_.transform(X_train)
-X_test_anova = sel_.transform(X_test)
-
-# mảng numpy thành dataframe
-X_train_anova = pd.DataFrame(X_train_anova)
-X_train_anova.columns = features_to_keep
-
-X_test_anova = pd.DataFrame(X_test_anova)
-X_test_anova.columns = features_to_keep
-
+selected_feat = X_train.columns[list(efs.best_idx_)]
 ```
 
 
 
-#### 1.7.5 Lọc theo RMSE
 
-Quy trình này hoạt động như sau:
 
-- Xây dựng mô hình trên mỗi đặc trưng để dự đoán mục tiêu.
-- Đưa ra dự đoán sử dụng mô hình được tạo ra từ đặc trưng đã đề cập.
-- Đo lường chất lượng của dự đoán đó, có thể là roc-auc (bài toàn phân loại), msse (bài toán hồi quy).
-- Xếp hạng các đặc trưng theo phép đo (roc-auc hoặc mse).
-- Chọn ra các đặc trưng có xếp hạng cao nhất.
-
-```python
-from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
-from sklearn.metrics import roc_auc_score, mean_squared_error
-
-# xác đinh mse cho từng đặc trưng
-mse_values = []
-
-# lặp qua từng biến
-for feature in X_train.columns:
-    
-    # huấn luyện cây quyết định
-    clf = DecisionTreeRegressor()
-    clf.fit(X_train[feature].fillna(0).to_frame(), y_train)
-    
-    # đưa ra dự đoán
-    y_scored = clf.predict(X_test[feature].fillna(0).to_frame())
-    
-    # xác định mse và lưu trữ nó
-    mse_values.append(mean_squared_error(y_test, y_scored))
-
-mse_values = pd.Series(mse_values, index=X_train.columns)
-mse_values.index = X_train.columns
-mse_values.sort_values(ascending=False).plot.bar(figsize=(20,8))
-
-selected_features = mse_values[mse_values < np.mean(mse_values)].index
-X_train = X_train[selected_features]
-X_test = X_test[selected_features]
-
-```
-
-#### 1.7.6 Hệ số hồi quy tuyến tính
-
-```python
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
-from sklearn.feature_selection import SelectFromModel
-
-sel_ = SelectFromModel(LinearRegression())
-sel_.fit(X_train, y_train)
-selected_feat = X_train.columns[(sel_.get_support())]
-
-```
+#### 1.7.6 Embedded linear coefficients
