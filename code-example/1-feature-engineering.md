@@ -1582,3 +1582,383 @@ selected_feat = X_train.columns[list(efs.best_idx_)]
 
 
 #### 1.7.6 Embedded linear coefficients
+
+- **Logistic Regression Coefficients**
+
+  ```python
+  from sklearn.preprocessing import StandardScaler
+  from sklearn.linear_model import LogisticRegression
+  from sklearn.feature_selection import SelectFromModel
+  
+  scaler = StandardScaler()
+  scaler.fit(X_train)
+  
+  sel_ = SelectFromModel(LogisticRegression(C=1000, penalty='l2', max_iter=300, random_state=10))
+  sel_.fit(scaler.transform(X_train), y_train)
+  
+  selected_feat = X_train.columns[(sel_.get_support())]
+  ```
+
+- **Linear Regression Coefficients**
+
+  ```python
+  from sklearn.preprocessing import StandardScaler
+  from sklearn.linear_model import LinearRegression
+  from sklearn.feature_selection import SelectFromModel
+  
+  scaler = StandardScaler()
+  scaler.fit(X_train)
+  sel_ = SelectFromModel(LinearRegression())
+  sel_.fit(scaler.transform(X_train), y_train)
+  selected_feat = X_train.columns[(sel_.get_support())]
+  ```
+
+- **Regression Coefficients are affected by regularisation**
+
+  ```python
+  from sklearn.preprocessing import StandardScaler
+  from sklearn.linear_model import LogisticRegression
+  
+  scaler = StandardScaler()
+  scaler.fit(X_train)
+  
+  coefs_df = []
+  
+  # we train 4 different models with regularization
+  penalties = [0.00005, 0.0005, 0.005, 0.05, 0.5]
+  
+  for c in penalties:
+      logit = LogisticRegression(C=c, penalty='l2', random_state=10, max_iter=300)
+      logit.fit(scaler.transform(X_train), y_train)
+      # store the coefficients of the variables in a list
+      coefs_df.append(pd.Series(logit.coef_.ravel()))
+      
+  coefs = pd.concat(coefs_df, axis=1)
+  coefs.columns = penalties
+  coefs.index = X_train.columns
+  coefs.head()
+  ```
+
+- **Feature selection with linear models, review - Putting it all together**
+
+  ```python
+  from sklearn.feature_selection import VarianceThreshold
+  from sklearn.preprocessing import StandardScaler
+  from sklearn.linear_model import LogisticRegression
+  from sklearn.feature_selection import SelectFromModel
+  from sklearn.metrics import roc_auc_score
+  
+  scaler = StandardScaler()
+  scaler.fit(X_train)
+  
+  sel_ = SelectFromModel(
+      LogisticRegression(C=0.0005, random_state=10, max_iter=1000, penalty='l2'))
+  
+  sel_.fit(scaler.transform(X_train), y_train)
+  
+  # select features where coefficient is above the mean
+  # coefficient value and parse again as dataframe
+  # (remember that the output of sklearn is a
+  # numpy array)
+  X_train_coef = pd.DataFrame(sel_.transform(X_train))
+  X_test_coef = pd.DataFrame(sel_.transform(X_test))
+  # add the columns name
+  X_train_coef.columns = X_train.columns[(sel_.get_support())]
+  X_test_coef.columns = X_train.columns[(sel_.get_support())]
+  ```
+
+  
+
+#### 1.7.7 Embedded Lasso
+
+- **Lasso regularisation**
+
+  ```python
+  from sklearn.linear_model import Lasso, LogisticRegression
+  from sklearn.feature_selection import SelectFromModel
+  from sklearn.preprocessing import StandardScaler
+  
+  ### Classification
+  scaler = StandardScaler()
+  scaler.fit(X_train)
+  sel_ = SelectFromModel(LogisticRegression(C=0.5, penalty='l1', solver='liblinear', random_state=10))
+  
+  sel_.fit(scaler.transform(X_train), y_train)
+  selected_feat = X_train.columns[(sel_.get_support())]
+  
+  X_train_selected = sel_.transform(X_train)
+  X_test_selected = sel_.transform(X_test)
+  
+  ### Regression
+  scaler = StandardScaler()
+  scaler.fit(X_train)
+  
+  sel_ = SelectFromModel(Lasso(alpha=100, random_state=10))
+  sel_.fit(scaler.transform(X_train), y_train)
+  
+  selected_feat = X_train.columns[(sel_.get_support())]
+  
+  ```
+
+- **Basic Filter Methods plus LASSO pipeline - Putting it all together**
+
+  ```python
+  from sklearn.feature_selection import VarianceThreshold
+  from sklearn.preprocessing import StandardScaler
+  from sklearn.linear_model import LogisticRegression
+  from sklearn.feature_selection import SelectFromModel
+  from sklearn.metrics import roc_auc_score
+  
+  scaler = StandardScaler()
+  scaler.fit(X_train)
+  
+  sel_ = SelectFromModel(
+      LogisticRegression(C=0.5,
+                         penalty='l1',
+                         solver='liblinear',
+                         random_state=10))
+  
+  sel_.fit(scaler.transform(X_train), y_train)
+  
+  # remove features with zero coefficient from dataset
+  # and parse again as dataframe
+  X_train_lasso = pd.DataFrame(sel_.transform(X_train))
+  X_test_lasso = pd.DataFrame(sel_.transform(X_test))
+  
+  # add the columns name
+  X_train_lasso.columns = X_train.columns[(sel_.get_support())]
+  X_test_lasso.columns = X_train.columns[(sel_.get_support())]
+  ```
+
+
+
+
+
+#### 1.7.8 Embedded tree importance
+
+- **Random Forest importance**
+
+  ```python
+  from sklearn.model_selection import train_test_split
+  from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+  from sklearn.feature_selection import SelectFromModel
+  
+  ### Classification
+  sel_ = SelectFromModel(RandomForestClassifier(n_estimators=10, random_state=10))
+  sel_.fit(X_train, y_train)
+  
+  selected_feat = X_train.columns[(sel_.get_support())]
+  
+  ### Regression
+  sel_ = SelectFromModel(RandomForestRegressor(n_estimators=100, random_state=10))
+  sel_.fit(X_train, y_train)
+  selected_feat = X_train.columns[(sel_.get_support())]
+  ```
+
+- **Recursive Feature Selection using Random Forests importance**
+
+  ```python
+  from sklearn.ensemble import RandomForestClassifier
+  from sklearn.feature_selection import RFE
+  from sklearn.metrics import roc_auc_score
+  
+  sel_ = RFE(RandomForestClassifier(n_estimators=10, random_state=10), n_features_to_select=27)
+  sel_.fit(X_train, y_train)
+  selected_feat = X_train.columns[(sel_.get_support())]
+  ```
+
+- **Feature selection with decision trees, review - Putting it all together**
+
+  ```python
+  from sklearn.feature_selection import VarianceThreshold
+  from sklearn.ensemble import RandomForestClassifier
+  from sklearn.feature_selection import SelectFromModel
+  from sklearn.metrics import roc_auc_score
+  
+  sel_ = SelectFromModel(RandomForestClassifier(n_estimators=50, random_state=10))
+  sel_.fit(X_train, y_train)
+  # remove features with zero coefficient from dataset
+  # and parse again as dataframe (output of sklearn is
+  # numpy array)
+  X_train_rf = pd.DataFrame(sel_.transform(X_train))
+  X_test_rf = pd.DataFrame(sel_.transform(X_test))
+  # add the columns name
+  X_train_rf.columns = X_train.columns[(sel_.get_support())]
+  X_test_rf.columns = X_train.columns[(sel_.get_support())]
+  ```
+
+
+
+
+
+#### 1.7.9 Hybrid-methods
+
+- **Feature Selection by Random Shuffling**
+
+  ```python
+  from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+  from sklearn.metrics import roc_auc_score, mean_squared_error, r2_score
+  from feature_engine.selection import SelectByShuffling
+  
+  ### Classification
+  rf = RandomForestClassifier(n_estimators=50, max_depth=2, random_state=2909, n_jobs=4)
+  sel = SelectByShuffling(
+      variables=None, # automatically examine all numerical variables
+      estimator=rf, # the ML model
+      scoring='roc_auc', # the metric to evaluate
+      threshold=0,# the maximum performance drop allowed to select the feature
+      cv=3, # cross validation
+      random_state=1 # seed
+  )
+  sel.fit(X_train, y_train)
+  
+  # performance of model trained with all features
+  sel.initial_model_performance_
+  
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  
+  ### Regression
+  # I build few and shallow trees to avoid overfitting
+  rf = RandomForestRegressor(n_estimators=100,
+                             max_depth=3,
+                             random_state=2909,
+                             n_jobs=4)
+  sel = SelectByShuffling(
+      variables=None, # automatically examines all numerical variables
+      estimator=rf, # the estimator
+      scoring='neg_root_mean_squared_error', # the performance metric
+      threshold=None, # threshold will be mean value of metric accross features
+      cv=3,#  cross validation
+      random_state=1 # seed
+  )
+  
+  sel.fit(X_train, y_train)
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  ```
+
+  
+
+- **Hybrid method: Recursive feature elimination**
+
+  ```python
+  from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegressor
+  from sklearn.metrics import roc_auc_score, r2_score
+  from sklearn.pipeline import Pipeline
+  from feature_engine.selection import (
+      RecursiveFeatureElimination,
+      DropConstantFeatures,
+      DropDuplicateFeatures,
+  )
+  
+  ### Classification
+  pipe = Pipeline([
+      ('constant', DropConstantFeatures(tol=0.998)),
+      ('duplicated', DropDuplicateFeatures()),
+  ])
+  pipe.fit(X_train)
+  # remove features
+  X_train = pipe.transform(X_train)
+  X_test = pipe.transform(X_test)
+  
+  model = GradientBoostingClassifier(
+      n_estimators=10,
+      max_depth=2,
+      random_state=10,
+  )
+  sel = RecursiveFeatureElimination(
+      variables=None, # automatically evaluate all numerical variables
+      estimator = model, # the ML model
+      scoring = 'roc_auc', # the metric we want to evalute
+      threshold = 0.0005, # the maximum performance drop allowed to remove a feature
+      cv=2, # cross-validation
+  )
+  # this may take quite a while, because
+  # we are building a lot of models with cross-validation
+  sel.fit(X_train, y_train)
+  # performance of model trained using all features
+  sel.initial_model_performance_
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  
+  ### Regression
+  model = GradientBoostingRegressor(n_estimators=10, max_depth=4, random_state=10)
+  # Setup the RFE selector
+  sel = RecursiveFeatureElimination(
+      variables=None, # automatically evaluate all numerical variables
+      estimator = model, # the ML model
+      scoring = 'r2', # the metric we want to evalute
+      threshold = 0.001, # the maximum performance drop allowed to remove a feature
+      cv=3, # cross-validation
+  )
+  # this may take quite a while, because
+  # we are building a lot of models with cross-validation
+  sel.fit(X_train, y_train)
+  X_train = sel.transform(X_train)
+  X_test = sel.transform(X_test)
+  ```
+
+- **Recursive feature addition with Feature-engine**
+
+  ```python
+  from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegressor
+  from sklearn.metrics import roc_auc_score, r2_score
+  from sklearn.pipeline import Pipeline
+  
+  from feature_engine.selection import (
+      RecursiveFeatureAddition,
+      DropConstantFeatures,
+      DropDuplicateFeatures,
+  )
+  
+  ### Classification
+  pipe = Pipeline([
+      ('constant', DropConstantFeatures(tol=0.998)),
+      ('duplicated', DropDuplicateFeatures()),
+  ])
+  pipe.fit(X_train)
+  # remove features
+  X_train = pipe.transform(X_train)
+  X_test = pipe.transform(X_test)
+  
+  # the ML model for which we want to select features
+  model = GradientBoostingClassifier(
+      n_estimators=10,
+      max_depth=2,
+      random_state=10,
+  )
+  # Setup the RFA selector
+  rfa = RecursiveFeatureAddition(
+      variables=None,  # automatically evaluate all numerical variables
+      estimator=model,  # the ML model
+      scoring='roc_auc',  # the metric we want to evalute
+      threshold=0.0001,  # the minimum performance increase needed to select a feature
+      cv=2,  # cross-validation
+  )
+  rfa.fit(X_train, y_train)
+  # select features
+  X_train = rfa.transform(X_train)
+  X_test = rfa.transform(X_test)
+  
+  ### Regression
+  # the model for which we want to select features
+  model = GradientBoostingRegressor(
+      n_estimators=10, max_depth=4, random_state=10)
+  
+  # Setup the RFA selector
+  rfa = RecursiveFeatureAddition(
+      variables=None,  # automatically evaluate all numerical variables
+      estimator=model,  # the ML model
+      scoring='r2',  # the metric we want to evalute
+      threshold=0.001,  # the minimum performance increase needed to select a feature
+      cv=2,  # cross-validation
+  )
+  
+  rfa.fit(X_train, y_train)
+  X_train = rfa.transform(X_train)
+  X_test = rfa.transform(X_test)
+  ```
+
+  
+

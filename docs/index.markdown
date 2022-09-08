@@ -20,3 +20,8 @@ permalink: /
   - [Đại số tuyến tính với Numpy](contents/daisotuyentinh_numpy.html){:target="_blank"}
   - [NLP Basic](contents/nlp-basic/nlp-basic.html){:target="_blank"}
   - [Awesome Cheatsheet](contents/awesome-cheatsheet/awesome-cheatsheet-night.html){:target="_blank"}
+
+
+- [Code example](#)
+  - [Features Engineering](contents/1-feature-engineering.html)
+  
