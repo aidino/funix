@@ -25,4 +25,4 @@ permalink: /
 - [Code example](#)
   - [1 - Preprocessing Data](contents/1-feature-engineering.html){:target="_blank"}
   - [2- Training Data and Evalution](contents/2-training-model.html){:target="_blank"}
-  
+  - [3- Imbalanced data](contents/3-imbalanced-data.html){:target="_blank"}
