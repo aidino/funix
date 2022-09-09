@@ -221,7 +221,7 @@ precision, recall, fscore, support = precision_recall_fscore_support(
 
 
 
-### 4.4 Report
+### 4.4 Metrics in binary classification
 
 ```python
 from yellowbrick.classifier import (
@@ -361,5 +361,152 @@ print('Recall, class 0 and 1:',  recall_score(y_test, logit.predict(X_test), lab
 Recall, class 0 and 1:  [1. 0.]
 Recall, class 0 and 1: [0.99997692 0.60246914]
 Recall, class 0 and 1: [0.99967683 0.71111111]
+```
+
+
+
+### 4.5 Metrics in Multiclass
+
+#### 4.5.1 Precision, Recall, F-measure, Support 
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+
+from sklearn.metrics import (
+    precision_recall_fscore_support,
+    accuracy_score,
+    balanced_accuracy_score,
+)
+
+# set up the model
+rf = RandomForestClassifier(n_estimators=10, random_state=39, max_depth=1, n_jobs=4)
+# train the model
+rf.fit(X_train, y_train)
+# produce the predictions (as probabilities)
+y_train_rf = rf.predict_proba(X_train)
+y_test_rf = rf.predict_proba(X_test)
+
+logit = LogisticRegression(
+    random_state=0, multi_class='multinomial', max_iter=100,
+)
+# train
+logit.fit(X_train, y_train)
+# obtain the probabilities
+y_train_logit = logit.predict_proba(X_train)
+y_test_logit = logit.predict_proba(X_test)
+
+```
+
+#### 4.5.2 Precision-Recall Curves
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.multiclass import OneVsRestClassifier
+# to convert the 1-D target vector in to a matrix
+from sklearn.preprocessing import label_binarize
+from sklearn.metrics import precision_recall_curve
+from yellowbrick.classifier import PrecisionRecallCurve
+
+# set up the model, wrapped by the OneVsRestClassifier
+rf = OneVsRestClassifier(
+    RandomForestClassifier(
+        n_estimators=10, random_state=39, max_depth=1, n_jobs=4,
+    )
+)
+# train the model
+rf.fit(X_train, y_train)
+# produce the predictions (as probabilities)
+y_train_rf = rf.predict_proba(X_train)
+y_test_rf = rf.predict_proba(X_test)
+
+logit = LogisticRegression(
+    random_state=0, multi_class='ovr', max_iter=10,
+)
+
+logit.fit(X_train, y_train)
+# obtain the probabilities
+y_train_logit = logit.predict_proba(X_train)
+y_test_logit = logit.predict_proba(X_test)
+
+### Yellowbrick
+visualizer = PrecisionRecallCurve(
+    rf, per_class=True, cmap="cool", micro=False,
+)
+
+visualizer.fit(X_train, y_train)        # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)        # Evaluate the model on the test data
+visualizer.show()                       # Finalize and show the figure
+
+visualizer = PrecisionRecallCurve(
+    logit, per_class=True, cmap="cool", micro=False,
+)
+visualizer.fit(X_train, y_train)        # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)        # Evaluate the model on the test data
+visualizer.show()     
+
+### Micro yellowbrick
+visualizer = PrecisionRecallCurve(
+    rf, cmap="cool", micro=True,
+)
+visualizer.fit(X_train, y_train)        # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)        # Evaluate the model on the test data
+visualizer.show()  
+```
+
+#### 4.5.3 ROC Curve and ROC-AUC
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.multiclass import OneVsRestClassifier
+# to convert the 1-D target vector in to a matrix
+from sklearn.preprocessing import label_binarize
+from sklearn.metrics import roc_curve, roc_auc_score
+from yellowbrick.classifier import ROCAUC
+
+rf =  RandomForestClassifier(
+        n_estimators=10, random_state=39, max_depth=1, n_jobs=4,
+)
+logit = LogisticRegression(
+    random_state=0, multi_class='ovr', max_iter=10,
+)
+# let's reconstitute the original format of
+# the target for this calculations
+y_test = np.argmax(y_test, axis=1)
+
+visualizer = ROCAUC(
+    rf, per_class=True, cmap="cool", micro=False,
+)
+visualizer.fit(X_train, y_train)        # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)        # Evaluate the model on the test data
+visualizer.show()                       # Finalize and show the figure
+
+visualizer = ROCAUC(
+    logit, per_class=True, cmap="cool", micro=False, cv=0.05,
+)
+visualizer.fit(X_train, y_train)        # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)        # Evaluate the model on the test data
+visualizer.show()                       # Finalize and show the figure
+
+### Micro yellowbrick
+- https://www.scikit-yb.org/en/latest/api/classifier/rocauc.html
+visualizer = ROCAUC(
+    rf, per_class = False, cmap="cool", micro=True,
+)
+visualizer.fit(X_train, y_train)        # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)        # Evaluate the model on the test data
+visualizer.show()                       # Finalize and show the figure
+
+visualizer = ROCAUC(
+    logit, per_class = False, cmap="cool", micro=True, cv=0.05,
+)
+visualizer.fit(X_train, y_train)        # Fit the training data to the visualizer
+visualizer.score(X_test, y_test)        # Evaluate the model on the test data
+visualizer.show()                       # Finalize and show the figure
 ```
 
