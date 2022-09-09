@@ -23,5 +23,6 @@ permalink: /
 
 
 - [Code example](#)
-  - [Features Engineering](contents/1-feature-engineering.html)
+  - [1 - Preprocessing Data](contents/1-feature-engineering.html){:target="_blank"}
+  - [2- Training Data and Evalution](contents/2-training-model.html){:target="_blank"}
   

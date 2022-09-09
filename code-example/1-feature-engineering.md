@@ -1960,5 +1960,4 @@ selected_feat = X_train.columns[list(efs.best_idx_)]
   X_test = rfa.transform(X_test)
   ```
 
-  
 
