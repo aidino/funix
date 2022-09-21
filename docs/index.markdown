@@ -8,7 +8,7 @@ permalink: /
 ---
 - [x] [Introduction to Machine Learning]({{ site.baseurl }}/contents/c1-ml-basic){:target="_blank"}
 - [x] [Machine Learning - Regression]({{ site.baseurl }}/contents/c2-regression){:target="_blank"}
-- [ ] [Machine Learning: Classification]({{ site.baseurl }}/contents/c3-classification){:target="_blank"}
+- [x] [Machine Learning: Classification]({{ site.baseurl }}/contents/c3-classification){:target="_blank"}
 - [ ] [Machine Learning: Deep Learning]({{ site.baseurl }}/contents/c4-deep-learning){:target="_blank"}
 - [ ] [Final Project]({{ site.baseurl }}/contents/c5-final-project){:target="_blank"}
   
@@ -26,3 +26,7 @@ permalink: /
   - [1 - Preprocessing Data](contents/1-feature-engineering.html){:target="_blank"}
   - [2- Training Data and Evalution](contents/2-training-model.html){:target="_blank"}
   - [3- Imbalanced data](contents/3-imbalanced-data.html){:target="_blank"}
+
+
+- [Deep learning](#)
+  - [Tensorflow basic](contents/tensorflow-basic.html)
