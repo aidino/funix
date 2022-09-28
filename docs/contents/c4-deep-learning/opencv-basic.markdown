@@ -572,8 +572,172 @@ There are a lot of different effects and filters we can apply to images. We're j
 
 http://people.csail.mit.edu/sparis/bf_course/
 
------
+https://aicurious.io/posts/2018-09-29-loc-anh-image-filtering/  (Tài liệu tiếng việt hay)
 
-### **Convenience Functions**
+**Convenience Functions**
 
 Quick function for loading the puppy image.
+
+```python
+def load_img():
+    img = cv2.imread('../DATA/bricks.jpg').astype(np.float32) / 255
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    return img
+def display_img(original, blurred):
+    fig, axes = plt.subplots(1, 2, figsize=(20, 10))
+    axes[0].imshow(original)
+    axes[0].set_title('Original')
+    axes[1].imshow(blurred)
+    axes[1].set_title('Blurred')
+```
+
+
+
+### Gamma Correction : Practical Effect of Increasing Brightness
+
+```python
+img = load_img()
+gamma = 1/4
+effected_image = np.power(img, gamma)
+display_img(img, effected_image)
+```
+
+![](opencv_resources/bluring1.png)
+
+```python
+img = load_img()
+gamma = 2
+effected_image = np.power(img, gamma)
+display_img(img, effected_image)
+```
+
+![](opencv_resources/bluring2.png)
+
+### Low Pass Filter with a 2D Convolution
+
+Như đối với tín hiệu 1 chiều, các hình ảnh cũng được lọc với đa dạng các **bộ lọc truyền dẫn thấp** (low-pass filters LPF), **bộ lọc truyền dẫn cao** (high-pass fiters HPF). 
+
+Một **HPF** sẽ giúp ta tìm ra các cạnh trong một hình ảnh, còn **LPF** sẽ lọc nhiễu cho ảnh và làm mờ ảnh.
+
+Chúng ta có thể lọc nhiễu cho ảnh bằng bộ lọc tích chập 2 chiều (2D convolution), hoặc làm mờ ảnh bằng bộ lọc trung bình hoặc Gaussian Filtering.
+
+OpenCV đưa ra một hàm `cv2.filter2D()` để tích chập một bộ lọc (kernel) với một hình ảnh. Chẳng hạn như bên dưới chúng ta sẽ thử lọc trung bình trên một bức ảnh. thông qua phép nhân tích chập với một bộ lọc trung bình kích thước 5x5 như bên dưới.
+$$
+K = \frac{1}{25}
+\begin{bmatrix}
+1 & 1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 & 1 \\
+\end{bmatrix}
+$$
+Khi đó mỗi một vùng ảnh cục bộ (local region) kích thước 5x5 trên ảnh gốc, các pixels sẽ được lấy giá trị bằng nhau và bằng trung bình của toàn bộ các pixels trên vùng ảnh. Dịch chuyển bộ lọc K trên toàn bộ các vùng ảnh gốc như một phép tích chập 2 chiều thông thường ta sẽ được ảnh smoothing.
+
+Ví dụ
+
+```python
+img = load_img()
+font = cv2.FONT_HERSHEY_COMPLEX
+cv2.putText(img,text='bricks',org=(10,600), fontFace=font,fontScale= 10,color=(255,0,0),thickness=4)
+```
+
+**Create the Kernel**
+
+```python
+kernel = np.ones(shape=(5,5),dtype=np.float32)/25
+kernel
+
+---Result---
+array([[0.04, 0.04, 0.04, 0.04, 0.04],
+       [0.04, 0.04, 0.04, 0.04, 0.04],
+       [0.04, 0.04, 0.04, 0.04, 0.04],
+       [0.04, 0.04, 0.04, 0.04, 0.04],
+       [0.04, 0.04, 0.04, 0.04, 0.04]], dtype=float32)
+```
+
+```python
+dst = cv2.filter2D(img,-1,kernel)
+display_img(img,dst)
+```
+
+![](opencv_resources/bluring3.png)
+
+### Averaging
+
+```python
+img = load_img()
+font = cv2.FONT_HERSHEY_COMPLEX
+cv2.putText(img,text='bricks',org=(10,600), fontFace=font,fontScale= 10,color=(255,0,0),thickness=4)
+```
+
+```python
+blurred_img = cv2.blur(img,ksize=(5,5))
+display_img(img,blurred_img)
+```
+
+![](opencv_resources/bluring4.png)
+
+### Gaussian Blurring
+
+```python
+img = load_img()
+font = cv2.FONT_HERSHEY_COMPLEX
+cv2.putText(img,text='bricks',org=(10,600), fontFace=font,fontScale= 10,color=(255,0,0),thickness=4)
+```
+
+```python
+blurred_img = cv2.GaussianBlur(img,(5,5),10)
+display_img(img,blurred_img)
+```
+
+![](opencv_resources/bluring5.png)
+
+### Median Blurring
+
+```python
+img = load_img()
+font = cv2.FONT_HERSHEY_COMPLEX
+cv2.putText(img,text='bricks',org=(10,600), fontFace=font,fontScale= 10,color=(255,0,0),thickness=4)
+
+median = cv2.medianBlur(img,5)
+display_img(img,median)
+```
+
+![](opencv_resources/bluring6.png)
+
+ Tìm hiểu thêm tác dụng của median blurring làm giảm nhiễu, ta add thêm 1 ảnh nhiễu vào và xử lý nó
+
+**Adding noise**
+
+```python
+img = cv2.imread('../DATA/sammy.jpg')
+img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+#Noise image
+noise_img = cv2.imread('../DATA/sammy_noise.jpg')
+display_img(img,noise_img, title1='Original', title2='Noise')
+
+```
+
+![](opencv_resources/bluring7.png)
+
+```python
+median = cv2.medianBlur(noise_img,5)
+display_img(noise_img,median, title1='Noise', title2='Median')
+```
+
+![](opencv_resources/bluring8.png)
+
+### Bilateral Filtering
+
+```python
+img = load_img()
+font = cv2.FONT_HERSHEY_COMPLEX
+cv2.putText(img,text='bricks',org=(10,600), fontFace=font,fontScale= 10,color=(255,0,0),thickness=4)
+
+blur = cv2.bilateralFilter(img,9,75,75)
+display_img(img,blur)
+```
+
+![](opencv_resources/blurring9.png)
