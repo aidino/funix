@@ -6,3 +6,7 @@ Mặc dù vẫn còn những trở ngại đáng kể trong con đường phát 
 
 ## Fundamental Convolutional Neural Network (CNN)
 
+## Các kiến trúc CNN cơ bản
+
+### Kiến trúc CNN cổ điển
+
